@@ -1,17 +1,34 @@
-import styles from './button.css'
+import { useState } from "react";
+import styles from "./button.module.css";
+
+
+type ButtonMode = 'primary' | 'secondary' | 'secondary2'
 
 
 interface ButtonProps {
     content: string,
-    isActive: boolean
+    mode: ButtonMode,
+    
     }
 
-export function Button (props: ButtonProps) {
+export const Button = (props: ButtonProps) => {
+    const [details, setDetails] = useState(false)
+    const [over, setOver] = useState(false)
+    
+     
+    const btnClass = details ? `${styles.isActive}` : `${styles[props.mode]}`;
+    const btnOverClass = over ? `${styles.over}` : ``;
+    const btnClasses = [`${styles.button}`, btnOverClass, btnClass]
     return (
-        <button className='isBlue'>{props.content}</button>
+        <button 
+            className={btnClasses.join(' ')} 
+            onMouseOver={()=>setOver(true)} 
+            onMouseOut={()=>setOver(false)}
+            onClick={() => setDetails(prev => !prev)}>
+                      
+            {props.content}
+        </button>
 
-
-
-
+       
     )
 }
