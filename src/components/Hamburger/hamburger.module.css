@@ -1,0 +1,22 @@
+.hamburger {
+    height: 100px;
+    width: 100px;
+    background-color: #2436A7;
+    margin-top: 30px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+
+.img {
+    display: block;
+    min-width: 50px;
+    min-height: 50px;
+   max-width: 50px;
+   max-height: 50px;
+}
+
+.opened {
+
+}
