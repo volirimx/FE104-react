@@ -1,0 +1,65 @@
+.button {
+  height: 40px;
+  min-height: 100px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+}
+.primary {
+  color: white;
+  background-color: blue;
+}
+
+.primary:hover {
+  background-color: rgb(99, 99, 237);
+}
+
+.primary:active {
+  background-color: rgb(151, 151, 253);
+}
+
+.primary:disabled {
+  background-color: rgb(194, 194, 194);
+  color: gray;
+}
+.secondary {
+  color: black;
+  background-color: rgb(214, 214, 214);
+}
+
+.secondary:hover {
+  background-color: rgb(150, 150, 150);
+}
+
+.secondary:active {
+  background-color: rgb(115, 115, 116);
+}
+
+.secondary:disabled {
+  background-color: rgb(194, 194, 194);
+  color: gray;
+}
+.secondary2 {
+  color: rgb(255, 0, 0);
+  background-color: white;
+}
+
+.secondary2:hover {
+  border: 1px solid black;
+}
+
+.secondary2:active {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(134, 134, 134);
+}
+
+.secondary2:disabled {
+  background-color: white;
+  color: gray;
+  border: none;
+}
