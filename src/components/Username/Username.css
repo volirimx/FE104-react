@@ -1,0 +1,29 @@
+.boxUser {
+  margin: 10px auto;
+  width: 400px;
+  height: 100px;
+  background-color: rgb(0, 0, 167);
+  display: flex;
+  align-items: center;
+}
+.userIcons {
+  width: 70px;
+  height: 70px;
+  background-color: rgb(76, 76, 179, 0.986);
+  margin: 15px;
+  color: white;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.userIconsBox {
+  width: 25%;
+}
+.userNameBox {
+  width: 75%;
+}
+.boxUser h1 {
+  font-size: 20px;
+  color: white;
+}

@@ -1,0 +1,35 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.box {
+  width: 500px;
+}
+.container {
+  background: rgb(0, 0, 0, 0.1);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.h1 {
+  font-size: 20px;
+  color: rgb(0, 0, 0, 0.5);
+  margin: 5px;
+}
+.containerBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.qwer {
+  width: 32%;
+}
+.boxInput {
+  min-height: 100px;
+  padding: 10px;
+  background: rgb(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
