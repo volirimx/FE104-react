@@ -16,8 +16,9 @@ export const Button = (props: ButtonProps) => {
     const [over, setOver] = useState(false)
     
      
-    const btnClass = details ? `${styles.isActive}` : `${styles[props.mode]}`;
-    const btnOverClass = over ? `${styles.over}` : ``;
+    const btnClass = details ? `${styles[`isActive-${props.content}`]}` : `${styles[props.mode]}`;
+    const btnOverClass = over ? `${styles[`over-${props.content}`]}` : ``;
+    
     const btnClasses = [`${styles.button}`, btnOverClass, btnClass]
     return (
         <button 

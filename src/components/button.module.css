@@ -6,8 +6,6 @@
     color: white;
     border: none;
     
-
-
 }
 
 .primary {
@@ -15,19 +13,41 @@
 }
 
 .secondary {
-    background-color: #e8e8e8;
+    background-color: rgb(232,232,232);
+    color: black;
 }
 
 .secondary2 {
     background-color: white;
     color: red;
 }
-.over {
+.over-Primary {
     opacity: 0.7;
     cursor: pointer;
 }
 
-.isActive {
+.over-Secondary {
+    background-color: #dadada;
+    cursor: pointer;
+}
+
+.over-Secondary2 {
+    border: 1px solid rgb(179, 176, 176);
+    cursor: pointer;
+}
+
+.isActive-Primary {
     background-color: #e8e8e8;
+    color: black;
+}
+
+.isActive-Secondary {
+    opacity: 0.7;
+    color: black;
+}
+
+.isActive-Secondary2 {
+   opacity: 0.7;
+    color: black;
 }
 
