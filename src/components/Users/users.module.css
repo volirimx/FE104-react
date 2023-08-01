@@ -1,0 +1,26 @@
+.button {
+    width: 200px;
+    height: 60px;
+    font-size: 16px;
+    margin-right: 40px;
+    color: white;
+    border: none;
+    background-color: #2436a7;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+.small {
+    width: 40px;
+    height: 46%;
+    margin-left: 10px;
+    background-color:#5463ca;
+    vertical-align: baseline;
+    text-align: center;
+    margin-right: 10px;
+    padding: 5% 0 1% 0;
+
+}
