@@ -1,21 +1,35 @@
 import "./App.css";
-import { Button } from "./components/Button_primary/button";
-import { UserButton } from "./components/Users/userbutton";
+import { InputForm } from "./components/Forms/Inputform";
+import styles from '../src/components/Forms/inputform.module.css'
+
 
 function App() {
   
 
   return (    
-      <div>
-        <div>
-    <Button content={'Primary'} mode={'primary'}/> 
-    <Button content={'Secondary'} mode={'secondary'}/> 
-    <Button content={'Secondary2'} mode={'secondary2'}/>     
-      </div>
-    <div>
-       <UserButton firstName="Artem" lastName="Malkin"/>  
-    </div>
-      </div>
+      
+    <form className={styles.form} action="">
+            <div className={styles.common}>
+                INPUTS
+                <div className={styles.block}>
+                   
+                    <InputForm type='text'/>
+                    <InputForm type='email'/>
+                    <InputForm type='password'/>
+
+                    
+                </div>
+
+               
+                
+            
+            </div>
+            
+            
+
+        </form>
+      
+      
       
   
  
