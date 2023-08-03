@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import styles from './hamburger.module.css'
+import styles from './header.module.css'
 import image from '..//../assets/pngwing.com.png'
 import x_image from '../../assets/x.png'
 import { UserButton } from '../Users/userbutton';
 import { SearchBtn } from '../SearchButton/searchButton';
 
 
-export const Hamburger = () => {
+export const Header = () => {
     const [state, setState] = useState(false);
 
     const buttonClickHandler = () => {
