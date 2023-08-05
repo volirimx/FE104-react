@@ -1,0 +1,25 @@
+.container {
+  margin: 40px 0px 0px 20px;
+  width: 400px;
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  background-color: blue;
+  color: #FFF;
+}
+
+.wrapper_letter,
+.wrapper_username {
+  font-size: 40px;
+  font-weight: 500;
+}
+.wrapper_letter {
+  padding: 15px;
+  background-color: rgba(5, 46, 117, 0.554);
+  margin: 0px 20px 0px 0px;
+}
+
+.firstName {
+margin: 0px 10px 0px 0px;
+}
