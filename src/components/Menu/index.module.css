@@ -1,0 +1,14 @@
+.menuWrapper {
+    background-color:rgb(93, 93, 199);
+    max-width: 60px;
+    max-height: 60px;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+.hidden {
+    display: none;
+}
+.open {
+    display: block;
+}
