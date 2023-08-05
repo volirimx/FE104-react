@@ -1,0 +1,44 @@
+.button {
+    min-height: 60px;
+    min-width: 180px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 20px;
+}
+.primary {
+    background-color:rgb(50, 50, 207);
+    color: white;
+}
+.primary:active {
+    background-color:rgb(105, 105, 229);
+}
+.primary:disabled {
+    background-color:rgb(232, 232, 234);
+    color: rgb(187, 185, 185);
+}
+.secondary {   
+    background-color: rgb(245, 240 ,240);
+    color: black;   
+}
+.secondary:active{
+    background-color: rgb(218, 214, 214);
+}
+.secondary:disabled{
+    background-color: rgb(234, 231, 231);
+    color: rgb(163, 156, 156);
+}
+.tertiary {
+    background-color:rgb(251, 251, 251);
+    color: rgb(235, 10, 10);
+}
+.tertiary:active {
+    background-color:rgb(251, 251, 251);
+    color: rgb(235, 10, 10);
+    border: 1px solid #f0f0f0;
+}
+.tertiary:disabled {
+    background-color: rgb(251, 251, 251);
+    color: rgb(163, 156, 156);
+}
