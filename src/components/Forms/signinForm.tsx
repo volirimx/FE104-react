@@ -7,8 +7,11 @@ interface FormData {
     password: string;
     confirmPassword: string;
   }
+interface ForDataProps {
+  thems: string
+}
 
-const Form: React.FC = () => {
+const Form = (props: ForDataProps ) => {
     const [formData, setFormData] = useState<FormData>({
       name: '',
       email: '',
@@ -46,7 +49,7 @@ const Form: React.FC = () => {
   
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form className={`${styles.form} ${styles[props.thems]}`} onSubmit={handleSubmit}>
       <div className={styles.form__group}>
         <label htmlFor="name" className={styles.form__label}>
           Name:

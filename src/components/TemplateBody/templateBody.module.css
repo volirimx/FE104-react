@@ -5,19 +5,20 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 40px;
+    font-size: 16px;
     padding: 1%;
     border: 1px solid #d5d1d1;
     display: flex; /* Use flexbox to center the text */
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
+    flex-direction: column;
     
 }
 
 
 .light {
     background-color: #F3F3F3;
-    color: #d5d1d1;
+    color: black;
 }
 
 .dark {

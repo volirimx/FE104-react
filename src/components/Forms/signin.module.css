@@ -9,9 +9,17 @@ form {
   background-color: #F3F3F3; /* Изменяем цвет формы на серый (#ccc) */
 }
 
-div {
-  margin-bottom: 15px;
+
+.light {
+  background-color: #F3F3F3;
+  color: black;
 }
+
+.dark {
+  background-color: #313037;
+  color: #68676D;
+}
+
 
 label {
   display: block;
