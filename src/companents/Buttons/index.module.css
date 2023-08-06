@@ -1,0 +1,57 @@
+.Primary {
+  background-color: rgb(10, 10, 95);
+  color: #fff;
+  padding: 20px 40px;
+  border: none;
+  margin: 0px 20px 0px 0px;
+}
+
+.Primary:active {
+  background-color: rgb(63, 63, 190);
+}
+
+.Secondary {
+  background-color: rgb(209, 209, 214);
+  color: black;
+  padding: 20px 40px;
+  border: none;
+  margin: 0px 20px 0px 0px;
+}
+
+.Secondary:active {
+  background-color: rgb(173, 173, 177);
+}
+
+.Secondary_2 {
+  background: none;
+  color: red;
+  padding: 20px 40px;
+  border: none;
+  margin: 0px 20px 0px 0px;
+}
+
+.Secondary_2:active {
+  border: 1px solid black;
+}
+
+.Primary_disabled {
+  background-color: rgb(120, 120, 122);
+  color: #a3a1a1;
+  padding: 20px 40px;
+  border: none;
+  margin: 0px 20px 0px 0px;
+}
+.Secondary_disabled {
+  background-color: rgb(120, 120, 122);
+  color: #a3a1a1;
+  padding: 20px 40px;
+  border: none;
+  margin: 0px 20px 0px 0px;
+}
+.Secondary_2_disabled {
+  background: none;
+  color: #a3a1a1;
+  padding: 20px 40px;
+  border: none;
+  margin: 0px 20px 0px 0px;
+}
