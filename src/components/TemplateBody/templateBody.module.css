@@ -1,0 +1,27 @@
+.container {
+    width: 30%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    padding: 1%;
+    border: 1px solid #d5d1d1;
+    display: flex; /* Use flexbox to center the text */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    
+}
+
+
+.light {
+    background-color: #F3F3F3;
+    color: #d5d1d1;
+}
+
+.dark {
+    background-color: #313037;
+    color: #68676D;
+}
+

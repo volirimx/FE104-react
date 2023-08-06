@@ -1,0 +1,26 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	
+}
+
+.content-light {
+	flex: 1 0 auto;
+	background-color: #F3F3F3;
+	color: #d5d1d1;
+}
+
+.content-dark {
+	flex: 1 0 auto;
+	background-color: #313037;
+	color: #68676D;
+}
+.footer {
+	flex: 0 0 auto;
+}
+
+
+
+
+

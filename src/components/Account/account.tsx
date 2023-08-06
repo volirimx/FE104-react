@@ -1,17 +1,14 @@
+import styles from './account.module.css'
 import { useState } from 'react';
-import styles from './header.module.css'
-import image from '..//../assets/pngwing.com.png'
-import x_image from '../../assets/x.png'
+import image from '..//..//assets/account_avatar.png'
+import x_image from '..//../assets/x.png'
 import { UserButton } from '../Users/userbutton';
-import { SearchBtn } from '../SearchButton/searchButton';
-import { Account } from '../Account/account';
 
-
-export const Header = () => {
+export const Account = () => {
     const [state, setState] = useState(false);
 
     const buttonClickHandler = () => {
-        setState(!state)
+        setState(prev => !prev)
     }
     const humbBord = state ? `${styles.border}` : '';
     const hmbClasses = [`${styles.hamburger}`, humbBord]
@@ -25,20 +22,9 @@ export const Header = () => {
                     <UserButton firstName="Artem" lastName="Malkin" />
                 </div> : <></>}
             </div>
-
-            <input type="search" className={styles.search} />
-
-            <div>
-                <SearchBtn />
-            </div>
-
-            <div>
-                <Account />
-            </div>
-
+           
         </div>
 
 
     )
 }
-
