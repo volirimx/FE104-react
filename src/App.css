@@ -1,11 +1,15 @@
 div {
-    width: 350px;
+    width: 100%;
     margin: 0;
+}
+.main-menu {
+    display: flex;
 }
 .menu {
     width: 500px;
     height: 700px;
     background: rgb(235, 235, 235);
+    border: 1px solid white;
 }
 .text {
     margin-top: 5px;
