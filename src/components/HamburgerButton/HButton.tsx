@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Hamburger } from "../hamburger/Hamburger";
-import "./Button.css";
+import "./HButton.css";
 
-export function Button() {
+export function HButton() {
   const [menuActive, setMenuActive] = useState(false);
   return (
     <div

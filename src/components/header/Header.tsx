@@ -1,11 +1,11 @@
-import { Button } from "../Button/Button";
+import { HButton } from "../HamburgerButton/HButton";
 import { Username } from "../Username/Username";
 import "./Header.css";
 
 export function Header() {
   return (
     <header>
-      <Button />
+      <HButton />
       <Username username="Юзер Нейм" />
     </header>
   );
