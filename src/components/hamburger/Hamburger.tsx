@@ -1,5 +1,12 @@
+import { Username } from "../Username/Username";
 import "./Hamburger.css";
-
-export function Hamburger() {
-  return <div className="hamburger"></div>;
+interface Hamburger {
+  className: string;
+}
+export function Hamburger({ className }: Hamburger) {
+  return (
+    <div className={className}>
+      <Username username="Юзер Нейм" />
+    </div>
+  );
 }

@@ -1,8 +1,51 @@
-button {
-  width: 100px;
-  height: 100px;
-  background: blue;
+.hamburgenBtn.false {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-button:hover {
-  background: rgb(25, 255, 40);
+.hamburgenBtn.true {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.solid1.false {
+  margin: 5px auto;
+  width: 50%;
+  height: 0px;
+  border: 1px solid rgb(255, 255, 255);
+}
+.solid2.false {
+  margin: 2px auto;
+  width: 50%;
+  height: 0px;
+  border: 1px solid rgb(255, 255, 255);
+}
+.solid3.false {
+  margin: 5px auto;
+  width: 50%;
+  height: 0px;
+  border: 1px solid rgb(255, 255, 255);
+}
+.solid1.true {
+  margin: 0 auto;
+  width: 50%;
+  height: 0px;
+  border: 1px solid rgb(255, 255, 255);
+  transform: rotate(45deg);
+}
+.solid2.true {
+  margin: 0 auto;
+  width: 50%;
+  height: 0px;
+  border: 1px solid rgb(255, 255, 255);
+  transform: rotate(135deg);
 }

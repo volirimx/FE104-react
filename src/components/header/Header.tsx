@@ -6,7 +6,7 @@ export function Header() {
   return (
     <header>
       <Button />
-      <Username username="Леха Реактмастер" />
+      <Username username="Юзер Нейм" />
     </header>
   );
 }

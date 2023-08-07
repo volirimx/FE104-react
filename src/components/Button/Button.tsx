@@ -1,11 +1,20 @@
+import { useState } from "react";
 import { Hamburger } from "../hamburger/Hamburger";
 import "./Button.css";
 
 export function Button() {
-  // const hamburger = document.getElementsByClassName("hamburger");
+  const [menuActive, setMenuActive] = useState(false);
   return (
-    <button className="hamburgenBtn" onClick={() => {}}>
-      <Hamburger />
-    </button>
+    <div
+      onClick={() => {
+        setMenuActive(!menuActive);
+      }}
+      className={`hamburgenBtn ${menuActive}`}
+    >
+      <div className={`solid1 ${menuActive}`}></div>
+      <div className={`solid2 ${menuActive}`}></div>
+      <div className={`solid3 ${menuActive}`}></div>
+      <Hamburger className={`hamburger ${menuActive}`} />
+    </div>
   );
 }
