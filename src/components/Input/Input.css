@@ -1,0 +1,23 @@
+h2 {
+  margin: 5px;
+  font-size: 15px;
+  color: rgb(0, 0, 0, 0.5);
+}
+input {
+  width: 70%;
+  height: 35px;
+  border: 1px solid transparent;
+  padding-left: 15px;
+  border-radius: 5px;
+}
+input:hover {
+  border: 1px solid rgb(0, 0, 0, 0.2);
+}
+input:focus {
+  border: 1px solid rgb(0, 0, 0, 0.2);
+  outline: none;
+}
+input.true {
+  border: none;
+  background: rgb(0, 0, 0, 0.1);
+}
