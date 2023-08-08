@@ -1,0 +1,16 @@
+.wrapper {
+  width: 250px;
+  background-color: rgb(8, 8, 122);
+  padding: 20px 20px;
+}
+.wrapper_initials {
+  font-size: 25px;
+  padding: 7px;
+  background-color: rgba(54, 59, 200, 0.91);
+  color: #fff;
+}
+.wrapper_username {
+  font-size: 25px;
+  color: #fff;
+  margin: 0px 0px 0px 20px;
+}

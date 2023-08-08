@@ -1,0 +1,29 @@
+.tabs {
+  display: inline-flex;
+  margin: 20px 0px 0px 0px;
+}
+.tab {
+  width: 150px;
+  background-color: antiquewhite;
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+}
+.tab:hover {
+  color: blue;
+}
+
+.active {
+  width: 150px;
+  background-color: antiquewhite;
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+  border: none;
+  border-bottom: 2px solid black;
+}
+.active:hover {
+  color: blue;
+}
