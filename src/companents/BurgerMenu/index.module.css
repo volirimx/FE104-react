@@ -8,10 +8,8 @@
   align-items: center;
 }
 .wrap_close {
- display: flex;
+  display: flex;
 }
-
-
 
 .wrap_line {
   width: 40px;
