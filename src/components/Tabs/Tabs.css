@@ -1,0 +1,52 @@
+.tabs {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  border-bottom: 1px solid black;
+}
+.tabsAll {
+  width: 150px;
+  height: 40px;
+  border: 2px solid transparent;
+  background: transparent;
+  font-weight: 700;
+}
+.tabsMyFavorites {
+  width: 150px;
+  height: 40px;
+  border: 2px solid transparent;
+  background: transparent;
+  font-weight: 700;
+}
+.tabsPooular {
+  width: 150px;
+  height: 40px;
+  border: 2px solid transparent;
+  background: transparent;
+  font-weight: 700;
+}
+.tabsAll:active {
+  border-bottom: 2px solid black;
+}
+.tabsMyFavorites:active {
+  border-bottom: 2px solid black;
+}
+.tabsPooular:active {
+  border-bottom: 2px solid black;
+}
+.tabsAll:hover {
+  color: rgb(55, 55, 255);
+  cursor: pointer;
+}
+.tabsMyFavorites:hover {
+  color: rgb(55, 55, 255);
+  cursor: pointer;
+}
+.tabsPooular:hover {
+  color: rgb(55, 55, 255);
+  cursor: pointer;
+}
+.tabsPooular.true {
+  pointer-events: none;
+}
