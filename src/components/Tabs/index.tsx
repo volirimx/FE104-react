@@ -3,11 +3,10 @@ export interface Tab {
     name: string;
     active: boolean;
 }
-export const Tabs = (items: Tab[]) => {
-    console.log(items)
+export const Tabs = (props: { items: Tab[] }) => {
     return (
         <div>
-            {items.map((tab) => (
+            {props.items.map((tab) => (
                 <button>
                     {tab.name}
                 </button>

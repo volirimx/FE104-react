@@ -12,7 +12,7 @@ function App() {
   return <div>
     <Title name="Sign In" />
     <Menu />
-    <Tabs {...tabItems} />
+    <Tabs items={tabItems} />
   </div>;
 }
 
