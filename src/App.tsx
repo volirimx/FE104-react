@@ -1,14 +1,16 @@
 import './App.css';
+
 import './componets/Button/button';
+
 import { Button } from './componets/Button/button';
 import './componets/UserName/userName';
-import { User } from './componets/UserName/userName';
+import './componets/burgerMenu/burgerMenu';
+import { BurgerMenu } from './componets/burgerMenu/burgerMenu';
 
 function App() {
   const hendlePrimariButtonClick = () => {
     console.log('clicked');
   };
-
   return (
     <div>
       <Button
@@ -47,7 +49,8 @@ function App() {
         disabled={true}
         onClick={hendlePrimariButtonClick}
       />
-      <User userName='Alex Box' />
+      <BurgerMenu />
+      {/* <User userName='Alex Box' /> */}
     </div>
   );
 }
