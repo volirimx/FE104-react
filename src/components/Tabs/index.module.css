@@ -1,0 +1,35 @@
+@import url("../../fonts/font.module.css");
+
+.tabsWrapper {
+    display: flex;
+}
+.tabWrapper{
+    min-width: 100px;
+    min-height: 50px;
+}
+.tabActive{
+    border-bottom: 3px solid rgb(42, 40, 40);
+}
+.tabInactive{
+    border-bottom: 3px solid rgb(240, 239, 239);
+}
+.button {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: transparent;    
+    font-family: "OpenSans-Regular", sans-serif;
+    color: #666666;
+    font-weight: 600;
+}
+.button:disabled{
+    color: rgb(240, 239, 239);
+}
+.button:hover {
+    color:rgb(93, 93, 199);   
+}
+.button:hover:disabled {
+    color: rgb(240, 239, 239);
+}
+
+

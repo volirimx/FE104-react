@@ -1,18 +1,16 @@
 import styles from './index.module.css';
-import menuIcon from './icons/menu.svg';
-import crossIcon from './icons/cross.svg';
-import { useState } from 'react'
+import menuIcon from '../../assets/icons/menu.svg';
+import crossIcon from '../../assets/icons/cross.svg';
 import { User } from '../UserInfo/index.tsx';
 
-export const Menu = () => {
-    const [isOpen, setIsOpen] = useState(false);
+export const Menu = (props: { isOpen: boolean, onMenuClick: (isOpen: boolean) => void }) => {
     return (
         <div>
-            <div className={styles.menuWrapper} onClick={() => isOpen ? setIsOpen(false) : setIsOpen(true)}>
-                <img src={menuIcon} className={isOpen ? styles.hidden : styles.open}></img>
-                <img src={crossIcon} className={isOpen ? styles.open : styles.hidden}></img>
+            <div className={styles.menuWrapper} onClick={() => props.onMenuClick(props.isOpen)}>
+                <img src={menuIcon} className={props.isOpen ? styles.hidden : styles.open}></img>
+                <img src={crossIcon} className={props.isOpen ? styles.open : styles.hidden}></img>
             </div>
-            {isOpen ? <User name='Artem Malkin' /> : null}
+            {props.isOpen ? <User name='Artem Malkin' /> : null}
         </div>
     )
 }
