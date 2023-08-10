@@ -1,0 +1,19 @@
+.textareaWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    min-width: 120px;
+    min-height: 120px;
+}
+.textareaLabel{
+    font-size: 14px;
+    font-weight: 600;
+}
+.textarea{
+    border: 1px solid rgb(170, 168, 168);
+    min-height: 80px;
+    border-radius: 2px;
+    color: rgb(170, 168, 168);
+    font-size: 14px;
+}
