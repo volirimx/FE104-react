@@ -11,32 +11,20 @@ import { Button } from '../Button_primary/button';
 interface ForChildren {
     thems: string,
     children?: React.ReactNode;
+    title: string;
 }
 
 
-export const Template = ({ thems, children }: ForChildren) => {
+export const Template = ({ thems, children, title }: ForChildren) => {
     return (
         <>
         <div className={`${styles.wrapper} ${styles[thems]}`}>
             <Header />
-            {/* <Title title='Sign Up' thems={thems}/> */}
-            {/* <Form thems={thems}/> */}
-            <Title title='Registration confirmation' thems={thems}/>
-            
-            <TemplateBody thems={thems} title={`Please activate your account with the activision
-            link in the email example@gmail.com. Please check the email`}> 
-            
-            <Button content='Go to home' mode='primary'/>
-            
-            
-            </TemplateBody>
+            <Title title={title} thems={thems}/>
             <div className={styles[`content-${thems}`]}>
                 <div>{children}</div>
             </div>
-            
-
             <Footer thems={thems}/>
-
         </div>      
         </>
         

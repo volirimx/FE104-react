@@ -1,0 +1,52 @@
+.table {
+    padding: 0 0 0 25%;
+    width: 60%; 
+    color: black;
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.column {
+    width: 9%; 
+    padding-top: 10%;    
+    padding-bottom: 15px;
+    position: relative;
+}
+
+.column::after {
+    content: "";
+    position: absolute;
+    left:-65px;
+    bottom: -4px;
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    visibility: hidden;
+    transform: scaleX(0); /* Начальное значение ширины псевдоэлемента - нулевая ширина */
+    transition: transform 0.3s ease-in-out; /* Плавная анимация */
+}
+
+.column:hover::after {
+    visibility: visible;
+    transform: scaleX(1); /* При наведении увеличиваем ширину псевдоэлемента до 100% */
+    
+}
+
+
+.table::after {
+    content: "";
+    position: absolute;
+    left: 21%;    
+    width: 60%;
+    height: 1px;
+    background-color: #d5d1d1;       
+}
+
+td:hover {
+    color: blue;
+    cursor: pointer;
+}
+
+.grayText {
+    color: gray; 
+}
