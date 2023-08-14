@@ -20,7 +20,7 @@ export const Template = ({ thems, children, title }: ForChildren) => {
         <>
         <div className={`${styles.wrapper} ${styles[thems]}`}>
             <Header />
-            <Title title={title} thems={thems}/>
+            {/* <Title title={title} thems={thems}/> */}
             <div className={styles[`content-${thems}`]}>
                 <div>{children}</div>
             </div>

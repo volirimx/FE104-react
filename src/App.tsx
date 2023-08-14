@@ -8,9 +8,11 @@ import { Tabs } from "./components/Tabs/tabs";
 import { Card1 } from "./components/Card1/card1";
 import { Card2 } from './components/Card2/card2'
 import { Card3 } from "./components/Card3/card3";
+import { useCardData } from "./hooks/cards";
 
 function App() {
   const [theme, setTheme] = useState('light');
+  const { cards } = useCardData();
 
   return (
     <Template thems={theme} title="">
@@ -19,11 +21,11 @@ function App() {
         <Button content='Go to home' mode='primary' />
       </TemplateBody> */}
        {/* <Form thems={theme} /> */}
-       {/* <Tabs/> */}
+       <Tabs title="BLOG"/>
        <div className="containerStyle">
-        <Card1/>
-        <Card2/>
-        <Card3/>
+       { cards.map(card => <Card1 card={card} key={card.id} />) }
+        {/* <Card2/>
+        <Card3/> */}
        </div>
        
     </Template>

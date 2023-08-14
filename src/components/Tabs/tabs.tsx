@@ -1,11 +1,13 @@
 import styles from './tabs.module.css'
 
-
-export const Tabs = () => {
+interface TabsProps {
+    title: string
+}
+export const Tabs = (props: TabsProps) => {
     
     return (
         <table className={styles.table}>
-            <thead className={styles.grayText}>TABS</thead>
+            <thead className={styles.grayText}>{props.title}</thead>
             <tbody>
                 <tr>
                     <td className={styles.column}>All</td>

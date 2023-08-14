@@ -4,26 +4,34 @@ import { CardDataResult } from '../models'
 
 
 
-
 export function useCardData() {
-    const [element, setElement] = useState<CardDataResult>([]);
+    const [cards, setCards] = useState<CardDataResult[]>([]);
     const [formattedDate, setFormattedDate] = useState<string>("");
 
     async function fetchData() {
-        const response = await axios.get<CardDataResult>('https://studapi.teachmeskills.by/blog/posts/8/');
-        setElement(response.data);
+        const response = await axios.get<CardDataResult[]>('https://studapi.teachmeskills.by/blog/posts/?limit=2');
 
-        const date = new Date(response.data.date);
-        const formattedDate = date.toLocaleDateString("en-EN", {
+        const gettedArray:CardDataResult[] = response.data.results;
+        gettedArray.map((el:CardDataResult) => {
+            const date = new Date(el.date);
+            const formattedDate = date.toLocaleDateString("en-EN", {
             year: "numeric",
             month: "short",
             day: "numeric"
-        });
-        setFormattedDate(formattedDate);
+                         });
+            el.date = formattedDate;
+            return el;
+        })
+        
+        setCards(gettedArray);
+
+        
     }
 
     useEffect(() => {
         fetchData();
+        
+        
     }, []);
-    return { element, formattedDate }
+    return { cards }
 }

@@ -4,6 +4,8 @@
     color: black;
     font-size: 16px;
     font-weight: 900;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .column {
@@ -11,15 +13,16 @@
     padding-top: 10%;    
     padding-bottom: 15px;
     position: relative;
+    padding-left: 20px;
 }
 
 .column::after {
     content: "";
     position: absolute;
-    left:-65px;
+    left:0;
     bottom: -4px;
-    width: 100%;
-    height: 3px;
+    width: 70%;
+    height: 4px;
     background-color: black;
     visibility: hidden;
     transform: scaleX(0); /* Начальное значение ширины псевдоэлемента - нулевая ширина */
@@ -36,7 +39,7 @@
 .table::after {
     content: "";
     position: absolute;
-    left: 21%;    
+    left: 25%;    
     width: 60%;
     height: 1px;
     background-color: #d5d1d1;       
