@@ -1,0 +1,60 @@
+.tabs {
+  height: 40px;
+  min-height: 100px;
+  padding: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+}
+.all {
+  color: black;
+}
+
+.all:hover {
+  color: rgb(99, 99, 237);
+}
+
+.all:active {
+  color: black;
+  border-bottom: 4px solid rgb(134, 134, 134);
+}
+
+.all:disabled {
+  background-color: rgb(194, 194, 194);
+  color: gray;
+}
+.myFavorites {
+  color: black;
+}
+
+.myFavorites:hover {
+  color: rgb(99, 99, 237);
+}
+
+.myFavorites:active {
+  color: black;
+  border-bottom: 4px solid rgb(134, 134, 134);
+}
+
+.myFavorites:disabled {
+  background-color: rgb(194, 194, 194);
+  color: gray;
+}
+.popular {
+  color: black;
+}
+
+.popular:hover {
+  color: rgb(99, 99, 237);
+}
+
+.popular:active {
+  color: black;
+  border-bottom: 4px solid rgb(134, 134, 134);
+}
+
+.popular:disabled {
+  background-color: rgb(194, 194, 194);
+  color: gray;
+}
