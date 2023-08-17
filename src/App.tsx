@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { Input } from "./components/Input/Input";
 import { PostCard1 } from "./components/PostCard1/PostCard1";
 import { Tabs } from "./components/Tabs/Tabs";
@@ -7,6 +7,7 @@ import { Tabs } from "./components/Tabs/Tabs";
 import { Header } from "./components/header/Header";
 import { Primer1 } from "./components/primer1/primer1";
 import { Primer2 } from "./components/primer2/primer2";
+import { Layout } from "./components/Layout/Layout";
 
 function App() {
   return (
@@ -16,11 +17,12 @@ function App() {
         <Input type="text" disablet={false} />
         <Tabs disablet={true} />
         <PostCard1 />
-        <Link to="/пример1">пример1</Link> <Link to="/пример2">пример2</Link>
       </div>
       <Routes>
-        <Route path="/пример1" element={<Primer1 />} />
-        <Route path="/пример2" element={<Primer2 />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="/пример1" element={<Primer1 />} />
+          <Route path="/пример2" element={<Primer2 />} />
+        </Route>
       </Routes>
     </>
   );
