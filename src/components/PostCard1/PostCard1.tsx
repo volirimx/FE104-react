@@ -14,16 +14,19 @@ export function PostCard1() {
         setArticles(data);
       });
   }, []);
-  console.log(articles.results);
+
   return (
     <div>
-      <h1>{articles.id}</h1>
-      <h1>{articles.image}</h1>
-      <h1>{articles.text}</h1>
-      <h1>{articles.date}</h1>
-      <h1>{articles.lesson_num}</h1>
-      <h1>{articles.title}</h1>
-      <h1>{articles.author}</h1>
+      <h1>Ничего не работает</h1>
     </div>
+    // <div>
+    //   <h1>{articles.id}</h1>
+    //   <h1>{articles.image}</h1>
+    //   <h1>{articles.text}</h1>
+    //   <h1>{articles.date}</h1>
+    //   <h1>{articles.lesson_num}</h1>
+    //   <h1>{articles.title}</h1>
+    //   <h1>{articles.author}</h1>
+    // </div>
   );
 }
