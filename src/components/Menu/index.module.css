@@ -1,0 +1,22 @@
+.wrapper{
+    background-color:rgb(93, 93, 199);
+}
+.menuWrapper {  
+    border: 1px solid #ffffff54;
+    max-width: 60px;
+    min-height: 60px;
+    display: flex;
+    align-items:center;
+    justify-content: center;    
+    cursor: pointer;
+}
+.menuWrapper img {
+    height: 80%;
+    width: 80%;
+}
+.hidden {
+    display: none;
+}
+.open {
+    display: block;
+}
