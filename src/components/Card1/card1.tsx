@@ -4,10 +4,10 @@ import image_dislike from '..//..//assets/dislike.png'
 import image_symbol from '..//..//assets/symbol.png'
 import image_dots from '..//..//assets/dots_three_icon.png'
 import { useCardData } from '../../hooks/cards'
-import { CardDataResult } from '../../models'
+import { CardDataResult, Post } from '../../models'
 
 interface CardProps {
-    card: CardDataResult
+    card: Post
 }
 
 export const Card1 = ({ card }: CardProps) => {

@@ -1,5 +1,6 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent, useContext } from 'react';
 import styles from './signin.module.css';
+import { UserTheme } from '../Theme/thems';
 
 interface FormData {
     name: string;
@@ -8,7 +9,7 @@ interface FormData {
     confirmPassword: string;
   }
 interface ForDataProps {
-  thems: string
+  thems?: string
 }
 
 const Form = (props: ForDataProps ) => {
@@ -18,6 +19,8 @@ const Form = (props: ForDataProps ) => {
       password: '',
       confirmPassword: '',
     });
+
+  const myThem = useContext(UserTheme);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
@@ -49,7 +52,7 @@ const Form = (props: ForDataProps ) => {
   
 
   return (
-    <form className={`${styles.form} ${styles[props.thems]}`} onSubmit={handleSubmit}>
+    <form className={`${styles.form} ${styles[myThem]}`} onSubmit={handleSubmit}>
       <div className={styles.form__group}>
         <label htmlFor="name" className={styles.form__label}>
           Name:
