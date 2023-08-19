@@ -1,17 +1,21 @@
 /* signin.module.css */
 
 form {
+ 
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #d5d1d1;
   border-radius: 5px;
   background-color: #F3F3F3; /* Изменяем цвет формы на серый (#ccc) */
+    
 }
 
 
 .light {
-  background-color: #F3F3F3;
+
+  flex: 1 0 auto;
+	background-color: #F3F3F3;
   color: black;
 }
 
