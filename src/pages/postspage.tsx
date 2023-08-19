@@ -1,9 +1,25 @@
- {/* <TemplateBody thems={theme} title={`Please activate your account with the activision
-                link in the email example@gmail.com. Please check the email`}>
-            <Button content='Go to home' mode='primary' />
-            </TemplateBody> */}
-            {/* <Form thems={theme} /> */}
-            // <Tabs title="BLOG"/>
-            // <div className="containerStyle">
-            // { cards.map(card => <Card1 card={card} key={card.id} />)}
-            // </div>
+import { Tabs } from "../components/Tabs/tabs";
+import { Card1 } from "../components/Card1/card1";
+import { useCardData } from '../hooks/cards';
+import styles from './postspage.module.css'
+
+
+export const Postspage = () => {
+    const { cards } = useCardData();
+
+    return (
+        <>
+            <Tabs title="BLOG"/>
+
+            <div className={styles.containerStyle}>
+                {cards.map(card => (
+                    <Card1 
+                    card={card}
+                    key={card.id}
+                />                    
+                    
+                ))}
+            </div>
+        </>
+    );
+};

@@ -5,6 +5,7 @@ import image_symbol from '..//..//assets/symbol.png'
 import image_dots from '..//..//assets/dots_three_icon.png'
 import { useCardData } from '../../hooks/cards'
 import { CardDataResult, Post } from '../../models'
+import { Link } from 'react-router-dom'
 
 interface CardProps {
     card: Post
@@ -18,7 +19,7 @@ export const Card1 = ({ card }: CardProps) => {
                 <div>
                     <div>{card.date}</div>
                     <h1 className={styles.title}> {card.title} </h1>
-                    <h3 className={styles.text}> {card.description} </h3>
+                    <h3 className={styles.text}> <Link to={`/posts/${card.id}`}>{card.description}</Link> </h3>
                 </div>
                 
                 

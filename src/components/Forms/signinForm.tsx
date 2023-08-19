@@ -1,6 +1,8 @@
 import React, { useState, ChangeEvent, FormEvent, useContext } from 'react';
 import styles from './signin.module.css';
 import { UserTheme } from '../Theme/thems';
+import { useNavigate } from 'react-router-dom';
+
 
 interface FormData {
     name: string;
@@ -38,10 +40,10 @@ export const Form = (props: ForDataProps ) => {
     }
   
     // Проверка сложности пароля (можно настраивать по желанию)
-    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{3,}$/;
     if (!passwordPattern.test(formData.password)) {
       alert(
-        'Пароль должен содержать как минимум 8 символов, включая как минимум одну строчную и одну заглавную букву, одну цифру и один специальный символ (@, $, !, %, *, ?, &).'
+        'Пароль должен содержать как минимум 3 символа, включая как минимум одну строчную и одну заглавную букву и одну цифру'
       );
       return;
     }
@@ -50,7 +52,8 @@ export const Form = (props: ForDataProps ) => {
     console.log(formData);
   };
   
-
+    const navigate = useNavigate();
+    const goToSuccess = () => navigate('/success')
   return (
     <form className={`${styles.form} ${styles[myThem]}`} onSubmit={handleSubmit}>
       <div className={styles.form__group}>
@@ -109,7 +112,7 @@ export const Form = (props: ForDataProps ) => {
           className={styles.form__input}
         />
       </div>
-      <button type="submit" className={styles.form__button}>
+      <button type="submit" className={styles.form__button} onClick={goToSuccess}>
         Sign up
       </button>
     </form>
