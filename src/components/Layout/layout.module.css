@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat";
+}
+@font-face {
+    font-family: "Montserrat";
+    src: url("./Montserrat-Regular.ttf");
+}
+html, body{
+    background-color: rgba(210, 210, 212);
+}
+.app-container {    
+    /* display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    place-content: space-between center; 
+    align-items: center;
+    justify-content: center; */
+}
+.header {
+    width: 100%;
+    
+}
+.content {   
+    margin-top: 5%;    
+}
+.footer {
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,33 @@
+.about_user{
+    width:14vw;
+    height:60px;
+    background-color:#3F5576;
+    position:relative;  
+    display: flex;
+    align-items:center;
+    border: none;
+}
+#user_icon{
+    margin: 0px;
+    position:absolute;
+    top:12px;
+    left: 20px;
+    width:35px;
+    height:35px;
+    background-color:#587099;
+    border-radius:2px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.user_initials{
+    color:white;
+    font-size:16px;
+    margin:0;
+    text-transform:uppercase;
+}
+.user_name{
+    color:white;
+    font-size: 18px;
+    margin-left: 80px;
+}
