@@ -12,7 +12,7 @@ interface ForDataProps {
   thems?: string
 }
 
-const Form = (props: ForDataProps ) => {
+export const Form = (props: ForDataProps ) => {
     const [formData, setFormData] = useState<FormData>({
       name: '',
       email: '',
@@ -116,4 +116,3 @@ const Form = (props: ForDataProps ) => {
   );
 };
 
-export default Form;

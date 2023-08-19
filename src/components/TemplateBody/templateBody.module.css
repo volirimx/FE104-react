@@ -12,6 +12,7 @@
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
     flex-direction: column;
+    white-space: pre-wrap;
     
 }
 
