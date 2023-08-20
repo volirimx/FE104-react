@@ -10,19 +10,29 @@ import { NotFoundPage } from "./pages/notfoundpage";
 import { Layout } from "./components/Template/template";
 import { Postspage } from "./pages/postspage";
 import { Singlepage } from "./pages/siglepage";
+import { LoginPage } from "./pages/loginpage";
+import { RequireAuth } from "./hoc/RequireAuth";
+import { AuthProvider } from "./hoc/AuthProvider";
 
 
 function App() {
-  return (          
+  return (   
+          <AuthProvider>       
           <Routes>
             <Route path="/" element={<Layout/>}>
               <Route index element={ <Homepage/> } />
+              <Route path='login' element={ <LoginPage/> } />
               <Route path='success' element={ <Successpage/> } />
-              <Route path='posts' element={ <Postspage/> } />
+              <Route path='posts' element={ 
+                <RequireAuth>
+                  <Postspage />
+                </RequireAuth>              
+               } />
               <Route path='posts/:id' element={ <Singlepage/> } />
               <Route path="*" element={ <NotFoundPage/> } />  
             </Route>            
-          </Routes>      
+          </Routes>    
+          </AuthProvider>  
           )
     }
 

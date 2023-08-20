@@ -1,10 +1,11 @@
 import React, { useState, ChangeEvent, FormEvent, useContext } from 'react';
 import styles from './signin.module.css';
 import { UserTheme } from '../Theme/thems';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from "..//../hooks/useAuth";
 
 
-interface FormData {
+export interface UserFormData {
     name: string;
     email: string;
     password: string;
@@ -15,7 +16,7 @@ interface ForDataProps {
 }
 
 export const Form = (props: ForDataProps ) => {
-    const [formData, setFormData] = useState<FormData>({
+    const [formData, setFormData] = useState<UserFormData>({
       name: '',
       email: '',
       password: '',
@@ -32,11 +33,11 @@ export const Form = (props: ForDataProps ) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-  
-    // Валидация формы
+        // Валидация формы
     if (formData.password !== formData.confirmPassword) {
       alert('Пароли не совпадают');
       return;
+
     }
   
     // Проверка сложности пароля (можно настраивать по желанию)
@@ -46,14 +47,20 @@ export const Form = (props: ForDataProps ) => {
         'Пароль должен содержать как минимум 3 символа, включая как минимум одну строчную и одну заглавную букву и одну цифру'
       );
       return;
-    }
-  
-    // Если все проверки прошли успешно, можно отправить данные формы
-    console.log(formData);
+    } 
+    const form = e.target;
+    const user = formData;
+    signin(user, () => navigate(fromPage))
+    
   };
   
     const navigate = useNavigate();
     const goToSuccess = () => navigate('/success')
+    const location = useLocation();
+    const { signin } = useAuth();
+
+    const fromPage = location.state?.from?.pathname || '/';
+
   return (
     <form className={`${styles.form} ${styles[myThem]}`} onSubmit={handleSubmit}>
       <div className={styles.form__group}>

@@ -7,11 +7,15 @@ import { SearchBtn } from '../SearchButton/searchButton';
 import { Account } from '../Account/account';
 
 
+
 export const Header = () => {
     const [state, setState] = useState(false);
+   
 
-    const buttonClickHandler = () => {
-        setState(!state)
+   
+    const buttonBurgerHandler = () => {
+        setState(!state);       
+
     }
     const humbBord = state ? `${styles.border}` : '';
     const hmbClasses = [`${styles.hamburger}`, humbBord]
@@ -19,7 +23,7 @@ export const Header = () => {
     return (
         <div className={styles.container}>
             <div className={hmbClasses.join(' ')}
-                onClick={buttonClickHandler}>
+                onClick={buttonBurgerHandler}>
                 <img className={styles.img} src={state ? x_image : image} alt="" />
                 {state ? <div className={styles.burger}>
                     <UserButton firstName="Artem" lastName="Malkin" />
