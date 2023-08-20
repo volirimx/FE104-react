@@ -7,6 +7,7 @@ import ActiveSun from "./sun_active.png";
 import ActiveMoon from "./moon_active.png";
 import DisabledSun from "./sun_disabled.png";
 import DisabledMoon from "./moon-disabled.png";
+import { Link } from 'react-router-dom';
 
 export const HamburgerMenu = () => {
   const [isUserVisible, setIsUserVisible] = useState<boolean>(false);
@@ -20,13 +21,14 @@ export const HamburgerMenu = () => {
   };
 
   return (
-    <div className={styles.hamb_menu} >
-      <img
-        className={isUserVisible ? styles.cross_icon : styles.burger_icon}
-        src={isUserVisible ? CrossIcon : BurgerIcon}
-        alt={isUserVisible ? "CloseIcon" : "BurgerIcon"}  
-        onClick={toggleUserVisibility}      
-      />
+    <div  >
+      <div className={styles.hamb_menu} onClick={toggleUserVisibility}>
+        <img
+          className={isUserVisible ? styles.cross_icon : styles.burger_icon}
+          src={isUserVisible ? CrossIcon : BurgerIcon}
+          alt={isUserVisible ? "CloseIcon" : "BurgerIcon"}                  
+        />
+      </div>
       {isUserVisible && (
         <div className={styles.menu}>
           <div className={styles.about_user_container}>
@@ -43,7 +45,7 @@ export const HamburgerMenu = () => {
               <img id={styles.moon} src={isLightTheme ? DisabledMoon : ActiveMoon}/>
             </div>
           </div>
-          <button className={styles.menu_button}>Sign In</button>
+          <Link to="/signin" className={styles.link}><button className={styles.menu_button}>Sign In</button></Link>
         </div>
         ) }
     </div>

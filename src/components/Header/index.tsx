@@ -40,14 +40,13 @@ export const Header = () => {
             <div className={styles.search} onClick={toggleIsFocused}>
                 <img src={SearchIcon} id={styles.search_icon}/>
             </div>    
-            <div className={isUserFocused ? "" : styles.user}>
+            <div className={isUserFocused ? "" : styles.user} onClick={toggleIsUserFocused}>
                 {isUserFocused && 
                 <div>
                     <AboutUser userName="Ulik Sinya"/>
                 </div>}
                 {!isUserFocused &&
-                <img src={UserIcon} id={styles.user_icon} onClick={toggleIsUserFocused}/>}
-                
+                <img src={UserIcon} id={styles.user_icon} />}                
             </div>        
         </div>
     )

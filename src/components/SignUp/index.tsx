@@ -1,8 +1,8 @@
 import { Title } from "../Title"
 import { CustomInput } from "../Input"
 import { useState } from "react"
-import styles from "./signup.styles.css"
 import { Button } from "../Button"
+import styles from "./signup.module.css"
 
 export const SignUp = () => {
     const [inputTextValue, setInputTextValue] = useState({value: '', isValid: true});
@@ -10,7 +10,7 @@ export const SignUp = () => {
         setInputTextValue((oldValue) => ({...oldValue, value: e.target.value}));
     }
     const textValidator = () => {
-      if (inputTextValue.value.includes("@") && inputTextValue.value.includes(".")) {
+      if (inputTextValue.value.length <= 10) {
         setInputTextValue((oldValue) => ({ ...oldValue, isValid: true }));
       } else {
         setInputTextValue((oldValue) => ({ ...oldValue, isValid: false }));
@@ -60,12 +60,13 @@ export const SignUp = () => {
     return(
         <div>
             <Title titleText="Sign Up"/>
-            <div>
+            <div className={styles.input}>
                 <CustomInput value={inputTextValue.value} onChange={handleTextInputChange} isValid={inputTextValue.isValid} inputTitle="Name"  placeholder='Your name' inputMode="text" disabled={false} inputType="text" errorText="Введите коррекное имя"/> 
                 <CustomInput value={inputEmailValue.value} onChange={handleEmailInputChange} isValid={inputEmailValue.isValid} inputTitle="Email"  placeholder='Your email' inputMode="text" disabled={false} inputType="email" errorText="Введите коррекный адрес эдектронной почты"/> 
                 <CustomInput value={inputPasswordValue.value} onChange={handlePasswordInputChange} isValid={inputPasswordValue.isValid} inputTitle="Password"  placeholder='Your password' inputMode="text" disabled={false} inputType="password" errorText="Введите коррекный пароль"/> 
                 <CustomInput value={inputConfirmPasswordValue.value} onChange={handleConfirmPasswordInputChange} isValid={inputConfirmPasswordValue.isValid} inputTitle="Confirm password"  placeholder='Confirm password' inputMode="text" disabled={false} inputType="password" errorText="Ваши пароли не совпадают"/> 
-                <Button mode="primary"  name="Sign Up" onClick={() => {textValidator(); emailValidator(); passwordValidator(); confirmPasswordValidator}}/>
+                <Button mode="primary"  name="Sign Up" onClick={() =>
+                   {textValidator(); emailValidator(); passwordValidator(); confirmPasswordValidator}}/>
             </div>
         </div>
     )

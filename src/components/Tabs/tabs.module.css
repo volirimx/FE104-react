@@ -1,0 +1,23 @@
+ul{
+    list-style-type:none;
+    display: flex;
+    flex-direction:row;   
+}
+li{    
+    padding: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+li:hover{
+    color:#3F5576;  
+}
+#line{
+    width:100%;
+    height:1px;
+    margin-top:-2px;
+    background-color: black;
+    opacity:10%;
+}
+.active_tab{
+    border-bottom:2px solid black;
+}
