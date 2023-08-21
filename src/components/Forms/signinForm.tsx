@@ -3,6 +3,7 @@ import styles from './signin.module.css';
 import { UserTheme } from '../Theme/thems';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from "..//../hooks/useAuth";
+import { log } from 'console';
 
 
 export interface UserFormData {
@@ -24,6 +25,10 @@ export const Form = (props: ForDataProps ) => {
     });
 
   const myThem = useContext(UserTheme);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const fromPage = location.state?.from?.pathname || '/';
+  const { signin } = useAuth() ?? {};
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
@@ -33,6 +38,12 @@ export const Form = (props: ForDataProps ) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+
+    if (!signin) {
+      console.error("Function 'signin' is not defined.");
+      return;
+    }
+    
         // Валидация формы
     if (formData.password !== formData.confirmPassword) {
       alert('Пароли не совпадают');
@@ -48,18 +59,20 @@ export const Form = (props: ForDataProps ) => {
       );
       return;
     } 
-    const form = e.target;
-    const user = formData;
-    signin(user, () => navigate(fromPage))
     
+   
+    const user = formData;
+    
+    if (user.name) {
+      if (fromPage === '/posts') {
+        signin(user, () => navigate(fromPage, {replace: true}))
+      } else {
+        signin(user, () => navigate('/success', {replace: true}))
+      }
+      
+    }        
   };
-  
-    const navigate = useNavigate();
-    const goToSuccess = () => navigate('/success')
-    const location = useLocation();
-    const { signin } = useAuth();
-
-    const fromPage = location.state?.from?.pathname || '/';
+   
 
   return (
     <form className={`${styles.form} ${styles[myThem]}`} onSubmit={handleSubmit}>
@@ -119,7 +132,7 @@ export const Form = (props: ForDataProps ) => {
           className={styles.form__input}
         />
       </div>
-      <button type="submit" className={styles.form__button} onClick={goToSuccess}>
+      <button type="submit" className={styles.form__button}>
         Sign up
       </button>
     </form>
