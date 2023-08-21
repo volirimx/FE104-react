@@ -5,40 +5,29 @@ import { useAuth } from "..//..//hooks/useAuth";
 
 
 interface UserButtonProps {
-    firstName: string,
+    firstName?: string,
     lastName: string
 }
 
 
 
-export const UserButton = (props: UserButtonProps) => {
-        
-    // const navigate = useNavigate();
-   
-    // const { signout } = useAuth();
-    // const location = useLocation();
-    // const fromPage = location.state?.from?.pathname || '/'; 
-        
-    
-    
-    return (
-        <>
-            <button className={styles.button}        
-        
-        >
-            <div className={styles.small}>
-                {props.firstName.slice(0, 1)}
-                {props.lastName.slice(0, 1)}
-            </div>
-            {props.firstName} {props.lastName}
-        </button>
-        {/* <div className={styles.menu}>
-            <Button content='Log Out' mode="secondary" onClick={signout(() => navigate('/', {replace: true}))}/>             
-        </div>
-         */}
-    
-        
-        </>
-        
-    )
+export const UserButton = (props: UserButtonProps) => {    
+    const navigate = useNavigate();   
+    const { user, signout } = useAuth() ?? {};
+
+    if (user?.name) {
+        return (
+            <button className={styles.button}>      
+                <div className={styles.small}>
+                    {props.firstName.slice(0, 1)} {props.lastName.slice(0, 1)}
+                </div>
+                {props.firstName} {props.lastName}
+                <div className={styles.menu}>
+                    <Button content='Log Out' mode="secondary" onClick={() => signout(() => navigate('/', {replace: true}))}/>             
+                </div>
+            </button>
+        );
+    } else {
+        return null; // или верните какое-то сообщение/компонент
+    }
 }

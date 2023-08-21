@@ -4,21 +4,22 @@ import image from '..//..//assets/account_avatar.png'
 import x_image from '..//../assets/x.png'
 import { UserButton } from '../Users/userbutton';
 import { useNavigate } from "react-router-dom";
+import { useAuth } from '../../hooks/useAuth';
 
 
 export const Account = () => {
     
     
     const [state, setState] = useState(false);
+
     
-    const navigate = useNavigate();
-    const goToSuccess = () => navigate('/success')
+    const { user } = useAuth() ?? {};
+    
+    
 
 
     const buttonClickHandler = () => {
         setState(!state);
-        goToSuccess();
-
     }   
 
     const humbBord = state ? `${styles.border}` : '';
@@ -30,7 +31,11 @@ export const Account = () => {
                 onClick={buttonClickHandler}>
                 <img className={styles.img} src={state ? x_image : image} alt="" />
                 {state ? <div className={styles.burger}>
-                    <UserButton firstName="Artem" lastName="Malkin" />                    
+                { user && user.name ? 
+                    <UserButton firstName="" lastName={user.name} /> : null
+                }
+
+                                      
             </div> : <></>}
             
             </div>
