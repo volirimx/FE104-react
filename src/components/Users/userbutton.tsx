@@ -13,7 +13,7 @@ interface UserButtonProps {
 
 export const UserButton = (props: UserButtonProps) => {    
     const navigate = useNavigate();   
-    const { user, signout } = useAuth() ?? {};
+    const { user, signout } = useAuth();
 
     if (user?.name) {
         return (

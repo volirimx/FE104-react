@@ -7,7 +7,7 @@ export function useCardData() {
     const [cards, setCards] = useState<Post[]>([]);
 
     async function fetchData() {
-        const response = await axios.get<CardDataResult>('https://studapi.teachmeskills.by/blog/posts/?limit=2');
+        const response = await axios.get<CardDataResult>('https://studapi.teachmeskills.by/blog/posts/?limit=8&offset=6');
 
         const gettedArray: Post[] = response.data.results;
         const formattedArray = formatCardData(gettedArray); // Используем новую функцию для форматирования
