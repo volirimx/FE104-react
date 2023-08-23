@@ -8,23 +8,26 @@
     font-family: "Montserrat";
     src: url("./Montserrat-Regular.ttf");
 }
-html, body{
-    background-color: rgba(210, 210, 212);
+.layout{  
+    background-color:  rgba(210, 210, 212);
+    width: 100vw;
+    height: 100vh;
 }
-.app-container {    
-    /* display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    place-content: space-between center; 
-    align-items: center;
-    justify-content: center; */
+.layout_dark{
+    background-color: #494d4e;
+    width: 100vw;
+    height: 100vh;
 }
 .header {
-    width: 100%;
-    
+    width: 100%;    
 }
 .content {   
-    margin-top: 5%;    
+   background-color: rgba(210, 210, 212);
+   margin-top: 5%;   
+}
+.content_dark{
+    background-color: #494d4e;
+    margin-top: 5%;  
 }
 .footer {
     padding: 10px;

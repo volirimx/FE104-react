@@ -8,6 +8,7 @@ import ActiveMoon from "./moon_active.png";
 import DisabledSun from "./sun_disabled.png";
 import DisabledMoon from "./moon-disabled.png";
 import { Link } from 'react-router-dom';
+import { useTheme } from "../../hooks/useTheme";
 
 export const HamburgerMenu = () => {
   const [isUserVisible, setIsUserVisible] = useState<boolean>(false);
@@ -15,11 +16,12 @@ export const HamburgerMenu = () => {
     setIsUserVisible(!isUserVisible);
   };
 
-  const [isLightTheme, setIsLightTheme] = useState<boolean>(true);
-  const toggleIsLightTheme = () => {
-    setIsLightTheme(!isLightTheme);
-  };
+  const { type, setType } = useTheme();
 
+  const changeTheme = () => {
+    setType(type === "Light" ? "Dark" : "Light");
+  };
+  
   return (
     <div  >
       <div className={styles.hamb_menu} onClick={toggleUserVisibility}>
@@ -38,14 +40,14 @@ export const HamburgerMenu = () => {
             <li><h2>Menu</h2></li>
           </ul>
           <div className={styles.theme}>
-            <div className={styles.left_sun} onClick={toggleIsLightTheme}>
-              <img id={styles.sun} src={isLightTheme ? ActiveSun : DisabledSun}/>
+            <div className={styles.left_sun} onClick={changeTheme}>
+              <img id={styles.sun} src={type==="Light" ? ActiveSun : DisabledSun}/>
             </div>
-            <div className={styles.right_moon} onClick={toggleIsLightTheme}>
-              <img id={styles.moon} src={isLightTheme ? DisabledMoon : ActiveMoon}/>
+            <div className={styles.right_moon} onClick={changeTheme}>
+              <img id={styles.moon} src={type==="Dark" ? ActiveMoon : DisabledMoon}/>
             </div>
           </div>
-          <Link to="/signin" className={styles.link}><button className={styles.menu_button}>Sign In</button></Link>
+          <Link to="/signin" className={styles.link}><button className={styles.menu_button} onClick={()=>{setIsUserVisible(false)}}>Sign In</button></Link>
         </div>
         ) }
     </div>

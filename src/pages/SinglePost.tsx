@@ -3,7 +3,7 @@ import { Post } from "../api/posts/types";
 import { getPostById } from "../api/posts/requests";
 import { useParams } from "react-router-dom";
 
-export const Home = () => {
+export const SinglePost = () => {
     const { postId } = useParams();
     console.log(postId);
     const [post, setPost] = useState<Post>();

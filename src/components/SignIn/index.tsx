@@ -3,9 +3,9 @@ import { CustomInput } from "../Input";
 import { useState } from "react";
 import { Button } from "../Button";
 import styles from "./signin.module.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 export const SignIn = () => {
-
+  const navigate = useNavigate();
   const [inputEmailValue, setInputEmailValue] = useState({value: '', isValid: true});
   const handleEmailInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputEmailValue((oldValue) => ({...oldValue, value: e.target.value}));
@@ -40,7 +40,14 @@ export const SignIn = () => {
                 <CustomInput value={inputEmailValue.value} onChange={handleEmailInputChange} isValid={inputEmailValue.isValid} inputTitle="Email"  placeholder='Your email' inputMode="text" disabled={false} inputType="email" errorText="Введите коррекный адрес эдектронной почты"/> 
                 <CustomInput value={inputPasswordValue.value} onChange={handlePasswordInputChange} isValid={inputPasswordValue.isValid} inputTitle="Password"  placeholder='Your password' inputMode="text" disabled={false} inputType="password" errorText="Вы ввели не верный пароль"/>
                 <div style={{ marginTop: "40px" }}>
-                    <Button mode="primary"  name="Sign In" onClick={() => {emailValidator(); passwordValidator()}}/>
+                    <Button mode="primary" 
+                     name="Sign In" 
+                     onClick={() => {
+                    emailValidator();
+                    passwordValidator();
+                     // Проверка на валидность и перенаправление
+                    (inputEmailValue.isValid && inputPasswordValue.isValid) ? navigate("/successsignin") : ""}}
+                    />
                 </div>
                 <div className={styles.text}>
                     <div><h4>Don't have an account?</h4></div>

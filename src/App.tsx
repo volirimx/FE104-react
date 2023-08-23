@@ -4,23 +4,29 @@ import { SignIn } from './components/SignIn';
 import { SignUp } from './components/SignUp';
 import { SuccessSignIn } from './components/SuccesSignIn';
 import { MainHome } from './components/MainHome';
-import { Wrapper } from './components/Wrapper';
-import { Home } from './pages/Home';
+import { PostsWrapper } from './components/PostsWrapper';
+import { PostsPage } from './components/PostsPage';
+import { SinglePost
+ } from './pages/SinglePost';
+import { ThemeProvider } from './providers/ThemeProvider';
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<MainHome/>}/>
-          <Route path="/signin" element={<SignIn/>}/>
-          <Route path="/signup" element={<SignUp/>}/>
-          <Route path="/success" element={<SuccessSignIn/>}/> 
-          <Route path="/posts" element={<Wrapper/>}>
-            <Route path=":postId" element={<Home/>}/>
-          </Route>
-        </Route>      
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<MainHome/>}/>
+            <Route path="/signin" element={<SignIn/>}/>
+            <Route path="/signup" element={<SignUp/>}/>
+            <Route path="/successsignin" element={<SuccessSignIn/>}/> 
+            <Route path="/posts" element={<PostsWrapper />}>
+              <Route index element={<PostsPage />} />
+              <Route path=":postId" element={<SinglePost />} />
+            </Route>
+          </Route>      
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

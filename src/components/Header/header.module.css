@@ -14,6 +14,11 @@
     background-color:#3F5576;
     align-items: center;
 }
+
+.input_container:focus {
+    background-color:red;
+
+}
 input{
     width: 100%;
     height: 60px;

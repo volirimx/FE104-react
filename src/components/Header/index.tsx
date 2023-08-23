@@ -26,7 +26,7 @@ export const Header = () => {
     return(
         <div className={styles.header}>
             <HamburgerMenu/>
-            <div className={isFocused ? `${styles.active_input} ${styles.input_container} `: styles.input_container}>
+            <div className={styles.input_container}>
                 <input 
                 placeholder={isFocused ? "Search..." : ""}
                 onChange={handleInputChange}

@@ -3,16 +3,14 @@ import { Post } from "../../api/posts/types";
 import { useState, useEffect} from "react";
 import axios from 'axios';
 import { useParams } from "react-router-dom";
+import { Outlet } from 'react-router-dom';
+import { PostCard } from "../PostCard";
 
-interface ForChildren {
-    children: React.ReactNode;
-}
-
-export const Wrapper = () => {
+export const PostsPage = () => {
 const navigate = useNavigate();
 const [posts, setPosts] = useState<Post[]>([]);
 const params = useParams();
-    console.log(params);
+console.log(params);
 useEffect(() => {
     (async () => {
         const response = await axios.get(
@@ -39,6 +37,13 @@ return (
                 }}
             >
                 {post.title}
+                
+                <PostCard id={post.id} 
+                text={post.text}
+                date={post.date}
+                lesson_num={post.lesson_num} 
+                title={post.title} 
+                author={post.author}/>
             </div>
         ))}
     </div>

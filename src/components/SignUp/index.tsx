@@ -66,7 +66,7 @@ export const SignUp = () => {
                 <CustomInput value={inputPasswordValue.value} onChange={handlePasswordInputChange} isValid={inputPasswordValue.isValid} inputTitle="Password"  placeholder='Your password' inputMode="text" disabled={false} inputType="password" errorText="Введите коррекный пароль"/> 
                 <CustomInput value={inputConfirmPasswordValue.value} onChange={handleConfirmPasswordInputChange} isValid={inputConfirmPasswordValue.isValid} inputTitle="Confirm password"  placeholder='Confirm password' inputMode="text" disabled={false} inputType="password" errorText="Ваши пароли не совпадают"/> 
                 <Button mode="primary"  name="Sign Up" onClick={() =>
-                   {textValidator(); emailValidator(); passwordValidator(); confirmPasswordValidator}}/>
+                   {textValidator(); emailValidator(); passwordValidator(); confirmPasswordValidator()}}/>
             </div>
         </div>
     )
