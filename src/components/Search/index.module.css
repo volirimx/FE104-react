@@ -1,7 +1,7 @@
 .searchWrapper{
     flex: 1 1 auto;
     background-color:rgb(93, 93, 199);
-    max-height: 60px;
+    height: 40px;
 }
 .searchInput{
     background-color:rgb(93, 93, 199);
@@ -10,10 +10,14 @@
     border: 1px solid rgb(170, 168, 168);
     outline: none;
 }
+.searchInput:focus {
+    background-color:rgb(112, 112, 239);
+    
+}
 .searchImgWrapper {
     background-color:rgb(93, 93, 199);
-    min-width: 60px;
-    min-height: 60px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items:center;
     justify-content: center;

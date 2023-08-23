@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     flex: 0 0 auto;
-    min-height: 60px;
+    height: 40px;
 }
 .footerWrapper{
     display: flex;
@@ -13,4 +13,5 @@
 }
 .footerWrapper p {
     color:rgb(170, 168, 168);
+    font-size: 12px;
 }

@@ -3,8 +3,8 @@
 }
 .menuWrapper {  
     border: 1px solid #ffffff54;
-    max-width: 60px;
-    min-height: 60px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items:center;
     justify-content: center;    

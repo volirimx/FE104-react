@@ -11,14 +11,15 @@ interface Input {
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void | undefined;
     errorInfo?: string;
     labelName: string;
+    isValid: boolean;
 }
 
-export const Input = ({ id, name, value, inputType, placeHolder = '', disabled = false, onChange, errorInfo = '', labelName }: Input) => {
+export const Input = ({ id, name, value, inputType, placeHolder = '', disabled = false, onChange, errorInfo = '', labelName, isValid }: Input) => {
     return (
         <div className={styles.inputWrapper}>
             <label className={styles.inputLabel} htmlFor={id}>{labelName}</label>
-            <input className={`${styles.input} ${errorInfo.length > 0 ? styles.inputError : ''}`} id={id} name={name} type={inputType} placeholder={placeHolder} disabled={disabled} value={value} onChange={onChange} />
-            {errorInfo.length > 0 ? <label className={styles.errorLabel}>{errorInfo}</label> : ''}
+            <input className={`${styles.input} ${isValid ? '' : styles.inputError}`} id={id} name={name} type={inputType} placeholder={placeHolder} disabled={disabled} value={value} onChange={onChange} />
+            {isValid ? '' : <label className={styles.errorLabel}>{errorInfo}</label>}
         </div>
     )
 }

@@ -1,0 +1,27 @@
+.container{    
+    border: 2px solid rgb(170 168 168 / 24%);
+    margin: 0 auto;
+    width: 60%;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.container p{
+    color: rgb(170, 168, 168);
+    font-size: 14px;
+}
+.signInContainer{
+    width: 50%;
+}
+.headers {
+    padding: 3%;
+}
+.headers h2{
+    padding-top: 1%;
+    font-size: 25px;
+    font-weight: 700;
+}
+.headers h5 {
+    cursor: pointer;
+}

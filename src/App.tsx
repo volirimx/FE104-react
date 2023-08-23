@@ -1,18 +1,39 @@
 import "./App.css";
-import { InformationForm } from "./components/InformationForm";
-import { RegistrationForm } from "./components/RegistrationForm";
-import { SignInForm } from "./components/SignInForm";
-import { Template } from "./components/Template";
+import { ConfirmationPage } from "./pages/ConfirmationPage";
+import { RegistrationPage } from "./pages/RegistrationPage";
+import { SignInPage } from "./pages/SignInPage";
+import { SuccessPage } from "./pages/SuccessPage";
+import { BlogPage } from './pages/BlogPage';
+import { PostPage } from './pages/PostPage';
+import { Layout } from "./components/Layout";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ThemeContext, useInitThemeContext } from './context/ThemeContext/index';
+import { store } from './redux/store'
+import { Provider } from "react-redux";
 
 function App() {
-  // const formContent = `Please, activate your account with the activation link in the email xxx@gmail.com.
-  //      Please, check your email`;
-  // const formContent = `Email confirmated.`;
+  const themeContextValues = useInitThemeContext();
   return (
-    // <Template theme='white' title="Title" content={<RegistrationForm />} />    
-    // <Template theme='white' title="Registration Confirmation" content={<InformationForm content={formContent} buttonContent='Sign In' />} />
-    // <Template theme='white' title="Success" content={<InformationForm content={formContent} buttonContent='Go to home' />} />
-    <Template theme='white' title="Sign In" content={<SignInForm />} />
+    <Provider store={store}>
+      <ThemeContext.Provider value={themeContextValues}>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<Layout />} >
+              {/* <Route index element=''} /> */}
+              <Route path='registration' element={<RegistrationPage />} />
+              <Route path='confirmation' element={<ConfirmationPage />} />
+              <Route path='success' element={<SuccessPage />} />
+              <Route path='signIn' element={<SignInPage />} />
+              <Route path='posts'>
+                <Route index element={<BlogPage />} />
+                <Route path=':postId' element={<PostPage />} />
+              </Route>
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </ThemeContext.Provider>
+    </Provider>
+
   );
 }
 
