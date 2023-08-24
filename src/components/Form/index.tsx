@@ -1,7 +1,11 @@
 import { useState } from "react"
 import { Input } from "../Input";
 
-export function Form() {
+interface props {
+    check?: any;
+}
+
+export function Form({check} : props) {
     const [email, setEmail] = useState('');
     const [emailError, setEmailError] = useState('');
 
@@ -17,12 +21,15 @@ export function Form() {
 
     const validateEmail = (value: string) => {
         if(!value) {
+            check(false);
             return 'Введите email';
         }
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if(!emailPattern.test(value)) {
+            check(false);
             return 'Неправильный формат email';
         }
+        check(true);
         return '';
     }
 

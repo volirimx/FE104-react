@@ -6,10 +6,11 @@ interface props {
     text: string;
     mode: ButtonMode;
     isDisabled: boolean;
+    onClick?: any;
 }
 
-export function Button({text, isDisabled, mode} : props) {
+export function Button({text, isDisabled, mode, onClick} : props) {
     return <>
-        <button className={`${styles.Button} ${styles[mode]}`} disabled={isDisabled}>{text}</button>
+        <button onClick={onClick} className={`${styles.Button} ${styles[mode]}`} disabled={isDisabled}>{text}</button>
     </>
 }

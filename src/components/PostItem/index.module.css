@@ -34,7 +34,12 @@
     margin-left: 10px;
     width: 20px;
     height: 20px;
+} 
+.opinion path {
+    fill: red;
+
 }
+
 .opinion2 {
     margin-left: 5px;
     transform: rotate(180deg);
