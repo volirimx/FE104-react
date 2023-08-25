@@ -1,13 +1,14 @@
 import styles from './user.module.css' 
 
 type User = {
-   userName: string
+   userName: string;
+   className?: string; 
 }
 
-export const User = ({userName}: User) => {
+export const User = ({userName, className}: User) => {
    const initials = getUserInitials({userName});
    return (
-         <div className={styles.container}>
+      <div className={`${styles.container} ${className}`}>
          <div className={styles.userInitials}>{initials}</div>
          <div className={styles.userName}>{userName}</div>
       </div>

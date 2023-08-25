@@ -1,15 +1,71 @@
+import { createContext, useState } from "react";
 import "./App.css";
-import { Input } from "./components/Input/Input";
-import { Textarea } from "./components/Textarea/Textarea";
+import { Template } from "./components/APP/Template/Template";
+
+import { Wrapper } from "./components/APP/Wrapper/Wrapper";
+import { RegistrationConfirmation } from "./pages/RegistrationConfirmation/RegistrationConfirmation";
+import { SignIn } from "./pages/SignIn/SignIn";
+import { SignUp } from "./pages/SignUp/SignUp";
+import { Success } from "./pages/Success/Success";
+import ThemeSwitch from "react-switch";
+import { render } from "react-dom";
+import { Provider } from "react-redux";
+
+import { 
+  BrowserRouter,
+  Routes,
+  Route,
+  useParams
+} from "react-router-dom"; 
+import { Posts } from "./pages/AllPosts/AllPosts";
+import { SinglePost } from "./pages/SinglePost/SinglePost";
+
+
+// interface ThemeContext {
+//   theme: string;
+//   toggleTheme: () => void;
+// }
+
+// export const ThemeContext = createContext<ThemeContext | null>(null);
+// const [theme, setTheme] = useState('light');
+
+// const toggleTheme = () => {
+//   theme === 'light' ? setTheme('dark') : setTheme('light')
+// }
 
 function App() {
+  const { id } = useParams();
+  console.log(`id: ${id}`);
+  
   return (
-    <>
-        <Input title='Aboba' />
-        <Textarea />
-    </>
+    
+    // <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Wrapper />}>
+            <Route index element={
+            <div>
+              <h1 className="text-3xl font-light underline">
+                Home Page              
+              </h1>
+            </div>} />
+            
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/registrationconfirmation" element={<RegistrationConfirmation />} />
+            <Route path="/success" element={<Success />} />
+            <Route path="/posts" element={<Posts />}>
+              <Route index element/>
+              <Route path={`/posts/${{id}}`} element={<SinglePost />} />
+            </Route>
 
-  )
+          </Route>
+
+        </Routes>
+      </BrowserRouter>
+
+    // </Provider>
+  );
 }
 
 export default App;

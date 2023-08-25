@@ -1,0 +1,33 @@
+.heading {
+   font-size: 44px;
+}
+
+.home {
+   width: fit-content;
+   display: flex;
+   margin-bottom: 10px;
+   cursor: pointer;
+   position: relative;
+   transition: transform 0.1s ease;
+}
+
+.home::after {
+   content: '';
+   position: absolute;
+   left: 0;
+   bottom: -5px; /* Начальное положение подчёркивания */
+   width: 100%;
+   height: 2px; /* Толщина подчёркивания */
+   background-color: blue; /* Цвет подчёркивания */
+   transform: scaleX(0); /* Начальное состояние анимации (скрыто) */
+   transform-origin: center;
+   transition: transform 0.3s ease; /* Анимация */
+}
+
+.home:hover::after {
+   transform: scaleX(1); /* Конечное состояние анимации (показано) */
+}
+
+.templateChildren {
+   margin-top: 100px;
+}

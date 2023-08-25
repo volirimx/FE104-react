@@ -1,0 +1,43 @@
+.header {
+   display: flex;
+}
+
+.hamburger {
+   display: flex;
+   flex-direction: column;
+}
+
+.wrapper {
+   display: flex;
+   justify-content: flex-end;
+}
+
+.searchInput {
+   flex: 1 1 auto;
+   min-width: 500px;
+   height: 70px;
+}
+
+.searchInput input {
+   color: white;
+   background: #5463ca;
+   height: 70px;
+
+}
+
+.searchInput input::placeholder {
+   color: white;
+}
+
+.plug {
+   flex: 1 1 auto;
+   min-width: 500px;
+   height: 70px;
+   background: #2436a7;;
+}
+
+.magnifier {
+   background: #2436a7;
+   display: flex;
+   cursor: pointer;
+}

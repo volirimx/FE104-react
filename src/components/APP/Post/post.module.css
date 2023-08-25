@@ -1,0 +1,36 @@
+.post {
+   width: 32%;
+   display: flex;
+   flex-direction: column;
+   cursor: pointer;
+}
+
+.image {
+   width: 100%;
+}
+
+.image img {
+   width: 100%;
+   height: 270px;
+   display: block;
+}
+
+.date {
+   margin-top: 15px;
+   color: gray;
+}
+
+.title {
+   margin-top: 10px;
+   font-weight: bold;
+   font-size: 18px;
+}
+
+.buttonsContainer {
+
+}
+
+.likeBtn {
+   background: red;
+   color: white;
+}
