@@ -175,7 +175,7 @@ export const Form = (props: ForDataProps ) => {
           className={styles.form__input}
         />
       </div>
-      <button type="submit" className={styles.form__button}>
+      <button type="submit" className='bg-[#2436a7] w-full p-2.5 rounded cursor-pointer'>
         Sign up
       </button>
     </form>
