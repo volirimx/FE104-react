@@ -1,9 +1,12 @@
 import React, { useState, ChangeEvent, FormEvent, useContext } from 'react';
+import { useDispatch } from "react-redux";
+import { setUser } from "..//..//redux/user/user";
 import styles from './signin.module.css';
 import { UserTheme } from '../Theme/thems';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from "..//../hooks/useAuth";
-import { log } from 'console';
+import { useSelector } from 'react-redux';
+import { selectUser } from './userSlice';
 
 
 export interface UserFormData {
@@ -24,19 +27,8 @@ export const Form = (props: ForDataProps ) => {
       confirmPassword: '',
     });
 
-  const myThem = useContext(UserTheme);
-  const navigate = useNavigate();
-  const location = useLocation();
-  const fromPage = location.state?.from?.pathname || '/';
-  const { signin } = useAuth() ?? {};
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const name = e.target.name;
-    const value = e.target.value;     
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e: FormEvent) => {
+  const dispatch = useDispatch();
+  const addUserToStore = (e: FormEvent) => {
     e.preventDefault();
 
     if (!signin) {
@@ -70,12 +62,63 @@ export const Form = (props: ForDataProps ) => {
         signin(user, () => navigate('/success', {replace: true}))
       }
       
-    }        
+    } 
+    
+    dispatch(setUser(formData))
   };
+
+   const myThem = useContext(UserTheme);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const fromPage = location.state?.from?.pathname || '/';
+  const { signin } = useAuth() ?? {};
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const name = e.target.name;
+    const value = e.target.value;     
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // const handleSubmit = (e: FormEvent) => {
+  //   e.preventDefault();
+
+  //   if (!signin) {
+  //     console.error("Function 'signin' is not defined.");
+  //     return;
+  //   }
+    
+  //       // Валидация формы
+  //   if (formData.password !== formData.confirmPassword) {
+  //     alert('Пароли не совпадают');
+  //     return;
+
+  //   }
+  
+  //   // Проверка сложности пароля (можно настраивать по желанию)
+  //   const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{3,}$/;
+  //   if (!passwordPattern.test(formData.password)) {
+  //     alert(
+  //       'Пароль должен содержать как минимум 3 символа, включая как минимум одну строчную и одну заглавную букву и одну цифру'
+  //     );
+  //     return;
+  //   } 
+    
+   
+  //   const user = formData;
+    
+  //   if (user.name) {
+  //     if (fromPage === '/posts') {
+  //       signin(user, () => navigate(fromPage, {replace: true}))
+  //     } else {
+  //       signin(user, () => navigate('/success', {replace: true}))
+  //     }
+      
+  //   }        
+  // };
    
 
   return (
-    <form className={`${styles.form} ${styles[myThem]}`} onSubmit={handleSubmit}>
+    <form className={`${styles.form} ${styles[myThem]}`} onSubmit={addUserToStore}>
       <div className={styles.form__group}>
         <label htmlFor="name" className={styles.form__label}>
           Name:

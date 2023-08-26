@@ -5,8 +5,6 @@ import image_symbol from '..//..//assets/symbol.png'
 import image_dots from '..//..//assets/dots_three_icon.png'
 import { Post } from '../../models'
 import { Link } from 'react-router-dom';
-import { useSavedSearchState } from "..//../hooks/savedSearchState";
-import { useEffect } from "react";
 
 
 interface CardProps {
@@ -16,12 +14,7 @@ interface CardProps {
 
 export const Card1 = ({ card }: CardProps) => {
    
-    const { savedSearchValue } = useSavedSearchState();
-
-     useEffect(() => {
-        console.log(savedSearchValue); // Вывод в консоль при изменении savedSearchValue
-    }, [savedSearchValue]);
-    
+      
 
     return (
         <div className={styles.block}>
