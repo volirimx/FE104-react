@@ -5,13 +5,15 @@ import type { RootState } from '../store';
 export const themSlice = createSlice({
   name: 'them',
   // `createSlice` will infer the state type from the `initialState` argument
-  initialState: 'light',
+  initialState: {
+    currentThem: 'light'
+  },
   reducers: {     
     changeThemToDark: (state) => {      
-      state = 'dark';       
+      state.currentThem = 'dark';       
     },  
     changeThemToLight: (state) => {      
-      state = 'light';       
+      state.currentThem = 'light';       
     },     
   },
 })
@@ -19,6 +21,6 @@ export const themSlice = createSlice({
 export const { changeThemToLight, changeThemToDark } = themSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectUserThem = (state: RootState) => state.them;
+export const selectUserThem = (state: RootState) => state.them.currentThem;
 
 export default themSlice.reducer

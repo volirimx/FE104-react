@@ -11,8 +11,10 @@ import { BsFillMoonFill } from "react-icons/Bs";
 import { Button } from "..//Button_primary/button";
 import { useDispatch } from "react-redux";
 import { clearUser } from '../../redux/user/user';
+import { changeThemToDark, changeThemToLight } from '../../redux/thems/thems';
 import { useAuth } from '../../hooks/useAuth';
 import { useNavigate } from "react-router-dom";
+import { selectUserThem } from "..//../redux/thems/thems";
 
 
 export const Burgermenu = () => {
@@ -26,17 +28,28 @@ export const Burgermenu = () => {
 
     const userName = useSelector((state: RootState) => selectUser(state).name);  
     console.log(userName);
+
+    const myThem = useSelector((state: RootState) => selectUserThem(state));  
+   
     const navigate = useNavigate();   
     const { user, signout } = useAuth();
+
     const dispatch = useDispatch();
+    
     const eraseUser = () => {
         signout(() => navigate('/', {replace: true}));
-        dispatch(clearUser());
-      
+        dispatch(clearUser());   
     }
-
     const doHome = () => {
        navigate('posts')
+    }
+
+    const changeToDark = () => {
+        dispatch(changeThemToDark())
+    }
+
+    const changeToLight = () => {
+        dispatch(changeThemToLight())
     }
     
 
@@ -50,18 +63,22 @@ export const Burgermenu = () => {
                                     <div>
                                         <UserButton lastName={userName} /> 
                                     </div>
-                                    <div className={styles.str}>
+                                    <div className={`${styles.str} ${styles[myThem]}`}>
                                         <Button content='Home' mode="secondary2" onClick={ doHome }/> 
                                     </div>
-                                    <div className={styles.str2}>
+                                    <div className={`${styles.str2} ${styles[myThem]}`}>
                                         <Button content='Add post' mode="secondary2" onClick={ doHome }/> 
                                     </div>
                                                                   
                                    
-                                    <div className={styles.empty}></div>
-                                    <div className={styles.thems}>                                      
-                                        <BsFillSunFill className={styles.icons}/>
-                                        <BsFillMoonFill className={styles.icons}/>
+                                    <div className={`${styles.empty} ${styles[myThem]}`}></div>
+                                    <div className={`${styles.thems} ${styles[myThem]}`}> 
+                                        <div onClick={changeToLight}>
+                                            <BsFillSunFill className={styles.icons}/>
+                                        </div>      
+                                        <div onClick={changeToDark}>
+                                            <BsFillMoonFill className={styles.icons}/>
+                                        </div>                                   
                                     </div>
                                     <div className={styles.menu}>
                                         <Button content='Log Out' mode="secondary" onClick={ eraseUser }/>             
