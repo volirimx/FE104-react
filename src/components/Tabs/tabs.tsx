@@ -6,8 +6,8 @@ interface TabsProps {
 
 export const Tabs = (props: TabsProps) => {
     return (
-        <table className={styles.table}>
-            <thead className={styles.grayText}>
+        <table className='ml-80 w-2/5 text-black font-bold mb-6 mt-10'>   
+                <thead className={styles.grayText}>
                 <tr>
                     <th colSpan={3}>{props.title}</th>
                 </tr>

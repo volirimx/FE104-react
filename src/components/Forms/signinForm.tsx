@@ -5,8 +5,6 @@ import styles from './signin.module.css';
 import { UserTheme } from '../Theme/thems';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from "..//../hooks/useAuth";
-import { useSelector } from 'react-redux';
-import { selectUser } from './userSlice';
 
 
 export interface UserFormData {
@@ -79,42 +77,6 @@ export const Form = (props: ForDataProps ) => {
     setFormData({ ...formData, [name]: value });
   };
 
-  // const handleSubmit = (e: FormEvent) => {
-  //   e.preventDefault();
-
-  //   if (!signin) {
-  //     console.error("Function 'signin' is not defined.");
-  //     return;
-  //   }
-    
-  //       // Валидация формы
-  //   if (formData.password !== formData.confirmPassword) {
-  //     alert('Пароли не совпадают');
-  //     return;
-
-  //   }
-  
-  //   // Проверка сложности пароля (можно настраивать по желанию)
-  //   const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{3,}$/;
-  //   if (!passwordPattern.test(formData.password)) {
-  //     alert(
-  //       'Пароль должен содержать как минимум 3 символа, включая как минимум одну строчную и одну заглавную букву и одну цифру'
-  //     );
-  //     return;
-  //   } 
-    
-   
-  //   const user = formData;
-    
-  //   if (user.name) {
-  //     if (fromPage === '/posts') {
-  //       signin(user, () => navigate(fromPage, {replace: true}))
-  //     } else {
-  //       signin(user, () => navigate('/success', {replace: true}))
-  //     }
-      
-  //   }        
-  // };
    
 
   return (
@@ -175,7 +137,7 @@ export const Form = (props: ForDataProps ) => {
           className={styles.form__input}
         />
       </div>
-      <button type="submit" className='bg-[#2436a7] w-full p-2.5 rounded cursor-pointer'>
+      <button type="submit" className='bg-[#2436a7] w-full p-2.5 rounded cursor-pointer my-3'>
         Sign up
       </button>
     </form>

@@ -5,30 +5,8 @@
     height: 50px;
 }
 
-.hamburger {
-    height: 50px;
-    width: 55px;
-    background-color: #2436A7;    
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center; 
- 
-   
-   }
 
-.border {
-    border: 1px inset white;
-}
 
-.img {
-    display: block;
-    min-width: 10px;
-    min-height: 10px;
-    max-width: 30px;
-    max-height: 30px;
-    
-}
 
 .search {
     background-color: #2436A7;
@@ -36,12 +14,6 @@
     min-width: 89%;
     border: none;
 
-}
-
-.burger {
-    position: absolute;
-    left: 0;
-    top: 50px;
 }
 
 

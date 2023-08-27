@@ -12,6 +12,7 @@
     flex-direction: row;
     align-items: center;
     position: absolute;
+    padding-left: 15px;
     
     
 }
@@ -26,7 +27,7 @@
     vertical-align: baseline;
     text-align: center;
     margin-right: 10px;
-    padding-top: 6%;
+    padding-top: 8px;
    
 
 }
@@ -35,7 +36,3 @@
     display: none;
 }
 
-.menu {
-    margin-top: 100px;
-    width: 200px;
-}

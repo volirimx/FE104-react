@@ -25,11 +25,17 @@ export const userSlice = createSlice({
       state.confirmPassword = action.payload.confirmPassword;
       // return { ...state, ...action.payload };
       
-    },    
+    },
+    clearUser: (state) => {
+      state.name = '';
+      state.email = '';
+      state.password = '';
+      state.confirmPassword = '';
+    }    
   },
 })
 
-export const { setUser } = userSlice.actions
+export const { setUser, clearUser } = userSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectUser = (state: RootState) => state.user;
