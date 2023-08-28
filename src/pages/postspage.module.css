@@ -1,5 +1,8 @@
 .containerStyle {
-    display: flex;    
+    display: flex;   
     flex-direction: row;
-    margin-left: 25%;
+    flex-wrap: wrap;
+    width: 40%;
+    border: 1px solid red;
+    margin-left: 20%;
   }; 

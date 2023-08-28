@@ -18,6 +18,8 @@ import { selectUserThem } from "..//../redux/thems/thems";
 
 
 export const Burgermenu = () => {
+    
+    
     const [state, setState] = useState(false);
     const buttonBurgerHandler = () => {
         setState(!state);       
@@ -54,12 +56,15 @@ export const Burgermenu = () => {
     
 
     return (
-      
+                
             <div className={hmbClasses.join(' ')}
                 onClick={buttonBurgerHandler}>
                 <img className={styles.img} src={state ? x_image : image} alt="" />
                 {state ? <div className={styles.burger}>
-                    { userName ? <div>
+                    { userName ? 
+                                
+                                
+                                <div>
                                     <div>
                                         <UserButton lastName={userName} /> 
                                     </div>
