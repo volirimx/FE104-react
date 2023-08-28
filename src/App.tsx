@@ -34,9 +34,7 @@ import { SinglePost } from "./pages/SinglePost/SinglePost";
 // }
 
 function App() {
-  const { id } = useParams();
-  console.log(`id: ${id}`);
-  
+
   return (
     
     // <Provider store={store}>
@@ -55,12 +53,11 @@ function App() {
             <Route path="/registrationconfirmation" element={<RegistrationConfirmation />} />
             <Route path="/success" element={<Success />} />
             <Route path="/posts" element={<Posts />}>
-              <Route index element/>
-              <Route path={`/posts/${{id}}`} element={<SinglePost />} />
+              <Route path={`/posts/:postId`} element={<SinglePost />} />
             </Route>
 
           </Route>
-
+          <Route path="*" element={ <h1>Sorry. Page wasn't found.</h1>} />
         </Routes>
       </BrowserRouter>
 

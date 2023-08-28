@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom';
 export const Posts = () => {
    const [posts, setPosts] = useState<forPost[]>([]);
    const [tab, toggleTab] = useState<string>('All')
-   const params = useParams;
+   // const params = useParams;
 
    useEffect(() => {
       getPosts({
@@ -18,6 +18,9 @@ export const Posts = () => {
          },
       });
    }, []); 
+
+   console.log(posts);
+   
 
    return (
       <>
@@ -36,6 +39,7 @@ export const Posts = () => {
                {posts.map(post => 
                   <Post id={post.id} image={post.image} date={post.date} title={post.title}  />
                )}
+               {posts.map(post => <div>{post.id}</div>)}
             </div>
 
             <div className={`${tab === 'My favorites' ? null : styles.hidden}`}>

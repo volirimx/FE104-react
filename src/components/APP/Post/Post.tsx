@@ -10,8 +10,7 @@ interface renderPost {
 
 export const Post = ({id, image, date, title}: renderPost) => {
    const navigate = useNavigate();
-   const params = useParams();
-   console.log(params);
+   // console.log(postId);
    
    return (
       <div key={id} className={styles.post}

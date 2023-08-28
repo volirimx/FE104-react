@@ -6,20 +6,22 @@ import { Post } from '../../components/APP/Post/Post'
 
 
 export const SinglePost = () => {
-   const { id } = useParams();
-   console.log(id);
+   // const { id } = useParams();
+   // console.log(id);
    
-   const [post, setPost] = useState();
+   // const [post, setPost] = useState();
 
-   useEffect(() => {
-      getPostById({
-         onSuccess: (data, id) => {
-            setPost(data);
-         },
-      });
-   }, []);
+   // useEffect(() => {
+   //    getPostById({
+   //       onSuccess: (data, id) => {
+   //          setPost(data);
+   //       },
+   //    });
+   // }, []);
+   console.log('SinglePost')
    
    return (
-      <Post id={id} image={post.image} title={post.title} date={post.date} />
+      <div>SEEEESH</div>
+      // <Post id={id} image={post.image} title={post.title} date={post.date} />
    )
 }
