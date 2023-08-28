@@ -1,0 +1,48 @@
+import { Tabs } from "../components/Tabs/tabs";
+import { Card1 } from "../components/Card1/card1";
+import { Card2 } from "../components/Card2/card2";
+import styles from './postspage.module.css';
+import { useSelector } from "react-redux";
+import { selectFavorites } from "../redux/favorites/favorites";
+import { RootState } from "../redux/store";
+
+
+export const FavoritesPage = () => {
+    const fav = useSelector((state: RootState) => selectFavorites(state));
+    console.log(fav);
+    
+    
+     
+    return (
+        <>
+            <Tabs title="BLOG"/>
+
+            <div className={styles.bigBlock}>
+                
+                <div className={styles.containerStyle}>
+                    {fav.map(card => (
+                        <Card1 
+                        card={card}
+                        key={card.id}
+                    />                   
+                    ))}
+                </div>
+
+                
+                <div className={styles.containerStyle2}>
+                    {fav.map(card => (
+                        <Card2 
+                        card={card}
+                        key={card.id}
+                    />                   
+                    ))}
+                </div>
+                    
+                
+
+            </div>
+
+            
+        </>
+    );
+};

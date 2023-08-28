@@ -13,6 +13,7 @@ import { Singlepage } from "./pages/siglepage";
 import { LoginPage } from "./pages/loginpage";
 import { RequireAuth } from "./hoc/RequireAuth";
 import { AuthProvider } from "./hoc/AuthProvider";
+import { FavoritesPage } from "./pages/favotitespage";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
               <Route index element={ <Homepage/> } />
               <Route path='login' element={ <LoginPage/> } />
               <Route path='success' element={ <Successpage/> } />
+              <Route path='favorites' element={ <FavoritesPage/> } />
               <Route path='posts' element={ 
                 <RequireAuth>
                   <Postspage />

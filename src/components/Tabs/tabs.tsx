@@ -1,4 +1,5 @@
 import styles from './tabs.module.css'
+import { Link } from "react-router-dom";
 
 interface TabsProps {
     title: string
@@ -14,8 +15,8 @@ export const Tabs = (props: TabsProps) => {
             </thead>
             <tbody>
                 <tr>
-                    <td className={styles.column}>All</td>
-                    <td className={styles.column}>My favorites</td>
+                    <td className={styles.column}><Link to={`/posts`}>All</Link></td>
+                    <td className={styles.column}><Link to={'/favorites'}>My favorites</Link></td>
                     <td className={styles.column}>Popular</td>
                 </tr>
             </tbody>
