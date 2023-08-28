@@ -20,9 +20,10 @@ export const Card1 = ({ card }: CardProps) => {
       
             <div className={styles.column}>
                 <div>
+                    <img className={styles.image} src={card.image} alt="" />
                     <div>{card.date}</div>
                     <h1 className={styles.title}> {card.title} </h1>
-                    <img className={styles.image} src={card.image} alt="" />
+                   
                     <h3 className={styles.text}> <Link to={`/posts/${card.id}`}>{card.description}</Link> </h3>
                 </div>    
                 

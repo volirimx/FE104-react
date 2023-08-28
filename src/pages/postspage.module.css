@@ -1,8 +1,17 @@
+
+.bigBlock {
+  display: flex;
+  flex-direction: row;   
+}
+
+
 .containerStyle {
     display: flex;   
     flex-direction: row;
     flex-wrap: wrap;
-    width: 40%;
-    border: 1px solid red;
-    margin-left: 20%;
+    width: 100%;   
+    padding-left: 20%;
   }; 
+
+
+  

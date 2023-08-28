@@ -3,42 +3,60 @@ import image_like from '..//..//assets/like.png'
 import image_dislike from '..//..//assets/dislike.png'
 import image_symbol from '..//..//assets/symbol.png'
 import image_dots from '..//..//assets/dots_three_icon.png'
-import { useCardData } from '../../hooks/cards'
+import { Post } from '../../models'
+import { Link } from 'react-router-dom';
 
 
+interface CardProps {
+    card: Post,
+    
+}
 
-
-
-export const Card2 = () => {
-
-    const { element, formattedDate} = useCardData();
+export const Card2 = ({ card }: CardProps) => {
+   
+      
 
     return (
-        <div className={styles.block}>
-
-            <img className={styles.image} src={element.image} alt="" />
-            <div>{formattedDate}</div>
-            <h1 className={styles.title}> {element.title} </h1>
-
-            <div className={styles.elements}>
+      
+            <div className={styles.column}>
                 <div>
-                    <img className={styles.icon} src={image_like} alt="" />
-                    <img className={styles.icon}src={image_dislike} alt="" />
+                    <div>
+                        <div>{card.date}</div>
+                        <h1 className={styles.title}> <Link to={`/posts/${card.id}`}>{card.title}</Link> </h1>
+                    </div>
+                    <img className={styles.image} src={card.image} alt="" />
+
                 </div>
 
-                <div>
+                 
+                
+                <div className={styles.block_icon}>
+                        <div className={styles.block_icon}>
+                            <img className={styles.icon} src={image_like} alt="" />
+                            <img className={styles.icon}src={image_dislike} alt="" />
+                            
+                        </div>
 
-                    <img className={styles.icon}src={image_symbol} alt="" />
-                    <img className={styles.icon}src={image_dots} alt="" />
+                        <div className={styles.block_icon}>
+                            <img className={styles.icon}src={image_symbol} alt="" />
+                            <img className={styles.icon}src={image_dots} alt="" />
+                        </div>
+                       
 
+                    
+                    
                 </div>
+                
+                
+                
 
 
             </div>
 
-
-                      
-        </div>
+            
+           
+       
     );
 }
+
 

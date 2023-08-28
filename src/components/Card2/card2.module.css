@@ -1,15 +1,10 @@
-.block {
-    padding: 0 0 0 5%;
-    width: 15%;
-    
-    display: flex;
-    flex-direction: column;
-    position: relative;
-}
 
 .column {
-    display: flex;
-    flex-direction: column;
+    width: 25%;
+    height: auto;
+    display: flex;    
+    flex-direction: column;    
+    margin-bottom: 20px;    
 }
 
 
@@ -19,33 +14,25 @@
     font-weight: bold;
 }
 
+.text {
+    font-size: small;
+    color: black;
+}
+
 .image {
-    width: 100%;
-    height: auto;
-    margin-bottom: 15px;
+    width: 55%;    
+}
+
+.block_icon {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;    
 }
 
 .icon {
     width: 15px;
     height: auto;
-    margin-top: 75px;
     margin-left: 5px;
 }
 
-.elements {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.block::after {
-    content: '';
-    position: absolute;
-    left: 80px;
-    bottom: 0;
-    width: 70%;
-    height: 1px;
-    background-color: gray;
-    opacity: 0.5;
-   
-}
