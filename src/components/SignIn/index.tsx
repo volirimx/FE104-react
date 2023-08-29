@@ -41,12 +41,11 @@ export const SignIn = () => {
                 <CustomInput value={inputPasswordValue.value} onChange={handlePasswordInputChange} isValid={inputPasswordValue.isValid} inputTitle="Password"  placeholder='Your password' inputMode="text" disabled={false} inputType="password" errorText="Вы ввели не верный пароль"/>
                 <div style={{ marginTop: "40px" }}>
                     <Button mode="primary" 
-                     name="Sign In" 
-                     onClick={() => {
-                    emailValidator();
-                    passwordValidator();
-                     // Проверка на валидность и перенаправление
-                    (inputEmailValue.isValid && inputPasswordValue.isValid) ? navigate("/successsignin") : ""}}
+                      name="Sign In" 
+                      onClick={() => {
+                      emailValidator();
+                      passwordValidator();
+                      (inputEmailValue.isValid && inputPasswordValue.isValid) ? navigate("/successsignin") : ""}}
                     />
                 </div>
                 <div className={styles.text}>

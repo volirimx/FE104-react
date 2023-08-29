@@ -1,29 +1,31 @@
-import Leha from "./leha.jpg";
-import Zhenya from "./zhenya.jpg";
+import Zhenya from "./img/zhenya.jpg";
 import styles from "./postcard.module.css"
-import like from "./like (2).png";
-import dislike from "./dislike (1).png";
-import bookmarks from "./saved (1).png";
-import menu from "./option.png";
+import like from "./img/like (2).png";
+import dislike from "./img/dislike (1).png";
+import bookmarks from "./img/saved (1).png";
+import menu from "./img/option.png";
 interface IPostCard{
     id: number;
     image?:string;
-    text: string;
     date: string;
     lesson_num: number;
     title: string;
     author: number;
 }
-export const PostCard = ({id, image, text, date, title} : IPostCard) => {
+export const LittlePostCard = ({id, image, date, title} : IPostCard) => {
 return(<div className={styles.post_container}>
             <div className={styles.content_container}>            
                 <div className={styles.post_info}>
                     <p id={styles.post_date}>{date}</p>
-                    <h1 id={styles.post_title}>{title}</h1>
-                    <h3 id={styles.post_text}>{text}</h3>                
+                    <h1 id={styles.post_title}>{title}</h1>           
                 </div>
                 <div className={styles.post_image}>
-                    <img src={Zhenya} className={styles.image_full_width}/>
+                    <img src={image} 
+                    onError={(e) => {
+                        const imgElement = e.target as HTMLImageElement;
+                        imgElement.src = Zhenya; // Подставляем дефолтное изображение в случае ошибки загрузки
+                    }} 
+                    onLoad={() => console.log("load img!")}  className={styles.image_full_width}/>
                 </div>            
             </div>
             <div className={styles.post_buttons}>

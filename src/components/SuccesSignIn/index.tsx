@@ -11,7 +11,7 @@ export const SuccessSignIn = () => {
             <div className={styles.succes_container}>
                 <div id={styles.text}>
                     <h4>Email confirmed.</h4>
-                    <h4>Your registration is not completed.</h4>
+                    <h4>Your registration is now completed.</h4>
                 </div>
                 <div id={styles.button}>
                     <Link to="/"><Button mode="primary"  name="Go to home" /></Link>

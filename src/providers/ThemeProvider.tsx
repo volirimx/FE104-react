@@ -10,7 +10,7 @@ interface IContext {
 }
 
 export const ThemeContext = createContext<IContext>({
-    type: "Light",
+    type: "Light", 
     setType: () => {} 
 });
 

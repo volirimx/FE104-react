@@ -17,7 +17,6 @@
 
 .input_container:focus {
     background-color:red;
-
 }
 input{
     width: 100%;

@@ -1,14 +1,14 @@
 import { useState } from "react";
 import styles from "./index.module.css";
 import BurgerIcon from "./burger-icon.png";
-import { AboutUser } from "../AboutUser";
+import { AboutUser } from "../../AboutUser";
 import CrossIcon from "./cross.png";
 import ActiveSun from "./sun_active.png";
 import ActiveMoon from "./moon_active.png";
 import DisabledSun from "./sun_disabled.png";
 import DisabledMoon from "./moon-disabled.png";
 import { Link } from 'react-router-dom';
-import { useTheme } from "../../hooks/useTheme";
+import { useTheme } from "../../../hooks/useTheme";
 
 export const HamburgerMenu = () => {
   const [isUserVisible, setIsUserVisible] = useState<boolean>(false);

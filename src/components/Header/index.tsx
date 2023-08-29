@@ -1,5 +1,5 @@
 import styles from "./header.module.css";
-import { HamburgerMenu } from "../HamburgerMenu";
+import { HamburgerMenu } from "./HamburgerMenu";
 import SearchIcon from "./search.png";
 import UserIcon from "./user.png";
 import Cross from "./cross.png";
