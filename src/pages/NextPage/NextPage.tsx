@@ -38,7 +38,7 @@ export function NextPage() {
     return (
         <div>
             <div className={styles.header}>
-                <HamburgerBtn />
+                <HamburgerBtn className={styles.hiddenUser}/>
                 <div className={styles.search}>
                     <div className={styles.searchImg}>
                         <Lupa styles={styles.lupa}/>
@@ -49,9 +49,11 @@ export function NextPage() {
             <h1 className={styles.result}>Search results for " "</h1>
             <div className={styles.cardMenu}>
                 {post.map((post) => (
-                    <div className={styles.card} onClick={() => {navigate(`/nextPage/${post.id}`)}}>
-                        <h2>{post.author}</h2>
+                    <div key={post.id} className={styles.card} onClick={() => {navigate(`/nextPage/${post.id}`)}}>
+                        <h2>{post.id}</h2>
                         <img className={styles.image} src={post.image} alt="n" />
+                        <div>{post.author}</div>
+                        <div>{post.date}</div>
                     </div>
                 ))}
             </div>

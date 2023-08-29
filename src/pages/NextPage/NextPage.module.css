@@ -3,6 +3,7 @@
     display: flex;
     height: 50px;
     background: rgb(24, 24, 177);
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.5);
 }
 .user {
     margin: 0;
@@ -41,24 +42,33 @@
     height: 100px;
 }
 .card {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     background-color: gray;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid black;
     border-radius: 5px;
+    flex-direction: column;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.5);
 }
 .card:hover {
     background-color: rgb(158, 158, 158);
 }
 .cardMenu {
-    width: 70%;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.5);
+    margin: 15px auto;
+    width: 75%;
     height: 500px;
     display: flex;
+    align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
     background-color: rgb(189, 189, 189);
     border-radius: 5px;
+}
+.hiddenUser {
+    position: absolute;
+    top: 50px;
 }

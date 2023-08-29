@@ -25,6 +25,10 @@ export function Test() {
         setPassword(value);
     }
 
+    const handleValid = (validation: boolean) => {
+        return validation;
+    }
+
     return (
         <LanguageContext.Provider value={lang}>
             <Template>
@@ -40,9 +44,9 @@ export function Test() {
                     <h1 className={styles.text}>INPUTS</h1>
                         <h2>Title</h2>
                         <label>EMAIL</label>
-                        <Form />
+                        <Form check={handleValid}/>
                         <label>TEXT</label>
-                        <textarea placeholder='Add your text'></textarea>
+                        <textarea className={styles.textarea} placeholder='Add your text'></textarea>
                         <label>PASSWORD</label>
                         <Password value={password} onChange={handlePasswordChange}/>
                     <Title title='Sign In'/>

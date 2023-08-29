@@ -2,7 +2,11 @@ import { useEffect, useState } from 'react';
 import styles from './index.module.css'
 import { Username } from '../Username';
 
-export function HamburgerBtn() {
+interface props {
+    className? : string;
+}
+
+export function HamburgerBtn({ className } : props) {
     const [clicked, setClicked] = useState(false);
     const [mounted, setMounted] = useState(false);
 
@@ -29,6 +33,6 @@ export function HamburgerBtn() {
         <div className={`${styles.burgerLine} ${clicked? styles.open : ''}`}></div>
         <div className={`${styles.burgerLine} ${clicked? styles.open : ''}`}></div>
     </div>
-    {mounted && <Username className={`${styles.newUser} ${clicked? styles.active : styles.inactive}`} user='Artem Malkin'/>}
+    {mounted && <Username className={`${styles.newUser} ${className} ${clicked? styles.active : styles.inactive}`} user='Artem Malkin'/>}
     </>;
 }

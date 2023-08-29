@@ -12,7 +12,8 @@ interface props {
 }
 
 export function Input({disabled, placeholder, type, value, onChange, error} : props) {
-    return <div><input className={`${styles.Input} ${error && styles.errorInput}`} 
+    return <div>
+        <input className={`${styles.input} ${error && styles.errorInput}`} 
         type={type} 
         placeholder={placeholder} 
         disabled={disabled}

@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counter from './count/counter'
+import post from './posts/posts'
 
 const store = configureStore({
-  reducer: {counter},
+  reducer: { post },
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

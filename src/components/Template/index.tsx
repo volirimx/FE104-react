@@ -18,7 +18,7 @@ export function Template({children} : props) {
         setTheme(!theme);
     }
 
-    return <div className={theme? styles.wrapperDark : styles.wrapperWhite}>
+    return <div className={`${styles.fon} ${theme? styles.wrapperDark : styles.wrapperWhite}`}>
         <Header change={theme}>
             <button 
                 className={styles.theme} 
