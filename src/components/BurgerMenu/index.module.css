@@ -1,0 +1,44 @@
+.container {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: blue;
+  position: relative;
+}
+
+.burger {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  align-items: stretch;
+}
+
+.burgerLine {
+  transition: 0.5s;
+  width: 30px;
+  height: 4px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.openedLine:first-child {
+  position: absolute;
+  top: 50%;
+  transform: rotate(45deg);
+}
+
+.openedLine:last-child {
+  position: absolute;
+  top: 50%;
+  transform: rotate(-45deg);
+}
+
+.closedLine {
+  opacity: 0;
+}
