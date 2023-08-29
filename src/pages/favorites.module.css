@@ -1,0 +1,19 @@
+
+.bigBlock {
+    display: flex;
+    flex-direction: row;   
+    /* border: 1px solid red; */
+  }
+  
+  
+  .containerStyle {
+      display: flex;   
+      flex-direction: row;
+      width: 70%;
+      flex-wrap: wrap;   
+      padding-left: 20%;
+      /* border: 1px solid red; */
+    }; 
+  
+  
+    

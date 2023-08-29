@@ -32,13 +32,16 @@ export const favoritesSlice = createSlice({
           if (index !== -1) {
             state.splice(index, 1)
             } else {
+              card.favorites = true;
               state.push(card)
            }   
           } else {
+            card.favorites = true;
             state.push(card)
           }  
       }
        else {
+        card.favorites = true;
         state.push(card)
       }     
     },

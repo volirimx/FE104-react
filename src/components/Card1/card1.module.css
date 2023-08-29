@@ -1,16 +1,13 @@
-.block {
-   
-    
-}
 
 .column {
-    width: 45%;
+    width: 200px;
     height: auto;
     display: flex;    
     flex-direction: column;    
     justify-content: space-between; 
     margin-right: 20px;
     margin-bottom: 20px;    
+    
 }
 
 
@@ -26,7 +23,7 @@
 }
 
 .image {
-    width: 70%;    
+    width: 80%;    
 }
 
 .block_icon {
@@ -40,6 +37,7 @@
     height: auto;
     margin-left: 15px;
 }
+
 
 .elements {
   padding-left: 50%;

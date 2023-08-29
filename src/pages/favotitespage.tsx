@@ -1,7 +1,7 @@
 import { Tabs } from "../components/Tabs/tabs";
 import { Card1 } from "../components/Card1/card1";
 import { Card2 } from "../components/Card2/card2";
-import styles from './postspage.module.css';
+import styles from './favorites.module.css';
 import { useSelector } from "react-redux";
 import { selectFavorites } from "../redux/favorites/favorites";
 import { RootState } from "../redux/store";
