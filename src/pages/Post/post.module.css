@@ -1,0 +1,46 @@
+.post {
+    display: flex;
+    gap: 2%;
+    justify-content: center;
+    align-items: center;
+}
+
+.post__image {
+    min-width: 250px;
+    max-width: 300px;
+}
+
+.post__image__item{
+    width: 100%;
+}
+
+.post__description{
+    max-width: 300px;
+    font-size: 1rem;
+    font-weight: 400px;
+    text-align: center;
+}
+
+.post__title{
+    max-width: 300px;
+    font-size: 3rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+
+.post__author {
+    text-align: end;
+}
+
+.post__date{
+    text-align: end;
+}
+
+
+@media (max-width:650px){
+    .post{
+        flex-direction: column;
+        align-items: center;
+    }
+}

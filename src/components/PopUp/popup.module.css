@@ -1,0 +1,31 @@
+.popUp{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s linear;
+    pointer-events: none;
+
+}
+
+.popUpContent{
+    padding: 2%;
+    border-radius: 12px;
+    background-color: white;
+    height: 500px;
+    width: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.img{
+    width: 80%;
+    height: 80%;
+}

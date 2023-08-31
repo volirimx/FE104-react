@@ -1,0 +1,49 @@
+.openMenu {
+    position: absolute;
+    background: gray;
+    height: 50px;
+    left: 0;
+    top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu {
+    cursor: pointer;
+    width: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.openMenu2 {
+    position: absolute;
+    background: gray;
+    height: 50px;
+    left: 0;
+    top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+}
+
+.openMenu3 {
+    position: absolute;
+    background: gray;
+    height: 50px;
+    left: 0;
+    top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+
+}
+
+.link{
+    text-decoration: none;
+    color: black;
+}
