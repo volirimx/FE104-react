@@ -76,7 +76,12 @@ const Posts = () => {
       <div>{isLoading && <h1> Загрузка постов...</h1>}</div>
       <div>{error && <h1> Ошибочка!!!</h1>}</div>
       <div className={styles.posts}>{mappedPosts}</div>;
-      <PopUp setActive={setActive} active={active} id={postId} />
+      <PopUp
+        setActive={setActive}
+        active={active}
+        id={postId}
+        setId={setPostId}
+      />
     </>
   );
 };
