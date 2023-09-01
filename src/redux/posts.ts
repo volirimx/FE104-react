@@ -9,6 +9,11 @@ interface RateAction {
   id: number | null;
 }
 
+interface ForSave {
+  saved: boolean;
+  id: number | undefined;
+}
+
 export interface ForPost {
   author: number;
   date: string;
@@ -20,6 +25,7 @@ export interface ForPost {
   title: string;
   rate: Rate;
   popUp: boolean;
+  saved: boolean;
 }
 
 interface PostsState {
@@ -52,6 +58,20 @@ export const postsSlice = createSlice({
         neededPost.rate = action.payload.rate;
       }
     },
+    savePost(state, action: PayloadAction<ForSave>) {
+      const postIndex = state.posts.findIndex(
+        (post) => post.id === action.payload.id
+      );
+
+      if (postIndex === -1) return state;
+      const neededPost = state.posts[postIndex];
+
+      if (action.payload.saved === neededPost.saved) {
+        neededPost.saved = false;
+      } else {
+        neededPost.saved = action.payload.saved;
+      }
+    },
   },
   extraReducers: {
     [fetchPosts.fulfilled.type]: (state, action: PayloadAction<ForPost[]>) => {
@@ -68,8 +88,7 @@ export const postsSlice = createSlice({
     },
   },
 });
-
-export const { ratePost } = postsSlice.actions;
+export const { ratePost, savePost } = postsSlice.actions;
 export const selectRate = (id: number) => (store: RootState) => {
   const searchedPost = store.posts.find((post) => post.id === id);
   if (searchedPost) {
@@ -77,4 +96,12 @@ export const selectRate = (id: number) => (store: RootState) => {
   }
   return undefined;
 };
+export const selectSave = (id: number) => (store: RootState) => {
+  const searchedPost = store.posts.find((post) => post.id === id);
+  if (searchedPost) {
+    return searchedPost.saved;
+  }
+  return undefined;
+};
+
 export default postsSlice.reducer;

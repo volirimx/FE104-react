@@ -6,7 +6,7 @@ import Sucess from "./pages/LogIn/Sucess/Sucess";
 import Posts from "./pages/Posts/Posts";
 import Confirm from "./pages/Registration/Confirm/Confirm";
 import Registration from "./pages/Registration/Registartion";
-import Tab from "./pages/Tabs/Tab";
+import Tab from "./pages/Tabs/Tabs";
 import Wrapper from "./components/Wrapper/Wrapper";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ContextSearchInput from "./ContextSearchInput";
@@ -53,7 +53,7 @@ function App() {
                     <Route
                       path="*"
                       element={
-                        <Tab title1="main" title2="secondary" title3="thirty" />
+                        <Tab title1="All" title2="Saved" title3="Liked" />
                       }
                     />
                     <Route path="/confirm" element={<Confirm />} />

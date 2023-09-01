@@ -6,7 +6,7 @@ import Save from "../../components/Svg/Save";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { fetchPosts } from "../../api/getPosts";
 import Like from "../../components/Svg/Like";
-import { ratePost } from "../../redux/posts";
+import { ratePost, savePost } from "../../redux/posts";
 import Dislike from "../../components/Svg/Dislike";
 
 import PopUp from "../../components/PopUp/PopUp";
@@ -14,11 +14,14 @@ import PopUp from "../../components/PopUp/PopUp";
 const Posts = () => {
   const { searchInput } = useContext(ContextSearchInput);
   const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(fetchPosts(searchInput));
-  }, [searchInput, dispatch]);
 
   const { posts, isLoading, error } = useAppSelector((state) => state);
+
+  useEffect(() => {
+    if (posts.length === 0) {
+      dispatch(fetchPosts(searchInput));
+    }
+  }, [searchInput, dispatch, posts.length]);
 
   const navigate = useNavigate();
 
@@ -64,7 +67,12 @@ const Posts = () => {
             />
           </div>
           <div className={styles.save}>
-            <Save />
+            <Save
+              id={post.id}
+              onClick={() => {
+                dispatch(savePost({ saved: true, id: post.id }));
+              }}
+            />
           </div>
         </div>
       </div>
@@ -75,7 +83,7 @@ const Posts = () => {
     <>
       <div>{isLoading && <h1> Загрузка постов...</h1>}</div>
       <div>{error && <h1> Ошибочка!!!</h1>}</div>
-      <div className={styles.posts}>{mappedPosts}</div>;
+      <div className={styles.posts}>{mappedPosts}</div>
       <PopUp
         setActive={setActive}
         active={active}

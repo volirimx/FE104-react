@@ -11,15 +11,13 @@ const PopUp = ({
   active: boolean;
   setActive: () => void;
   id: number | null;
-  setId: () => void;
+  setId: () => number;
 }) => {
   const posts = useAppSelector((state) => state.posts);
-  let postIndex = posts.findIndex((post) => post.id === id);
+  const postIndex = posts.findIndex((post) => post.id === id);
   if (!postIndex && postIndex !== 0) {
-    console.log(postIndex);
     return;
   }
-  console.log(postIndex);
 
   const nextImage = () => {
     if (postIndex === posts.length - 1) return;
