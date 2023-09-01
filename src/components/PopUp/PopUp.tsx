@@ -6,12 +6,30 @@ const PopUp = ({
   active,
   setActive,
   id,
+  setId,
 }: {
   active: boolean;
   setActive: () => void;
   id: number | null;
+  setId: () => void;
 }) => {
   const posts = useAppSelector((state) => state.posts);
+  let postIndex = posts.findIndex((post) => post.id === id);
+  if (!postIndex && postIndex !== 0) {
+    console.log(postIndex);
+    return;
+  }
+  console.log(postIndex);
+
+  const nextImage = () => {
+    if (postIndex === posts.length - 1) return;
+    setId((old: number) => old + 1);
+  };
+  const prevImage = () => {
+    if (postIndex === 0) return;
+    setId((old: number) => old - 1);
+  };
+
   return (
     <div
       className={styles.popUp}
@@ -24,9 +42,17 @@ const PopUp = ({
       <div className={styles.popUpContent} onClick={(e) => e.stopPropagation()}>
         <img
           className={styles.img}
-          src={id ? posts[id - 1].image : undefined}
+          src={id ? posts[postIndex].image : undefined}
           alt=""
         />
+        <div className={styles.nav}>
+          <div className={styles.navLeft} onClick={prevImage}>
+            left
+          </div>
+          <div className={styles.navRight} onClick={nextImage}>
+            right
+          </div>
+        </div>
       </div>
     </div>
   );
