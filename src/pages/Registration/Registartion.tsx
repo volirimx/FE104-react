@@ -14,17 +14,16 @@ import React from "react";
 
 const Registration = () => {
   const [show, setShowPassword] = useState<boolean>(false);
-  const toogleShowPassword = () => {
-    setShowPassword(!show);
-  };
-
-  const navigate = useNavigate();
-
   const [inputValueName, setInputValueName] = useState("");
   const [inputValueEmail, setInputValueEmail] = useState("");
   const [inputValuePassword, setInputValuePassword] = useState("");
   const [inputValueConfirmPassword, setInputValueConfirmPassword] =
     useState("");
+  const toogleShowPassword = () => {
+    setShowPassword(!show);
+  };
+
+  const navigate = useNavigate();
 
   const generateInputChangeHandler =
     (stateSetter: React.Dispatch<SetStateAction<string>>) =>

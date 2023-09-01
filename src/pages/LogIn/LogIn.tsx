@@ -8,14 +8,12 @@ import ContextTheme from "../../ContextTheme";
 
 const LogIn = () => {
   const [show, setShowPassword] = useState<boolean>(false);
+  const [inputValueEmail, setInputValueEmail] = useState("");
+  const [inputValuePassword, setInputValuePassword] = useState("");
+  const navigate = useNavigate();
   const toogleShowPassword = () => {
     setShowPassword(!show);
   };
-
-  const [inputValueEmail, setInputValueEmail] = useState("");
-  const [inputValuePassword, setInputValuePassword] = useState("");
-
-  const navigate = useNavigate();
 
   const generateInputChangeHandler =
     (stateSetter: React.Dispatch<SetStateAction<string>>) =>

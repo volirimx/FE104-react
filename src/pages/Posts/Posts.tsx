@@ -12,9 +12,11 @@ import Dislike from "../../components/Svg/Dislike";
 import PopUp from "../../components/PopUp/PopUp";
 
 const Posts = () => {
+  const [active, setActive] = useState<boolean>(false);
+  const [postId, setPostId] = useState<number | null>(null);
   const { searchInput } = useContext(ContextSearchInput);
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
-
   const { posts, isLoading, error } = useAppSelector((state) => state);
 
   useEffect(() => {
@@ -23,14 +25,10 @@ const Posts = () => {
     }
   }, [searchInput, dispatch, posts.length]);
 
-  const navigate = useNavigate();
-
   const redirect = (id: number) => {
     navigate(`${id}`);
   };
 
-  const [active, setActive] = useState<boolean>(false);
-  const [postId, setPostId] = useState<number | null>(null);
   const mappedPosts = posts.map((post) => {
     return (
       <div className={styles.post} key={post.id}>

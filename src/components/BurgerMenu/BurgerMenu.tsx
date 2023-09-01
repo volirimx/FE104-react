@@ -11,6 +11,7 @@ const BurgerMenu = () => {
   const toggleSetOpenState = () => {
     setOpenState(!openState);
   };
+
   return (
     <div onClick={() => toggleSetOpenState()} className={styles.menu}>
       {openState ? <CloseIcon /> : <MenuIcon />}
