@@ -17,7 +17,7 @@ export const HamburgerMenu = (props: any) => {
   return (
     <div className='absolute'>
       <div
-      className='w-[70px] h-[70px] bg-[#2436a7] flex justify-center items-center cursor-pointer relative'
+      className='w-[70px] h-[70px] bg-[#2436a7] border-r-[1px] flex justify-center items-center cursor-pointer relative'
       onClick={() => {
         burgerState ? setBurgerState(false) : setBurgerState(true);
       }}
@@ -26,7 +26,7 @@ export const HamburgerMenu = (props: any) => {
     </div>      
     {burgerState ? 
       <div className='bg-[white] absolute z-10'>
-        <User userName='Oleg Grishan' />
+        <User userName='Oleg Grishan' className='border-t-[1px]' />
         <div 
           className='h-[70px] text-[20px] border-b-[1px] flex justify-center items-center cursor-pointer hover:text-[#2436a7]'
           onClick={() => {
