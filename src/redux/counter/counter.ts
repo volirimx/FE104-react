@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../store'
 
-// Define a type for the slice state
+// Определяем тип состояния слайса
 interface CounterState {
   value: number
 }
 
-// Define the initial state using that type
+// Определяем начальное состояние используя тип CounterState
 const initialState: CounterState = {
   value: 0,
 }

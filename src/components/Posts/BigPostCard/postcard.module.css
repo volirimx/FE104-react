@@ -4,15 +4,13 @@
 }
 .post_container{
     width: 100%; 
-    height: auto;
-    cursor: pointer;
+    height: auto;    
 }
 .content_container{
     display: flex;
     flex-direction: row;
-    /* border:1px solid blue;        */
+    cursor: pointer;
 }
-
 .post_image{
     position: relative; 
     width: 40%;
@@ -40,27 +38,8 @@
     font-weight: normal;
 }
 .post_info{
-    /* border: 1px solid red; */
     width: 60%;
     overflow-x:hidden;
-}
-.post_buttons{
-    margin-top: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.post_buttons img{
-    width: 23px;
-    height: 20px;
-    
-
-}
-#dislike{
-    margin-left: 15px;
-}
-#menu{
-    margin-left: 15px;
 }
 .post_line{
     margin-top: 20px;

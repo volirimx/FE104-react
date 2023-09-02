@@ -1,41 +1,30 @@
-import Zhenya from "./img/zhenya.jpg";
 import styles from "./postcard.module.css"
-import like from "./img/like (2).png";
-import dislike from "./img/dislike (1).png";
-import bookmarks from "./img/saved (1).png";
-import menu from "./img/option.png";
-interface IPostCard{
-    id: number;
-    image?:string;
-    text: string;
-    date: string;
-    lesson_num: number;
-    title: string;
-    author: number;
-}
-export const BigPostCard = ({id, image, text, date, title} : IPostCard) => {
-return(<div className={styles.post_container}>
-            <div className={styles.content_container}>            
+import { PostEvaluation } from "../PostEvaluation";
+import { IPostCard } from "../../../api/posts/types";
+
+/*interface IPostCard{
+    onClick: () => void;
+    post: PostState;
+    handleRatePost: (id: number, grade: PostGrade) => void;
+    handleBookmarkedPost: (id: number, bookmarked: BookmarkedGrade) => void;
+}*/
+
+export const BigPostCard = ({onClick, post, handleRatePost, handleBookmarkedPost} : IPostCard) => {   
+
+return(
+        <div className={styles.post_container}>
+            <div className={styles.content_container} onClick={onClick}>            
                 <div className={styles.post_info}>
-                    <p id={styles.post_date}>{date}</p>
-                    <h1 id={styles.post_title}>{title}</h1>
-                    <h3 id={styles.post_text}>{text}</h3>                
+                    <p id={styles.post_date}>{post.date}</p>
+                    <h1 id={styles.post_title}>{post.title}</h1>
+                    <h3 id={styles.post_text}>{post.text}</h3>                
                 </div>
                 <div className={styles.post_image}>
-                    <img src={image || Zhenya} className={styles.image_full_width}/>
+                    <img src={post.image} className={styles.image_full_width}/>
                 </div>            
             </div>
-            <div className={styles.post_buttons}>
-                <div>
-                    <img src = {like} id={styles.like}/>
-                    <img src = {dislike} id={styles.dislike}/>
-                </div>
-                <div>
-                    <img src = {bookmarks} id={styles.bookmarks}/>
-                    <img src = {menu} id={styles.menu}/>
-                </div>
-            </div>
+            <PostEvaluation post={post} handleRatePost={handleRatePost} handleBookmarkedPost={handleBookmarkedPost}/>
             <div className={styles.post_line}></div>
         </div>
-        )
+    )
 }

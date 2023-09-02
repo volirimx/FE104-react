@@ -1,4 +1,4 @@
-import {selectAllPosts} from "../../redux/posts/posts"
+import {fetchPosts, selectAllPosts} from "../../redux/posts/posts"
 import {useAppSelector, useAppDispatch} from "../../redux/hooks"
 import Post from "./post"
 import {PostGrade, ratePost} from "../../redux/posts/posts"
@@ -9,7 +9,7 @@ export const Posts = () => {
 
     const handleRateButtonClick = (id: number, grade: PostGrade) => {
         dispatch(ratePost({id, grade}));
-    };
+    };  
 
     return (
         <div>

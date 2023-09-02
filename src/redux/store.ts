@@ -4,10 +4,9 @@ import user from "./user/user";
 import post from "./posts/posts"
 
 const store = configureStore({
-  reducer: {user, counter, post},
+  reducer: {post, counter, user},
 })
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
 //дает понимание что в глобальном состоянии 
 //получаем тип всего стейта и возвращаем его через ReturnType
 export type RootState = ReturnType<typeof store.getState>

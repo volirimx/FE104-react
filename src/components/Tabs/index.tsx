@@ -1,8 +1,12 @@
 import { useState } from "react";
 import styles from "./tabs.module.css";
 
-export const Tabs = () => {
-  const [activeTab, setActiveTab] = useState<string>("");
+interface TabsProps {
+  activeTab: string;
+  setActiveTab: (tab: string) => void;
+}
+
+export const Tabs = ( {activeTab, setActiveTab }: TabsProps) => {  
 
   const toggleTabVisibility = (name: string) => {
     setActiveTab(name);

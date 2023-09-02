@@ -50,9 +50,7 @@ export const SinglePost = () => {
                     <h3 id={styles.add_text}>Add to favourites</h3>
                 </div>
             </div>
-            </div>
-            
-           
+            </div>           
         </div>
     );
 }
