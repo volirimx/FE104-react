@@ -17,7 +17,14 @@ export const Header = (props: any) => {
        />
 
       {searchState ? 
-        <Input type='text' placeholder='Search...' className='flex-auto min-w-[500px] h-[70px] text-[white] bg-[#5463ca]' />
+      <div className='min-w-[500px] h-[70px] flex-auto'>
+        <Input 
+        type='text' 
+        placeholder='Search...' 
+        className='min-w-[500px] h-[70px] flex-auto text-[white] text-[18px] bg-[#5463ca] placeholder:text-[white]' 
+        />
+      </div>
+        
       :
       <div className='min-w-[500px] h-[70px] flex-auto bg-[#2436a7]'></div>
       }
@@ -25,7 +32,7 @@ export const Header = (props: any) => {
        <div className='flex justify-end'>
         <div 
           className='border-x-[1px]'
-          onClick={() => {setSearchState(true)}}  
+          onClick={() => {setSearchState((prev) => !prev)}}  
         >
           <Magnifier className='bg-[#2436a7] cursor-pointer' />
         </div>

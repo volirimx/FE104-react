@@ -19,6 +19,7 @@ import {
 } from "react-router-dom"; 
 import { Posts } from "./pages/AllPosts/AllPosts";
 import { SinglePost } from "./pages/SinglePost/SinglePost";
+import { store } from './redux/store'
 
 
 // interface ThemeContext {
@@ -37,7 +38,7 @@ function App() {
 
   return (
     
-    // <Provider store={store}>
+    <Provider store={store}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Wrapper />}>
@@ -61,7 +62,7 @@ function App() {
         </Routes>
       </BrowserRouter>
 
-    // </Provider>
+    </Provider>
   );
 }
 

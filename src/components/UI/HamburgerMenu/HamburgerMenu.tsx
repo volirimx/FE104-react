@@ -3,8 +3,7 @@ import Hamburger from 'hamburger-react'
 import { User } from '../User/User'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
+import { Theme } from '../../APP/Theme/Theme';
 
 interface Hamburger {
   className: string;
@@ -15,7 +14,7 @@ export const HamburgerMenu = (props: any) => {
   const navigate = useNavigate();
  
   return (
-    <div className='absolute'>
+    <div>
       <div
       className='w-[70px] h-[70px] bg-[#2436a7] border-r-[1px] flex justify-center items-center cursor-pointer relative'
       onClick={() => {
@@ -47,10 +46,7 @@ export const HamburgerMenu = (props: any) => {
           Add Post
         </div>
         
-        <div className='mt-[140px] h-[70px] flex cursor-pointer border-t-[1px]'>
-          <div className='w-[50%] flex justify-center items-center border-r-[1px]'><FontAwesomeIcon icon={faSun} /></div>
-          <div className='w-[50%] flex justify-center items-center'><FontAwesomeIcon icon={faMoon} /></div>
-        </div>
+        <Theme />
 
         <div className='h-[70px] flex justify-center items-center bg-[gray] text-[white] cursor-pointer'>
             Log Out

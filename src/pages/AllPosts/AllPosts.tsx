@@ -37,7 +37,7 @@ export const Posts = () => {
 
             <div className={`${tab === 'All' ? null : styles.hidden} ${styles.postsContainer}`}>
                {posts.map(post => 
-                  <Post id={post.id} image={post.image} date={post.date} title={post.title}  />
+                  <Post key={post.id} id={post.id} image={post.image} date={post.date} title={post.title}  />
                )}
                {posts.map(post => <div>{post.id}</div>)}
             </div>

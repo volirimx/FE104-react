@@ -41,7 +41,6 @@ interface RatePostPayload {
 
 export const postSlice = createSlice({
   name: 'post',
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
     setPosts: (state, action: PayloadAction<PostState[]>) => {
@@ -58,7 +57,6 @@ export const postSlice = createSlice({
       if (payload.rate === searchedPost.rate) {
         payload.rate === undefined;
       };
-
     } 
   },
 })

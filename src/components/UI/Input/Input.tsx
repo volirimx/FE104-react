@@ -14,18 +14,19 @@ interface InputProps {
 
 export const Input = ({className, title, type, name, placeholder, disabled, value, error, onChange}: InputProps) => {
    return (
-      <div className={`${styles.wrapper} ${className}`}>
+      <>
          <label className={styles.label} htmlFor="input">{title}</label>
          <input
-            className={`${styles.input} ${error ? styles.inputError : ''}`} 
+            className={`${styles.input} ${error ? styles.inputError : ''} ${className}`} 
             name={name}
             type={type} 
             placeholder={placeholder} 
             disabled={disabled} 
             value={value}
             onChange={onChange}
-          />
-         <label className={error ? styles.errorLabel : styles.errorLabelHidden} htmlFor="input">Error</label>
-      </div>
+            />
+         <label className={error ? styles.errorLabel : styles.errorLabelHidden} htmlFor="input">Error</label>      
+      </>
+
    )
 };
