@@ -9,10 +9,7 @@ import { RootState } from "../redux/store";
 
 export const FavoritesPage = () => {
     const fav = useSelector((state: RootState) => selectFavorites(state));
-    console.log(fav);
-    
-    
-     
+        
     return (
         <>
             <Tabs title="BLOG"/>

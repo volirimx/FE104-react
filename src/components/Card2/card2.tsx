@@ -19,7 +19,7 @@ interface CardProps {
 
 export const Card2 = ({ card }: CardProps) => {
     const [fav, setFav] = useState(card.favorites);
-    const cards = useCardData();
+    // const cards = useCardData();
     const dispatch = useDispatch();  
        
     const btnAddToFavorites = (e: MouseEvent<HTMLDivElement, MouseEvent>) => {

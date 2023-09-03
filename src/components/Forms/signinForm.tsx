@@ -61,11 +61,10 @@ export const Form = (props: ForDataProps ) => {
       }
       
     } 
-    
     dispatch(setUser(formData))
   };
 
-   const myThem = useContext(UserTheme);
+  const myThem = useContext(UserTheme);
   const navigate = useNavigate();
   const location = useLocation();
   const fromPage = location.state?.from?.pathname || '/';

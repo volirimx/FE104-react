@@ -1,17 +1,17 @@
 .container {
-    color: black;
-    display: flex;
-    flex-direction: row;
-    font-size: large;
-    margin-top: 30px;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  font-size: large;
+  margin-top: 30px;
 }
 
 .image {
-    width: 50%;
-    height: auto;
+  width: 50%;
+  height: auto;
 }
 
 .button {
-    width: 300px;
-    margin: 10px auto;
+  width: 300px;
+  margin: 10px auto;
 }

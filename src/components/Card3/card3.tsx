@@ -11,7 +11,7 @@ import { useCardData } from '../../hooks/cards'
 
 export const Card3 = () => {
 
-    const { element, formattedDate} = useCardData();
+    // const { element, formattedDate} = useCardData();
 
     return (
         <div className={styles.block}>

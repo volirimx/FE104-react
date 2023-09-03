@@ -6,7 +6,7 @@ import favorites from "../redux/favorites/favorites";
 import counter from "../redux/counter/count";
 
 export const store = configureStore({
-  reducer: { user, them, favorites, counter }
+  reducer: { post, user, them, favorites, counter }
    
 })
 
