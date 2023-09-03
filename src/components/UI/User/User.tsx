@@ -8,9 +8,9 @@ type User = {
 export const User = ({userName, className}: User) => {
    const initials = getUserInitials({userName});
    return (
-      <div className={`${styles.container} ${className}`}>
-         <div className={styles.userInitials}>{initials}</div>
-         <div className={styles.userName}>{userName}</div>
+      <div className={`w-[200px] h-[70px] bg-[#2436a7] flex items-center justify-around ${className}`}>
+         <div className={`w-[50px] h-[50px] bg-[#5463ca] text-[24px] text-[white] flex items-center justify-center`}>{initials}</div>
+         <div className='text-[white] text-[18px]'>{userName}</div>
       </div>
    );
 };

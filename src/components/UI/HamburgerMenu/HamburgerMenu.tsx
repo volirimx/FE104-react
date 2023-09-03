@@ -4,6 +4,8 @@ import { User } from '../User/User'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Theme } from '../../APP/Theme/Theme';
+import { useAppSelector } from '../../../redux/hooks';
+import { selectTheme } from '../../../redux/theme/theme';
 
 interface Hamburger {
   className: string;
@@ -12,6 +14,7 @@ interface Hamburger {
 export const HamburgerMenu = (props: any) => {
   const [ burgerState, setBurgerState ] = useState(false); 
   const navigate = useNavigate();
+  const theme = useAppSelector(selectTheme);
  
   return (
     <div>
@@ -24,10 +27,10 @@ export const HamburgerMenu = (props: any) => {
       <Hamburger color='#FFF' toggled={burgerState} />
     </div>      
     {burgerState ? 
-      <div className='bg-[white] absolute z-10'>
+      <div className={`absolute z-10 ${theme.mode === 'light' ? 'bg-[white]' : 'bg-[black]'}`}>
         <User userName='Oleg Grishan' className='border-t-[1px]' />
         <div 
-          className='h-[70px] text-[20px] border-b-[1px] flex justify-center items-center cursor-pointer hover:text-[#2436a7]'
+          className={`h-[70px] text-[20px] border-b-[1px] flex justify-center items-center cursor-pointer hover:text-[#2436a7] ${theme.mode === 'dark' ? 'text-[white]' : 'text-[black]'}`}
           onClick={() => {
             navigate('/');
             setBurgerState(false)
@@ -37,7 +40,7 @@ export const HamburgerMenu = (props: any) => {
         </div>
         
         <div 
-          className='h-[70px] text-[20px] border-b-[1px] flex justify-center items-center cursor-pointer hover:text-[#2436a7]'
+          className={`h-[70px] text-[20px] border-b-[1px] flex justify-center items-center cursor-pointer hover:text-[#2436a7] ${theme.mode === 'dark' ? 'text-[white]' : 'text-[black]'}`}
           onClick={() => {
             navigate('/posts');
             setBurgerState(false)
