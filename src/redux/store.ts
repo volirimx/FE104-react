@@ -2,11 +2,10 @@ import { configureStore } from '@reduxjs/toolkit'
 import post from "./counter/posts";
 import user from "../redux/user/user";
 import them from "../redux/thems/thems";
-import favorites from "../redux/favorites/favorites";
 import counter from "../redux/counter/count";
 
 export const store = configureStore({
-  reducer: { post, user, them, favorites, counter }
+  reducer: { post, user, them, counter }
    
 })
 

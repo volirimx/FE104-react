@@ -21,7 +21,7 @@ export const fetchPosts = createAsyncThunk("post/fetchPosts", async () => {
 });
 
 // Define the initial state using that type
-const initialState: PostState[] = [];
+const initialState: Post[] = [];
 export const postSlice = createSlice({
   name: "post",
   initialState,
@@ -30,15 +30,18 @@ export const postSlice = createSlice({
       state = action.payload;
     },
     updatePost: (state, action: PayloadAction<Post>) => {
-      const updatedPosts = state.map((post) => {
-        if (post.id === action.payload.id) {
-          // Создаем новый объект с обновленным свойством favorites
-          const updatedPost = { ...post, favorites: action.payload.favorites };
-          return updatedPost;
+      const { id, favorites } = action.payload;
+    
+      // Используем immer для создания нового состояния с обновленным свойством favorites
+      return state.map((post) => {
+        if (post.id === id) {
+          return {
+            ...post,
+            favorites: !favorites,
+          };
         }
         return post;
       });
-      return updatedPosts;
     },
     
   },

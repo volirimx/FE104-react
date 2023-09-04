@@ -3,12 +3,14 @@ import { Card1 } from "../components/Card1/card1";
 import { Card2 } from "../components/Card2/card2";
 import styles from './favorites.module.css';
 import { useSelector } from "react-redux";
-import { selectFavorites } from "../redux/favorites/favorites";
 import { RootState } from "../redux/store";
+import { selectAllPosts } from "../redux/counter/posts";
 
 
 export const FavoritesPage = () => {
-    const fav = useSelector((state: RootState) => selectFavorites(state));
+    const posts = useSelector((state: RootState) => selectAllPosts(state));   
+    const fav = posts.filter(post => post.favorites === true)
+
         
     return (
         <>

@@ -26,8 +26,8 @@ interface CardProps {
 
 export const Card1 = ({ card }: CardProps) => {
   // const [fav, setFav] = useState(card.favorites);
-    
-//   const cards = useCardData();
+
+  //   const cards = useCardData();
   const dispatch = useDispatch();
 
   const btnAddToFavorites = () => {
@@ -39,22 +39,19 @@ export const Card1 = ({ card }: CardProps) => {
     // const arrOFCards = cards.cards;
     // const elem = arrOFCards.find(({ id }) => id == myid);
     // console.log(elem);
-    card.favorites = !card.favorites;
+
     dispatch(updatePost(card));
-    
   };
 
+  //   const btnAddCount = (e: MouseEvent<HTMLDivElement, MouseEvent>) => {
+  //     const myid = e.target.id;
+  //     const arrOFCards = cards.cards;
 
+  //     const elem = arrOFCards.find(({ id }) => id == myid);
+  //     console.log(elem);
 
-//   const btnAddCount = (e: MouseEvent<HTMLDivElement, MouseEvent>) => {
-//     const myid = e.target.id;
-//     const arrOFCards = cards.cards;
-
-//     const elem = arrOFCards.find(({ id }) => id == myid);
-//     console.log(elem);
-
-//     dispatch(addToFavorites(elem));
-//   };
+  //     dispatch(addToFavorites(elem));
+  //   };
 
   return (
     <div className={styles.column}>
