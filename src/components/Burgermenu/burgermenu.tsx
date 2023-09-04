@@ -29,10 +29,10 @@ export const Burgermenu = () => {
     const hmbClasses = [`${styles.hamburger}`, humbBord]
 
     const userName = useSelector((state: RootState) => selectUser(state).name);  
-    console.log(userName);
+   
 
     const userMe = useSelector((state: RootState) => selectUser(state));  
-    console.log(userMe);
+  
 
     const myThem = useSelector((state: RootState) => selectUserThem(state));  
    

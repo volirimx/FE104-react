@@ -22,3 +22,10 @@ export interface PostState {
 export interface Post extends PostState {
   favorites?: boolean;
 }
+
+export interface UserRequest {
+  username: string;
+  email: string;
+  password: string;
+  // Добавьте другие поля, если необходимо
+}

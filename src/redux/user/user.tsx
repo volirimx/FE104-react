@@ -1,27 +1,38 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../store';
-import { User } from "../../models";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import type { RootState } from "../store";
+import { User, UserRequest } from "../../models";
+import axios from "axios";
 
+export const postUser = createAsyncThunk(
+  "post/postUser",
+  async (userData: UserRequest) => {
+    try {
+      // Отправляем данные на сервер
+      const response = await axios.post(
+        "https://studapi.teachmeskills.by/auth/users/",
+        userData
+      );
+
+      // Верните данные ответа, если необходимо
+      return response.data;
+    } catch (error) {
+      // Обработка ошибок
+      throw error;
+    }
+  }
+);
 
 // Define the initial state using that type
 const initialState: User = {
-  name: '',
-  email: '',
- 
-}
-
-export const postUser = createAsyncThunk("post/postUser", async () => {
-  const response = await axios.post('https://studapi.teachmeskills.by/auth/users/')
-}
-
-
-)
+  name: "",
+  email: "",
+};
 
 export const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
-  reducers: {     
+  reducers: {
     setUser: (state, action: PayloadAction<User>) => {
       // console.log('Current state:', state); // Выводим state в консоль
       // console.log('action.payload:', action.payload); // Выводим action.payload в консоль
@@ -30,20 +41,19 @@ export const userSlice = createSlice({
       // state.password = action.payload.password;
       // state.confirmPassword = action.payload.confirmPassword;
       // return { ...state, ...action.payload };
-      
     },
     clearUser: (state) => {
-      state.name = '';
-      state.email = '';
+      state.name = "";
+      state.email = "";
       // state.password = '';
       // state.confirmPassword = '';
-    }    
+    },
   },
-})
+});
 
-export const { setUser, clearUser } = userSlice.actions
+export const { setUser, clearUser } = userSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectUser = (state: RootState) => state.user;
 
-export default userSlice.reducer
+export default userSlice.reducer;
