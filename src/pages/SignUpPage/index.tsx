@@ -1,53 +1,53 @@
-import { Title } from "../Title"
-import { CustomInput } from "../Input"
+import { Title } from "../../components/Title"
+import { CustomInput } from "../../components/Input"
 import { useState } from "react"
-import { Button } from "../Button"
+import { Button } from "../../components/Button"
 import styles from "./signup.module.css"
+import { useAppDispatch } from "../../redux/hooks"
+import { registerUser } from "../../redux/user/user"
 
 export const SignUp = () => {
-    const [inputTextValue, setInputTextValue] = useState({value: '', isValid: true});
-    const handleTextInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setInputTextValue((oldValue) => ({...oldValue, value: e.target.value}));
-    }
-    const textValidator = () => {
-      if (inputTextValue.value.length <= 10) {
-        setInputTextValue((oldValue) => ({ ...oldValue, isValid: true }));
-      } else {
-        setInputTextValue((oldValue) => ({ ...oldValue, isValid: false }));
-      }
-    }
-    console.log(inputTextValue);
-    
+  // const user = useAppSelector(selectUser);
+  const dispatch = useAppDispatch();
+
+  const [inputTextValue, setInputTextValue] = useState({value: '', isValid: true});
   const [inputEmailValue, setInputEmailValue] = useState({value: '', isValid: true});
+  const [inputPasswordValue, setPasswordInputValue] = useState({value: '', isValid: true}); 
+  const [inputConfirmPasswordValue, setConfirmPasswordInputValue] = useState({value: '', isValid: true}); 
+
+  const handleTextInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputTextValue((oldValue) => ({...oldValue, value: e.target.value}));
+  }
   const handleEmailInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputEmailValue((oldValue) => ({...oldValue, value: e.target.value}));
   }
+  const handlePasswordInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPasswordInputValue((oldValue) => ({...oldValue, value: e.target.value}));
+  }
+  const handleConfirmPasswordInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setConfirmPasswordInputValue((oldValue) => ({...oldValue, value: e.target.value}));
+  }
+
+  const textValidator = () => {
+    if (inputTextValue.value.length <= 10) {
+      setInputTextValue((oldValue) => ({ ...oldValue, isValid: true }));
+    } else {
+      setInputTextValue((oldValue) => ({ ...oldValue, isValid: false }));
+    }
+  }    
   const emailValidator = () => {
     if (inputEmailValue.value.includes("@") && inputEmailValue.value.includes(".")) {
       setInputEmailValue((oldValue) => ({ ...oldValue, isValid: true }));
     } else {
       setInputEmailValue((oldValue) => ({ ...oldValue, isValid: false }));
     }
-  }
-  console.log(inputEmailValue);
- 
-
-  const [inputPasswordValue, setPasswordInputValue] = useState({value: '', isValid: true}); 
-  const handlePasswordInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPasswordInputValue((oldValue) => ({...oldValue, value: e.target.value}));
-  }
+  } 
   const passwordValidator = () => {
     if (inputPasswordValue.value.length <= 5) {
       setPasswordInputValue((oldValue) => ({ ...oldValue, isValid: true }));
     } else {
       setPasswordInputValue((oldValue) => ({ ...oldValue, isValid: false }));
     }
-  }
-  console.log(inputPasswordValue); 
-
-  const [inputConfirmPasswordValue, setConfirmPasswordInputValue] = useState({value: '', isValid: true}); 
-  const handleConfirmPasswordInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setConfirmPasswordInputValue((oldValue) => ({...oldValue, value: e.target.value}));
   }
   const confirmPasswordValidator = () => {
     if (inputConfirmPasswordValue.value === inputPasswordValue.value) {
@@ -56,7 +56,24 @@ export const SignUp = () => {
         setConfirmPasswordInputValue((oldValue) => ({ ...oldValue, isValid: false }));
     }
   }
-  console.log(inputConfirmPasswordValue); 
+  function validateInputs() {
+    textValidator(); 
+    emailValidator(); 
+    passwordValidator(); 
+    confirmPasswordValidator();
+  }
+
+  const handleDispatchClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    dispatch(
+      registerUser({
+        email: inputEmailValue.value.toString(),
+        password: inputPasswordValue.value.toString(),
+        username: "Ulik",
+      })
+    );
+    console.log(inputEmailValue);
+  };  
+  
     return(
         <div>
             <Title titleText="Sign Up"/>
@@ -65,8 +82,7 @@ export const SignUp = () => {
                 <CustomInput value={inputEmailValue.value} onChange={handleEmailInputChange} isValid={inputEmailValue.isValid} inputTitle="Email"  placeholder='Your email' inputMode="text" disabled={false} inputType="email" errorText="Введите коррекный адрес эдектронной почты"/> 
                 <CustomInput value={inputPasswordValue.value} onChange={handlePasswordInputChange} isValid={inputPasswordValue.isValid} inputTitle="Password"  placeholder='Your password' inputMode="text" disabled={false} inputType="password" errorText="Введите коррекный пароль"/> 
                 <CustomInput value={inputConfirmPasswordValue.value} onChange={handleConfirmPasswordInputChange} isValid={inputConfirmPasswordValue.isValid} inputTitle="Confirm password"  placeholder='Confirm password' inputMode="text" disabled={false} inputType="password" errorText="Ваши пароли не совпадают"/> 
-                <Button mode="primary"  name="Sign Up" onClick={() =>
-                   {textValidator(); emailValidator(); passwordValidator(); confirmPasswordValidator()}}/>
+                <Button mode="primary"  name="Sign Up" onClick={() => { validateInputs(); handleDispatchClick}}/>
             </div>
         </div>
     )

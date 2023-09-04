@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Post } from "../api/posts/types";
-import { getPostById } from "../api/posts/requests";
+import { Post } from "../../api/posts/types";
+import { getPostById } from "../../api/posts/requests";
 import { useParams } from "react-router-dom";
 import styles from "./singlepost.module.css";
-import like from "./like (2).png"
-import dislike from "./dislike (1).png"
-import bookmarks from "./saved (1).png"
+import like from "./img/like_active.png"
+import dislike from "./img/dislike_active.png"
+import bookmarks from "./img/bookmarks_active.png"
 
 export const SinglePost = () => {
     const { postId } = useParams();
@@ -14,7 +14,6 @@ export const SinglePost = () => {
 
     useEffect(() => {
         const parsedPostId = parseInt(`${postId}`);
-        console.log("dnoidboi")
         if (!isNaN(parsedPostId)) { 
             getPostById({
                 postId: parsedPostId,

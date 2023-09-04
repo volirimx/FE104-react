@@ -1,12 +1,13 @@
-import { Title } from "../Title";
-import { CustomInput } from "../Input";
+import { Title } from "../../components/Title";
+import { CustomInput } from "../../components/Input";
 import { useState } from "react";
-import { Button } from "../Button";
+import { Button } from "../../components/Button";
 import styles from "./signin.module.css";
 import { Link, useNavigate } from 'react-router-dom';
 export const SignIn = () => {
   const navigate = useNavigate();
   const [inputEmailValue, setInputEmailValue] = useState({value: '', isValid: true});
+  
   const handleEmailInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputEmailValue((oldValue) => ({...oldValue, value: e.target.value}));
   }

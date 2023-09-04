@@ -59,7 +59,6 @@ export const postSlice = createSlice({
                 searchedPost.grade = payload.grade;
             }
         },  
-        //number
         handleBookmark: (state, action:PayloadAction<RateBookmark>) => {
             const searchedPostIndex = state.findIndex(
                 (post) => post.id === action.payload.id

@@ -1,21 +1,21 @@
 import { useNavigate } from "react-router-dom"
-import { Post } from "../../../api/posts/types";
+import { Post } from "../../api/posts/types";
 import { useState, useEffect} from "react";
 import axios from 'axios';
 import { useParams } from "react-router-dom";
-import { BigPostCard } from "../BigPostCard";
+import { BigPostCard } from "../../components/Posts/BigPostCard";
 import styles from "./postspage.module.css";
-import {MiddlePostCard } from "../MiddlePostCard";
-import { LittlePostCard } from "../LittlePostCard";
-import { Tabs } from "../../Tabs";
-import { BookmarkedGrade, PostState, fetchPosts } from "../../../redux/posts/posts";
+import {MiddlePostCard } from "../../components/Posts/MiddlePostCard";
+import { LittlePostCard } from "../../components/Posts/LittlePostCard";
+import { Tabs } from "../../components/Tabs";
+import { BookmarkedGrade, PostState, fetchPosts } from "../../redux/posts/posts";
 import { useDispatch, useSelector } from "react-redux";
-import type { RootState } from '../../../redux/store'
-import { useAppDispatch } from "../../../redux/hooks";
-import { selectAllPosts } from "../../../redux/posts/posts";
-import { PostGrade } from "../../../redux/posts/posts";
-import { ratePost } from "../../../redux/posts/posts";
-import { handleBookmark } from "../../../redux/posts/posts"
+import type { RootState } from '../../redux/store'
+import { useAppDispatch } from "../../redux/hooks";
+import { selectAllPosts } from "../../redux/posts/posts";
+import { PostGrade } from "../../redux/posts/posts";
+import { ratePost } from "../../redux/posts/posts";
+import { handleBookmark } from "../../redux/posts/posts"
 
 
 export const PostsPage = () => {
@@ -41,15 +41,15 @@ useEffect(() => {
 const [activeTab, setActiveTab] = useState<string>("All");
 
 const filteredPosts = posts.filter((post) => {
-    switch(activeTab){
+    switch(activeTab) {
         case "All":
             return true;
         case "My favorites":
-            return post.grade === "liked";
+            return post.grade === "liked" || post.grade !== undefined;
         case "Popular":
             return true;
         default: 
-        return true;
+            return true;
     }
 });
 
@@ -76,7 +76,7 @@ return (
 
         <div className={styles.post_container}>
             <div className={styles.left_container}>
-            {posts.length !== 0 ? (
+            {filteredPosts.length !== 0 ? (
                 <div>
                     <BigPostCard
                     onClick={() => redirectToPostPage(filteredPosts[0].id)}
