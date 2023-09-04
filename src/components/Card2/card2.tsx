@@ -6,7 +6,7 @@ import favSelect from "..//..//assets/fav-select.png";
 import image_dots from "..//..//assets/dots_three_icon.png";
 import { Post } from "../../models";
 import { Link } from "react-router-dom";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { updatePost } from "../../redux/counter/posts";
 
 interface CardProps {

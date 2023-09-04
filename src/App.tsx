@@ -15,33 +15,29 @@ import { RequireAuth } from "./hoc/RequireAuth";
 import { AuthProvider } from "./hoc/AuthProvider";
 import { FavoritesPage } from "./pages/favotitespage";
 
-
 function App() {
-  return (   
-          <AuthProvider>       
-          <Routes>
-            <Route path="/" element={<Layout/>}>
-              <Route index element={ <Homepage/> } />
-              <Route path='login' element={ <LoginPage/> } />
-              <Route path='success' element={ <Successpage/> } />
-              <Route path='favorites' element={ <FavoritesPage/> } />
-              <Route path='posts' element={ 
-                <RequireAuth>
-                  <Postspage />
-                </RequireAuth>              
-               } />
-              <Route path='posts/:id' element={ <Singlepage/> } />
-              <Route path="*" element={ <NotFoundPage/> } />  
-            </Route>            
-          </Routes>    
-          </AuthProvider>  
-          )
-    }
+  return (
+    <AuthProvider>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Homepage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="success" element={<Successpage />} />
+          <Route path="favorites" element={<FavoritesPage />} />
+          <Route
+            path="posts"
+            element={
+              <RequireAuth>
+                <Postspage />
+              </RequireAuth>
+            }
+          />
+          <Route path="posts/:id" element={<Singlepage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </AuthProvider>
+  );
+}
 
 export default App;
-
-
-
-
-
-
