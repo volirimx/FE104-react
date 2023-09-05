@@ -14,6 +14,7 @@ import { LoginPage } from "./pages/loginpage";
 import { RequireAuth } from "./hoc/RequireAuth";
 import { AuthProvider } from "./hoc/AuthProvider";
 import { FavoritesPage } from "./pages/favotitespage";
+import { EmailActivation } from "./pages/EmailActivation";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             }
           />
           <Route path="posts/:id" element={<Singlepage />} />
+          <Route path="activation/:uid/:token" element={< EmailActivation/>}/>
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
