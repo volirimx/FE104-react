@@ -2,13 +2,17 @@ import { useState } from 'react'
 import { Button } from '../../components/UI/Button/Button'
 import { Input } from '../../components/UI/Input/Input'
 import styles from './signUp.module.css'
+import { useAppDispatch } from '../../redux/hooks'
+import { registerUser } from '../../redux/user/user'
 
 export const SignUp = () => {
-
    const [name, setName] = useState('');
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
    const [confirmPassword, setConfirmPassword] = useState('');
+
+   const dispatch = useAppDispatch();
+
 
    return (
       <div className={styles.container}>
@@ -49,13 +53,19 @@ export const SignUp = () => {
             name='Sign Up' 
             mode='primary' 
             className={styles.button}
-            onClick={() => {
+            onClick={(e) => {
+               e.preventDefault();
                if (!checkPasswordsEquality(password,confirmPassword)) {
                   console.log(`Name: ${name}`);
                   console.log(`Email: ${email}`);
                   console.log(`Password: ${password}`);
                   console.log(`Confirm password: ${confirmPassword}`);
                };
+               dispatch(registerUser({
+                  username: name,
+                  email: email,
+                  password: password
+               }))
             }}
             />
             <span className={styles.text}>Already have an account? <a href="#" className={styles.redirection}>Sign In</a> </span>

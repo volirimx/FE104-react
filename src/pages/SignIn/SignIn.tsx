@@ -30,7 +30,9 @@ export const SignIn = () => {
             name='Sign In' 
             mode='primary' 
             className={styles.button} 
-            onClick={() => {console.log(email); console.log(password)}}
+            onClick={() => {
+               console.log(email); console.log(password)
+            }}
             />
             <span className={styles.text}>Don't have an account? <a href="#" className={styles.redirection}>Sign Up</a></span>
          </form>

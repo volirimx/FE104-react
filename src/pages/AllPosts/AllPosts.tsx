@@ -19,12 +19,9 @@ export const Posts = () => {
       });
    }, []); 
 
-   console.log(posts);
-   
-
    return (
       <>
-         <h1 className={styles.heading}>Blog</h1>
+         <h1 className='mb-[60px]'>Blog</h1>
       
          <Tabs 
          firstName='All' 
@@ -33,21 +30,21 @@ export const Posts = () => {
          changeTab={toggleTab}
          />
       
-         <div className={styles.container}>
+         <div className='mt-[40px]'>
 
-            <div className={`${tab === 'All' ? null : styles.hidden} ${styles.postsContainer}`}>
+            <div className={`${tab === 'All' ? null : 'none'} 'w-[100%] flex flex-row flex-wrap gap-[1.4rem]'`}>
                {posts.map(post => 
                   <Post key={post.id} id={post.id} image={post.image} date={post.date} title={post.title}  />
                )}
                {posts.map(post => <div>{post.id}</div>)}
             </div>
 
-            <div className={`${tab === 'My favorites' ? null : styles.hidden}`}>
+            <div className={`${tab === 'My favorites' ? null : 'none'}`}>
 
 
             </div>
 
-            <div className={`${tab === 'Popular' ? null : styles.hidden}`}>
+            <div className={`${tab === 'Popular' ? null : 'none'}`}>
 
 
             </div>

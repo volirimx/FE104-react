@@ -1,27 +1,31 @@
 import { useEffect, useState } from 'react'
 import styles from './singlePost.module.css'
-import { getPostById } from '../../api/posts/requests'
 import { useParams } from 'react-router-dom'
 import { Post } from '../../components/APP/Post/Post'
+import { forPost } from '../../api/posts/types'
+import { useAppDispatch } from '../../redux/hooks'
+import { getPostById } from '../../redux/posts/posts'
 
 
 export const SinglePost = () => {
-   // const { id } = useParams();
-   // console.log(id);
+   const [post, setPost] = useState();
+   const { postId } = useParams();   
+   const dispatch = useAppDispatch();
    
-   // const [post, setPost] = useState();
+   useEffect(() => {
+      dispatch(
+      getPostById({
+         onSuccess: (data) => {
+            setPost(data);
+         },
+         id: postId,
+      }));
+   }, [postId]);
+   console.log(post);
 
-   // useEffect(() => {
-   //    getPostById({
-   //       onSuccess: (data, id) => {
-   //          setPost(data);
-   //       },
-   //    });
-   // }, []);
-   console.log('SinglePost')
-   
    return (
-      <div>SEEEESH</div>
-      // <Post id={id} image={post.image} title={post.title} date={post.date} />
+      <>
+         {post && <Post id={post.id} image={post.image} title={post.title} date={post.date} />}      
+      </>
    )
 }

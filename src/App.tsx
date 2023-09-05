@@ -7,10 +7,7 @@ import { RegistrationConfirmation } from "./pages/RegistrationConfirmation/Regis
 import { SignIn } from "./pages/SignIn/SignIn";
 import { SignUp } from "./pages/SignUp/SignUp";
 import { Success } from "./pages/Success/Success";
-import ThemeSwitch from "react-switch";
-import { render } from "react-dom";
 import { Provider } from "react-redux";
-
 import { 
   BrowserRouter,
   Routes,
@@ -20,19 +17,9 @@ import {
 import { Posts } from "./pages/AllPosts/AllPosts";
 import { SinglePost } from "./pages/SinglePost/SinglePost";
 import { store } from './redux/store'
-
-
-// interface ThemeContext {
-//   theme: string;
-//   toggleTheme: () => void;
-// }
-
-// export const ThemeContext = createContext<ThemeContext | null>(null);
-// const [theme, setTheme] = useState('light');
-
-// const toggleTheme = () => {
-//   theme === 'light' ? setTheme('dark') : setTheme('light')
-// }
+import { useAppSelector } from "./redux/hooks";
+import { selectTheme } from "./redux/theme/theme";
+import { Activation } from "./pages/Activation/Activation";
 
 function App() {
 
@@ -44,18 +31,18 @@ function App() {
           <Route path="/" element={<Wrapper />}>
             <Route index element={
             <div>
-              <h1 className="text-3xl font-light underline">
+              <h1>
                 Home Page              
               </h1>
             </div>} />
             
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/activate/:uid/:token" element={<Activation />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/registrationconfirmation" element={<RegistrationConfirmation />} />
             <Route path="/success" element={<Success />} />
-            <Route path="/posts" element={<Posts />}>
-              <Route path={`/posts/:postId`} element={<SinglePost />} />
-            </Route>
+            <Route path="/posts" element={<Posts />} />
+            <Route path={`/posts/:postId`} element={<SinglePost />} />
 
           </Route>
           <Route path="*" element={ <h1>Sorry. Page wasn't found.</h1>} />
