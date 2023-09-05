@@ -10,6 +10,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeContext, useInitThemeContext } from './context/ThemeContext/index';
 import { store } from './redux/store'
 import { Provider } from "react-redux";
+import { SearchPage } from "./pages/SearchPage";
 
 function App() {
   const themeContextValues = useInitThemeContext();
@@ -24,6 +25,7 @@ function App() {
               <Route path='confirmation' element={<ConfirmationPage />} />
               <Route path='success' element={<SuccessPage />} />
               <Route path='signIn' element={<SignInPage />} />
+              <Route path='search' element={<SearchPage/>}/>
               <Route path='posts'>
                 <Route index element={<BlogPage />} />
                 <Route path=':postId' element={<PostPage />} />

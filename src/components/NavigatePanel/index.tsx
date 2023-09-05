@@ -1,28 +1,41 @@
 import { User } from '../User/index.tsx';
 import styles from './index.module.css';
-import dark from './../../assets/icons/dark.png';
-import light from './../../assets/icons/light.svg';
+import { useThemeContext } from '../../context/ThemeContext/index.tsx';
+import moon from './../../assets/icons/moon.png';
+import moonDis from './../../assets/icons/moonDisable.png';
+import sun from './../../assets/icons/sun.svg';
+import sunDis from './../../assets/icons/sunDisable.svg';
 
-export const NavigatePanel = (props: { name: string }) => {
+export type NavigateType = {
+    name: string;
+    onLightClick: () => void;
+    onDarkClick: () => void;
+}
+
+export const NavigatePanel = ({ name, onLightClick, onDarkClick }: NavigateType) => {
+    const themeContext = useThemeContext();    
     return (
         <div className={styles.container}>
-            <div>
-                {props.name.length > 0 ? <User name={props.name} /> : null}
-            </div>
-            <div className={styles.item}>Home</div>
-            <div>Add post</div>
-            <div className={styles.footer}>
+            <div className={styles.content}>
                 <div>
-                    <div className={styles.imgContainer}>
-                        <img src={light}></img>
+                    {name ? <User name={name} /> : null}
+                </div>
+                <div>Home</div>
+                <div>Add post</div>
+            </div>            
+            <div className={styles.footer}>
+                <div className={styles.images}> 
+                    <div className={styles.imgContainer} onClick={onLightClick}>
+                        <img src={themeContext.theme === 'light' ? sun : sunDis}></img>
                     </div>
-                    <div className={styles.imgContainer}>
-                        <img src={dark}></img>
+                    <div className={styles.imgContainer} onClick={onDarkClick}>
+                    <img src={themeContext.theme === 'light' ? moonDis : moon}></img>
                     </div>
                 </div>
-                <div></div>
+                <div className={styles.logInfo}>
+                    {name ? 'Log Out': 'Log In'}
+                </div>
             </div>
         </div>
-
     )
 }

@@ -6,10 +6,12 @@ import { useState } from 'react';
 import styles from './index.module.css';
 import { useNavigate } from 'react-router-dom';
 import { NavigatePanel } from '../NavigatePanel';
+import { useThemeContext } from '../../context/ThemeContext/index.tsx';
 
 
 export const Header = () => {
     const navigate = useNavigate();
+    const themeContext = useThemeContext();
     const redidectToRegistrationPage = () => {
         navigate('/registration');
     }
@@ -26,7 +28,14 @@ export const Header = () => {
         const userInfoObj = JSON.parse(userInfo);
         name = userInfoObj.name;
     }
-
+    const handleLightClick = () => {
+        if (themeContext.theme !== 'light') 
+            themeContext.changeTheme('light')
+    }
+    const handleDarkClick = () => {
+        if (themeContext.theme !== 'dark') 
+            themeContext.changeTheme('dark')
+    }
     return (
         <>
             <div className={styles.headerWrapper}>
@@ -37,9 +46,8 @@ export const Header = () => {
                 </div>
             </div>
             <div>
-                {isOpenMenu ? <NavigatePanel name={name} /> : null}
+                {isOpenMenu ? <NavigatePanel name={name} onLightClick={handleLightClick} onDarkClick={handleDarkClick}/> : null}
             </div>
         </>
-
     )
 }
