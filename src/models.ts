@@ -29,3 +29,10 @@ export interface UserRequest {
   password: string;
   // Добавьте другие поля, если необходимо
 }
+
+
+export interface UserLogin {  
+  email: string;
+  password: string;
+  // Добавьте другие поля, если необходимо
+}

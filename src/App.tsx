@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import "./App.css";
-import { Button } from "./components/Button_primary/button";
-import { Template } from "./components/Template/template";
-
 import { Route, Routes } from "react-router-dom";
 import { Homepage } from "./pages/homepage";
 import { Successpage } from "./pages/successpage";
@@ -10,6 +7,7 @@ import { NotFoundPage } from "./pages/notfoundpage";
 import { Layout } from "./components/Template/template";
 import { Postspage } from "./pages/postspage";
 import { Singlepage } from "./pages/siglepage";
+import { MyLoginPage } from "./pages/MyLoginPage";
 import { LoginPage } from "./pages/loginpage";
 import { RequireAuth } from "./hoc/RequireAuth";
 import { AuthProvider } from "./hoc/AuthProvider";
@@ -23,6 +21,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Homepage />} />
           <Route path="login" element={<LoginPage />} />
+          <Route path="mylogin" element={<MyLoginPage />} />
           <Route path="success" element={<Successpage />} />
           <Route path="favorites" element={<FavoritesPage />} />
           <Route
