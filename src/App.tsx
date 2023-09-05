@@ -50,24 +50,9 @@ function App() {
         onClick={hendlePrimariButtonClick}
       /> */}
       {/* <User userName='Alex Box' /> */}
-      <Tabs
-        text='ALL'
-        mode='all'
-        disabled={false}
-        onClick={hendlePrimariButtonClick}
-      />
-      <Tabs
-        text='My favorites'
-        mode='myFavorites'
-        disabled={false}
-        onClick={hendlePrimariButtonClick}
-      />
-      <Tabs
-        text='Popular'
-        mode='popular'
-        disabled={false}
-        onClick={hendlePrimariButtonClick}
-      />
+      <Tabs text='ALL' mode='all' disabled={false} />
+      <Tabs text='My favorites' mode='myFavorites' disabled={false} />
+      <Tabs text='Popular' mode='popular' disabled={false} />
     </div>
   );
 }
