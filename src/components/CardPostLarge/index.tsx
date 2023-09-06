@@ -2,7 +2,7 @@ import styles from './index.module.css';
 import { CardFooter } from '../CardFooter/index.tsx';
 import { Post } from '../../api/posts/types.ts';
 
-export const CardPostLarge = ({ date, title, image, id, description }: Post) => {
+export const CardPostLarge = ({ date, title, image, id, description, onRateClick }: Post) => {
     const dateNew = new Date(date);
     return (
         <div className={styles.container}>
@@ -16,7 +16,7 @@ export const CardPostLarge = ({ date, title, image, id, description }: Post) => 
                     <img src={image}></img>
                 </div>
             </div>
-            <CardFooter />
+            <CardFooter id={id} onRateClick={onRateClick} />
         </div>
     )
 }

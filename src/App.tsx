@@ -11,6 +11,7 @@ import { ThemeContext, useInitThemeContext } from './context/ThemeContext/index'
 import { store } from './redux/store'
 import { Provider } from "react-redux";
 import { SearchPage } from "./pages/SearchPage";
+import { PostsPage } from "./pages/PostsPage";
 
 function App() {
   const themeContextValues = useInitThemeContext();
@@ -26,6 +27,7 @@ function App() {
               <Route path='success' element={<SuccessPage />} />
               <Route path='signIn' element={<SignInPage />} />
               <Route path='search' element={<SearchPage/>}/>
+              <Route path='postsRedux' element={<PostsPage/>}/>
               <Route path='posts'>
                 <Route index element={<BlogPage />} />
                 <Route path=':postId' element={<PostPage />} />

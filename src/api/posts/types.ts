@@ -1,3 +1,5 @@
+import { PostGrade } from "../../redux/post/post";
+
 export type Post = {
     id: number;
     image?: string;
@@ -7,5 +9,8 @@ export type Post = {
     title: string;
     description: string;
     author: number;
-    onClick: (id: number) => void
+    likes: number;
+    dislikes: number;
+    onClick: (id: number) => void;
+    onRateClick: (id: number, grade: PostGrade) => void
 }

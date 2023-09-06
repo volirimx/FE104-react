@@ -6,11 +6,21 @@ import { CardPostMiddle } from '../../components/CardPostMiddle/index.tsx';
 import { Tabs, Tab } from '../../components/Tabs/index.tsx';
 import { useState, useEffect } from 'react';
 import { CardPostSmall } from '../../components/CardPostSmall/index.tsx';
+import { useAppDispatch } from './../../redux/hooks.ts';
+import {
+    PostGrade,
+  //   fetchPosts,
+    ratePost,
+  } from "./../../redux/post/post.ts";
 
 export const BlogPage = () => {
     const navigate = useNavigate();
     const redirectToPost = (id: number) => {
         navigate(`${id}`);
+    }  
+    const dispatch = useAppDispatch();
+    const handleRateClick = (id: number, grade: PostGrade) => {
+        dispatch(ratePost({id, grade}))
     }
     const [posts, setPosts] = useState<Post[]>([]);
     const limit: number = 12;
@@ -48,8 +58,11 @@ export const BlogPage = () => {
                             lesson_num={post.lesson_num}
                             title={post.title}
                             text={post.text}
-                            image={post.image}
-                            onClick={redirectToPost} />
+                            image={post.image}   
+                            likes={post.likes}
+                            dislikes={post.dislikes}                     
+                            onClick={redirectToPost}
+                            onRateClick={handleRateClick} />
                     ))}
                 </div>
                 <div className={styles.smallPosts}>
@@ -63,7 +76,10 @@ export const BlogPage = () => {
                             title={post.title}
                             text={post.text}
                             image={post.image}
-                            onClick={redirectToPost} />
+                            likes={post.likes}
+                            dislikes={post.dislikes}
+                            onClick={redirectToPost}  
+                            onRateClick={handleRateClick} />
                     ))}
                 </div>
             </div>
