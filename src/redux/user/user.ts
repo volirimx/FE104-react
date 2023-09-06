@@ -1,30 +1,52 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { RootState } from '../store'
-import { Root } from 'react-dom/client';
 import axios from 'axios';
 
 // Define a type for the slice state
-interface UserState {
-  name: string;
+type UserRegistration = {
+  username: string;
   email: string;
   password: string;
 }
 
-export const registerUser = createAsyncThunk(
-  'user/registerUser',
-  async (data) => {
+export const registrateUser = createAsyncThunk(
+  'user/registrateUser',
+  async (data: UserRegistration) => {
     const response = await axios.post(
-      "https://studapi.teachmeskills.by/auth/users/", 
+      'https://studapi.teachmeskills.by/auth/users/', 
       data
     );
     return response.data;
   }
 );
 
+type UserLogin = Omit<UserRegistration, 'username'>;
 
+export const loginUser = createAsyncThunk(
+  'user/loginUser',
+  async({onSuccess, data}: {
+    onSuccess(data: any): void;
+    data: UserLogin;
+  }) => {
+    const response = await axios.post(
+      'https://studapi.teachmeskills.by/auth/jwt/create/',
+      data 
+    );
+    // if (!response.data || response.status !== 200) return;
+    onSuccess(response.data)
+  }
+);
+
+type UserState = {
+  username: string | null;
+  email: string | null;
+  accessToken: string | null;
+}
 
 const initialState: UserState = {
-
+  username: null,
+  email: null,
+  accessToken: null,
 };
 
 export const userSlice = createSlice({
@@ -37,13 +59,13 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-    .addCase(registerUser.pending, (state) => {
+    .addCase(registrateUser.pending, (state) => {
 
     })
-    .addCase(registerUser.fulfilled, (state, action) => {
+    .addCase(registrateUser.fulfilled, (state, action) => {
 
     })
-    .addCase(registerUser.rejected, (state, action) => {
+    .addCase(registrateUser.rejected, (state, action) => {
 
     });
   }
