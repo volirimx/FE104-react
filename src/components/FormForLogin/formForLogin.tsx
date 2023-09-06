@@ -4,10 +4,11 @@ import styles from "./formforlogin.module.css";
 import { UserTheme } from "../Theme/thems";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
-import { postUser } from "../../redux/user/user";
 import { UserLogin } from "../../models";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
+import { UserAfterLogin } from "../../models";
+import type { RootState } from "../../redux/store";
 
 interface FormForDataProps {
   email: string;
@@ -48,11 +49,14 @@ export const FormForLogin = () => {
 
     if (user.email) {
       if (fromPage === "/mylogin") {
+        dispatch(postToTokens(formData));
         signin(user, () => navigate(fromPage, { replace: true }));
       } else {
+        dispatch(postToTokens(formData));
         signin(user, () => navigate("/success", { replace: true }));
       }
     }
+    
   };
 
   const myThem = useContext(UserTheme);
@@ -67,14 +71,9 @@ export const FormForLogin = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const postToTokens = createAsyncThunk("post/postToTokens", async () => {
-    const response = await axios.post(
-      "https://studapi.teachmeskills.by/api/schema/swagger-ui/#/auth/auth_jwt_create_create",
-      formData
-    );
-    console.log(response);
-    return response;
-  });
+  
+  
+  // Later, dispatch the thunk as needed in the app
 
   return (
     <form
@@ -118,3 +117,46 @@ export const FormForLogin = () => {
     </form>
   );
 };
+
+export const postToTokens = createAsyncThunk("post/postToTokens", async (formData) => {
+  try {
+    const response = await axios.post(
+      "https://studapi.teachmeskills.by/auth/jwt/create/",
+      formData
+    );
+    console.log(response.data);
+    localStorage.setItem('refreshToken', `${response.data.refresh}`);
+    return response;
+  } catch (error) {
+      console.error("Ошибка при выполнении Axios-запроса:", error);
+      throw error;
+  }    
+});
+
+const initialState: UserAfterLogin = {
+  email: "",
+  loginUser: null,
+  acessToken: '',
+};
+
+export const postSlice = createSlice({
+  name: 'loginUser',
+  initialState,
+  reducers: {
+    // standard reducer logic, with auto-generated action types per reducer
+  },
+  extraReducers: (builder) => {
+    // Add reducers for additional action types here, and handle loading state as needed
+    builder.addCase(postToTokens.fulfilled, (state, action) => {
+      // Add user to the state array
+      state.acessToken = action.payload.data.access; 
+      state.email = action.payload.config.data.email;
+      
+      
+    })
+  },
+})
+
+export const userLoginData = (state: RootState) => state;
+
+export default postSlice.reducer;

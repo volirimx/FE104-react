@@ -22,6 +22,8 @@ export const postUser = createAsyncThunk(
   }
 );
 // http://studapi.teachmeskills.by//activate/Njk5OQ/bu2d0g-0a3674fd53e3cf4a4d509d25eba4e186
+
+//http://studapi.teachmeskills.by//activate/NzAzMA/bu4feb-8bf41fa4efada31e581d68083a92937c
 // Define the initial state using that type
 const initialState: User = {
   name: "",

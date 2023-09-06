@@ -36,3 +36,11 @@ export interface UserLogin {
   password: string;
   // Добавьте другие поля, если необходимо
 }
+
+
+export interface UserAfterLogin {  
+  email: string;
+  loginUser: string | null;
+  acessToken: string;
+  // Добавьте другие поля, если необходимо
+}
