@@ -6,7 +6,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { postUser } from "../../redux/user/user";
 import { UserLogin } from "../../models";
-
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import axios from "axios";
 
 interface FormForDataProps {
   email: string;
@@ -19,10 +20,8 @@ export const FormForLogin = () => {
   const [formData, setFormData] = useState<FormForDataProps>({
     email: "",
     password: "",
-    
   });
 
-  
   const addUserToStore = (e: FormEvent) => {
     e.preventDefault();
 
@@ -31,7 +30,7 @@ export const FormForLogin = () => {
       return;
     }
 
-       // Проверка сложности пароля (можно настраивать по желанию)
+    // Проверка сложности пароля (можно настраивать по желанию)
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{3,}$/;
     if (!passwordPattern.test(formData.password)) {
       alert(
@@ -39,23 +38,21 @@ export const FormForLogin = () => {
       );
       return;
     }
-   
-    const user: UserLogin = {      
-      email: formData.email,
-      password: formData.password
-    };
-    
-    
-    // dispatch(postUser(userX));   
 
-    // if (user.name) {
-    //   if (fromPage === "/posts") {
-    //     signin(user, () => navigate(fromPage, { replace: true }));
-    //   } else {
-    //     signin(user, () => navigate("/success", { replace: true }));
-    //   }
-    // }
-    
+    const user: UserLogin = {
+      email: formData.email,
+      password: formData.password,
+    };
+
+    // dispatch(postUser(userX));
+
+    if (user.email) {
+      if (fromPage === "/mylogin") {
+        signin(user, () => navigate(fromPage, { replace: true }));
+      } else {
+        signin(user, () => navigate("/success", { replace: true }));
+      }
+    }
   };
 
   const myThem = useContext(UserTheme);
@@ -69,6 +66,15 @@ export const FormForLogin = () => {
     const value = e.target.value;
     setFormData({ ...formData, [name]: value });
   };
+
+  const postToTokens = createAsyncThunk("post/postToTokens", async () => {
+    const response = await axios.post(
+      "https://studapi.teachmeskills.by/api/schema/swagger-ui/#/auth/auth_jwt_create_create",
+      formData
+    );
+    console.log(response);
+    return response;
+  });
 
   return (
     <form
