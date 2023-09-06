@@ -3,8 +3,13 @@ import { useState } from 'react';
 import { Button } from '../../components/Button';
 import styles from './index.module.css';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { registerUser, selectUser } from "../../redux/user/user";
 
 export const RegistrationPage = () => {
+    const user = useAppSelector(selectUser);
+    const dispatch = useAppDispatch();
+
     type InputInfo = {
         value: string;
         isValid: boolean;
@@ -58,16 +63,25 @@ export const RegistrationPage = () => {
         }
     }
     const redirectToSuccessRegistration = () => {
-        navigate('/success');
+        navigate('/confirmation');
     }
-
+    const handleDispatchClick = () => {
+        dispatch(
+            registerUser({
+            email: emailInfo.value,
+            password: passwordInfo.value,
+            username: nameInfo.value,
+            })
+        );
+    }
     const validateAndSendUserInfo = () => {
         nameInputValidator();
         emailInputValidator();
         passwordInputValidator();
         passwordConfirmInputValidator();
         if (nameInfo.isValid && emailInfo.isValid && passwordInfo.isValid && passwordConfirmInfo.isValid && nameInfo.value.length > 0) {
-            localStorage.setItem("CurrentUser", JSON.stringify({ name: nameInfo.value, email: emailInfo.value, password: passwordInfo.value }));
+            // localStorage.setItem("CurrentUser", JSON.stringify({ name: nameInfo.value, email: emailInfo.value, password: passwordInfo.value }));
+            handleDispatchClick();
             redirectToSuccessRegistration();
         }
     }

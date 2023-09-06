@@ -1,17 +1,34 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../store';
+import axios from 'axios';
 
-interface UserState {
-    name: string;
+type UserState = {
+    username: string;
     email: string;
     age: number;
 }
 
 const initialState: UserState = {
-    name: "Nastia",
+    username: "Nastia",
     email: "Nastia",
-    age: 21
+    age: 28
 }
+type RegisterPayload = {
+    username: string;
+    email: string;
+    password: string;    
+  };
+
+  export const registerUser = createAsyncThunk(
+    "user/registerUser",
+    async (data: RegisterPayload) => {
+        const response = await axios.post(
+            "https://studapi.teachmeskills.by/auth/users/",
+            data
+        );
+        return response.data;
+    }
+  );
 
 export const userSlice = createSlice({
     name: 'user',
@@ -19,13 +36,19 @@ export const userSlice = createSlice({
     reducers: {
         setUser: (state, action: PayloadAction<UserState>) => {
             state = action.payload;
-        },
-
+        }
     },
+    extraReducers: (builder)=> {
+        builder.addCase(registerUser.fulfilled, (state, action) => {
+            state.email = action.payload.email;
+            state.username = action.payload.username;
+        })
+    }
 })
 
 export const { setUser } = userSlice.actions
 
 export const selectUser = (store: RootState) => store.user;
+export const selectUserEmail = (store: RootState) => store.user.email;
 
 export default userSlice.reducer
