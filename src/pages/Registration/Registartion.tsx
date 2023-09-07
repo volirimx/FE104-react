@@ -1,5 +1,5 @@
 import Button from "../../components/Button/Button";
-import { Ref, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import styles from "./registartion.module.css";
 import Input from "../../components/Input/Input";
 import { Link } from "react-router-dom";
@@ -18,9 +18,8 @@ const Registration = () => {
     setShowPassword(!show);
   };
 
-  const inputPassRef = useRef<Ref<HTMLInputElement> | undefined>();
-  const inputEmailRef = useRef<Ref<HTMLInputElement> | undefined>();
-  // cоздать переменные булиан которые хранят тру или фолз в зависимости от того правильно ли введены данные в инпуты и сравнивает их с массивом юзеров
+  const inputPassRef = useRef<HTMLInputElement>(null);
+  const inputEmailRef = useRef<HTMLInputElement>(null);
 
   const dispatch = useAppDispatch();
   return (

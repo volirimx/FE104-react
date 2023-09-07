@@ -11,7 +11,7 @@ interface ForInput {
   value?: string;
   title?: string;
   border?: string;
-  onClick?: (e: MouseEvent<HTMLInputElement>) => void;
+  onClick?: (e: React.MouseEvent<HTMLInputElement>) => void;
 }
 
 const Input = forwardRef(

@@ -1,9 +1,4 @@
-import {
-  createAsyncThunk,
-  createSlice,
-  isRejectedWithValue,
-  PayloadAction,
-} from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 import axios from "axios";
 
@@ -17,6 +12,13 @@ interface RateAction {
 interface ForSave {
   saved: boolean;
   id: number | undefined;
+}
+
+interface Data {
+  count: number;
+  next: string;
+  previous: null;
+  results: ForPost[];
 }
 
 export interface ForPost {
@@ -50,31 +52,20 @@ const initialState: PostsState = {
 export const thunkGetPosts = createAsyncThunk(
   "posts/getPosts",
   async (searchInput: string) => {
-    try {
-      const response = await axios.get<ForPost[]>(
-        `https://studapi.teachmeskills.by/blog/posts/?search=${searchInput}&limit=100&offset=0`
-      );
-
-      return response.data.results;
-    } catch (error) {
-      return isRejectedWithValue("и БАц!");
-    }
+    const response = await axios.get<Data>(
+      `https://studapi.teachmeskills.by/blog/posts/?search=${searchInput}&limit=100&offset=0`
+    );
+    return response.data.results;
   }
 );
 
 export const thunkSelectPost = createAsyncThunk(
   "posts/selectPost",
-  async (id: string | undefined) => {
-    if (id === undefined) return;
-    try {
-      const response = await axios.get<ForPost>(
-        `https://studapi.teachmeskills.by/blog/posts/${id}`
-      );
-
-      return response.data;
-    } catch (error) {
-      return isRejectedWithValue("и БАц!");
-    }
+  async (id: string) => {
+    const response = await axios.get<ForPost>(
+      `https://studapi.teachmeskills.by/blog/posts/${id}`
+    );
+    return response.data;
   }
 );
 
@@ -123,9 +114,12 @@ export const postsSlice = createSlice({
         state.posts = action.payload;
       }
     );
-    builder.addCase(thunkSelectPost.fulfilled, (state, action) => {
-      state.post = action.payload;
-    });
+    builder.addCase(
+      thunkSelectPost.fulfilled,
+      (state, action: PayloadAction<ForPost>) => {
+        state.post = action.payload;
+      }
+    );
   },
 });
 export const { ratePost, savePost, setLikedPosts, setSavedPosts } =

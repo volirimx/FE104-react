@@ -13,7 +13,7 @@ import PopUp from "../../components/PopUp/PopUp";
 
 const Posts = () => {
   const [active, setActive] = useState<boolean>(false);
-  const [postId, setPostId] = useState<number | null>(null);
+  const [postId, setPostId] = useState<number>(0);
   const { searchInput } = useContext(ContextSearchInput);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();

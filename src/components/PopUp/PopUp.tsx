@@ -1,3 +1,4 @@
+import { SetStateAction } from "react";
 import { useAppSelector } from "../../redux/hook";
 
 import styles from "./popup.module.css";
@@ -9,9 +10,9 @@ const PopUp = ({
   setId,
 }: {
   active: boolean;
-  setActive: () => void;
+  setActive: (arg: boolean) => void;
   id: number | null;
-  setId: () => number;
+  setId: React.Dispatch<SetStateAction<number>>;
 }) => {
   const posts = useAppSelector((state) => state.posts.posts);
   const postIndex = posts.findIndex((post) => post.id === id);
@@ -21,7 +22,7 @@ const PopUp = ({
 
   const nextImage = () => {
     if (postIndex === posts.length - 1) return;
-    setId((old: number) => old + 1);
+    setId((old) => old + 1);
   };
   const prevImage = () => {
     if (postIndex === 0) return;
@@ -45,10 +46,26 @@ const PopUp = ({
         />
         <div className={styles.nav}>
           <div className={styles.navLeft} onClick={prevImage}>
-            left
+            <svg
+              width="24"
+              height="24"
+              xmlns="http://www.w3.org/2000/svg"
+              fillRule="evenodd"
+              clipRule="evenodd"
+            >
+              <path d="M2.117 12l7.527 6.235-.644.765-9-7.521 9-7.479.645.764-7.529 6.236h21.884v1h-21.883z" />
+            </svg>
           </div>
           <div className={styles.navRight} onClick={nextImage}>
-            right
+            <svg
+              width="24"
+              height="24"
+              xmlns="http://www.w3.org/2000/svg"
+              fillRule="evenodd"
+              clipRule="evenodd"
+            >
+              <path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" />
+            </svg>
           </div>
         </div>
       </div>

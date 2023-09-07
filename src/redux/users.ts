@@ -32,17 +32,38 @@ export const thunkSendRequest = createAsyncThunk(
   }
 );
 
+export const thunkSwitchAccessToken = createAsyncThunk(
+  "users/switchAccessToken",
+  async (refreshToken: string | null) => {
+    const response = await axios.post(
+      "https://studapi.teachmeskills.by/auth/jwt/refresh/",
+      {
+        refresh: refreshToken,
+      }
+    );
+    localStorage.setItem("accessToken", response.data.access);
+
+    console.log(localStorage.getItem("accessToken"));
+  }
+);
+
 export const userSlice = createSlice({
   name: "user",
   initialState: initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(
-      thunkSendRequest.fulfilled,
-      (state, action: PayloadAction<User>) => {
-        action.payload;
-      }
-    );
+    builder
+      .addCase(
+        thunkSendRequest.fulfilled,
+        (state, action: PayloadAction<User>) => {
+          action.payload;
+        }
+      )
+      .addCase(thunkSwitchAccessToken.fulfilled, (state, action) => {
+        {
+          action.payload;
+        }
+      });
   },
 });
 
