@@ -24,11 +24,6 @@ export const registerUser = createAsyncThunk("user/registerUser", async (data: R
     const response = await axios.post(
       "https://studapi.teachmeskills.by/auth/users/", 
       data,
-      {
-        headers: {
-          Authorization: "",
-        },
-      }
     );
 
     // const fetchResponse = fetch("https://studapi.teachmeskills.by/auth/users/", 
@@ -57,12 +52,10 @@ export const userSlice = createSlice({
     // ) => {
     //     state.age=action.payload.age;
     //     state.email=action.payload.email;
-    //     state.username=action.payload.username;
     // }    
   },
   extraReducers: (builder) => {
     builder.addCase(registerUser.fulfilled, (state, action) => {
-      // state = action.payload;
       state.email = action.payload.email;
       state.username = action.payload.username;
     });

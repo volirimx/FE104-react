@@ -17,20 +17,8 @@ export const PostEvaluation = ({
 }:{
     post: PostState;
     handleRatePost: (id: number, grade: PostGrade) => void;
-    handleBookmarkedPost: (id: number, grade: BookmarkedGrade) => void;
+    handleBookmarkedPost: (id: number, isFavorite: BookmarkedGrade) => void;
 }) => {
-
-    // const handleLikeClick = () => {
-    //     post.grade === "liked" ? handleRatePost(post.id, undefined) : handleRatePost(post.id, "liked");
-    // }
-
-    // const handleDisikeClick = () => {
-    //     post.grade === "disliked" ? handleRatePost(post.id, undefined) : handleRatePost(post.id, "disliked");
-    // }
-
-    // const handleBookmarksClick = () => {
-    //     post.bookmarked === true ? handleBookmarkedPost(post.id, false) : handleBookmarkedPost(post.id, true);
-    // }
     
     return(
         <div className={styles.post_buttons}>
@@ -59,7 +47,7 @@ export const PostEvaluation = ({
                             handleBookmarkedPost(post.id, true);
                         }}  
                     >
-                        <img src ={post.bookmarked === true ?  bookmarks_active : bookmarks_disabled} id={styles.bookmarks}/>
+                        <img src ={post.isFavorite === true ?  bookmarks_active : bookmarks_disabled} id={styles.bookmarks}/>
                     </div>
                     <div>
                         <img src = {menu} id={styles.menu}/>

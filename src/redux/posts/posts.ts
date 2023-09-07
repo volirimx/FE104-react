@@ -4,6 +4,8 @@ import axios from 'axios';
 
 export type PostGrade = "liked" | "disliked" | undefined;
 export type BookmarkedGrade = true | false;
+export type isFavorite = true | false;
+
 // Define a type for the slice state
 export interface PostState {
     id: number;
@@ -13,9 +15,9 @@ export interface PostState {
     date: string;
     lesson_num: number;
     author: number;
-    
+
     grade: PostGrade;
-    bookmarked: BookmarkedGrade;
+    isFavorite: BookmarkedGrade;
 }
 
 // Define the initial state using that type
@@ -27,13 +29,20 @@ export const fetchPosts = createAsyncThunk("post/fetchPosts", async () => {
     return response.data.results;
 });
 
+export const fetchSinglePost = createAsyncThunk("post/fetchSinglePost", async ({ postId} : { postId: number} ) => {
+    const response = await axios.get(`https://studapi.teachmeskills.by/blog/posts/${postId}/`);
+    console.log(response);
+    return response.data.results;
+});
+
 interface RatePostPayload{
     id: number;
-    grade: PostGrade;
+    grade: PostGrade; 
 }
+
 interface RateBookmark{
     id: number;
-    bookmarked: BookmarkedGrade;
+    isFavorite: BookmarkedGrade;
 }
 
 export const postSlice = createSlice({
@@ -68,15 +77,21 @@ export const postSlice = createSlice({
 
             const searchedPost = state[searchedPostIndex];
             
-            searchedPost.bookmarked = !searchedPost.bookmarked;
+            searchedPost.isFavorite = !searchedPost.isFavorite;
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(fetchPosts.fulfilled, (state, action) => {
-            return [...action.payload];
-        });
-    }    
+        builder
+            .addCase(fetchPosts.fulfilled, (state, action) => {
+                return [...action.payload];
+            })
+            .addCase(fetchSinglePost.fulfilled, (state, action) => {
+                const post = action.payload; // предполагая, что action.payload содержит один пост
+                return [...state, post]; // добавить пост в массив состояния
+            });
+    },
 });
+
 
 export const { setPosts, ratePost, handleBookmark } = postSlice.actions
 

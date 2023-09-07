@@ -38,7 +38,7 @@ export const CustomInput = ({
             type={inputType}
             inputMode={inputMode}
           />
-          {isValid ? "" : <h3>{errorText}</h3>}
+          {isValid ? "" : <h3 id={styles.error_text}>{errorText}</h3>}
         </div>
       );
 }

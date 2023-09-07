@@ -23,16 +23,17 @@ const navigate = useNavigate();
 const dispatch = useAppDispatch();
 const posts = useSelector(selectAllPosts);
 
-// const [posts, setPosts] = useState<Post[]>([]);
+console.log("posts:", posts);
+
+
 const params = useParams();
-console.log(params);
 
 const handleRateButtonClick = (id: number, grade: PostGrade) => {
     dispatch(ratePost({id, grade}));
 };  
-const handleRateBookmarksClick = (id: number, bookmarked: BookmarkedGrade) => {
-    dispatch(handleBookmark({id, bookmarked}));
-};  
+ const handleRateBookmarksClick = (id: number, isFavorite: BookmarkedGrade) => {
+    dispatch(handleBookmark({id, isFavorite}));
+}; 
 
 useEffect(() => {
     dispatch(fetchPosts());
@@ -45,7 +46,7 @@ const filteredPosts = posts.filter((post) => {
         case "All":
             return true;
         case "My favorites":
-            return post.grade === "liked" || post.grade !== undefined;
+            return post.isFavorite === true ;
         case "Popular":
             return true;
         default: 
@@ -53,6 +54,7 @@ const filteredPosts = posts.filter((post) => {
     }
 });
 
+// const [posts, setPosts] = useState<Post[]>([]);
 // useEffect(() => {
 //     (async () => {
 //         const response = await axios.get(
