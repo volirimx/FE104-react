@@ -1,5 +1,4 @@
 import { Post } from '../../api/posts/types.ts';
-import { getPosts } from '../../api/posts/requests.ts';
 import styles from './index.module.css';
 import { useNavigate } from 'react-router-dom';
 import { CardPostMiddle } from '../../components/CardPostMiddle/index.tsx';
@@ -9,7 +8,7 @@ import { CardPostSmall } from '../../components/CardPostSmall/index.tsx';
 import { useAppDispatch } from './../../redux/hooks.ts';
 import {
     PostGrade,
-  //   fetchPosts,
+    fetchPosts,
     ratePost,
   } from "./../../redux/post/post.ts";
 
@@ -23,14 +22,8 @@ export const BlogPage = () => {
         dispatch(ratePost({id, grade}))
     }
     const [posts, setPosts] = useState<Post[]>([]);
-    const limit: number = 12;
-    const offset: number = 30;
     useEffect(() => {
-        getPosts(limit, offset, (posts: Post[] | null) => {
-            if (posts) {
-                setPosts(posts);
-            }
-        });
+         dispatch(fetchPosts());//как установить посты??? 45 домашка
     }, []);
 
     const tabItems: Tab[] = [

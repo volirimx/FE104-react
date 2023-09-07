@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Button } from '../../components/Button';
 import { useNavigate, Link } from 'react-router-dom';
 import styles from './index.module.css';
+import axios from 'axios';
 
 export const SignInPage = () => {
     type InputInfo = {
@@ -18,23 +19,35 @@ export const SignInPage = () => {
     const handleInputPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPasswordInfo((oldValue) => ({ ...oldValue, value: e.target.value, isValid: true }));
     }
+    type UserData = {
+        email: string;
+        password: string;
+      }
+  
+    const getTokenRequest = async(userData: UserData) => {
+        const response = await axios.post('https://studapi.teachmeskills.by/auth/jwt/create/',
+            userData);
+            console.log(response);
 
+    }
     const SignInClick = () => {
-        const userInfo = localStorage.getItem('CurrentUser');
-        if (!userInfo) {
-            setEmailInfo((oldValue) => ({ ...oldValue, isValid: false }));
-            setPasswordInfo((oldValue) => ({ ...oldValue, isValid: false }));
-            return;
-        }
-        const userInfoObj = JSON.parse(userInfo);
-        if (userInfoObj.email !== emailInfo.value) {
-            setEmailInfo((oldValue) => ({ ...oldValue, isValid: false }));
-            return;
-        }
-        if (userInfoObj.password !== passwordInfo.value) {
-            setPasswordInfo((oldValue) => ({ ...oldValue, isValid: false }));
-            return;
-        }
+        getTokenRequest({email: emailInfo.value, password: passwordInfo.value});
+
+        // const userInfo = localStorage.getItem('CurrentUser');
+        // if (!userInfo) {
+        //     setEmailInfo((oldValue) => ({ ...oldValue, isValid: false }));
+        //     setPasswordInfo((oldValue) => ({ ...oldValue, isValid: false }));
+        //     return;
+        // }
+        // const userInfoObj = JSON.parse(userInfo);
+        // if (userInfoObj.email !== emailInfo.value) {
+        //     setEmailInfo((oldValue) => ({ ...oldValue, isValid: false }));
+        //     return;
+        // }
+        // if (userInfoObj.password !== passwordInfo.value) {
+        //     setPasswordInfo((oldValue) => ({ ...oldValue, isValid: false }));
+        //     return;
+        // }
         navigate('/');
     }
     return (

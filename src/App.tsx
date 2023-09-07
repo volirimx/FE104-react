@@ -23,7 +23,7 @@ function App() {
             <Route path='/' element={<Layout />} >
               {/* <Route index element=''} /> */}
               <Route path='registration' element={<RegistrationPage />} />
-              <Route path='confirmation' element={<ConfirmationPage />} />
+              <Route path='confirmation/:uid/:token' element={<ConfirmationPage />} />
               <Route path='success' element={<SuccessPage />} />
               <Route path='signIn' element={<SignInPage />} />
               <Route path='search' element={<SearchPage/>}/>

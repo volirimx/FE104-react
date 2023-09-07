@@ -1,13 +1,27 @@
 import { Button } from '../../components/Button';
 import styles from './index.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useAppSelector } from "../../redux/hooks";
+import { selectUserEmail } from "../../redux/user/user";
+import axios from 'axios';
+import { useEffect } from 'react'
 
 export const ConfirmationPage = () => {
-    const userInfo = localStorage.getItem("CurrentUser");
-    let email = 'xxx@gmail.com';
-    if (userInfo) {
-        email = JSON.parse(userInfo).email;
-    }
+    const email: string = useAppSelector(selectUserEmail);   
+    const {uid, token} = useParams();
+    // NzAzOQ/bu609p-b9ea93f9f33d2193b5640f8568b3037e
+    useEffect(() => {
+        if(uid && token){
+            (async () => {
+                const response = await axios.post(
+                    "https://studapi.teachmeskills.by/auth/users/activation/",
+                    {uid, token}
+                );
+                console.log(response);
+            })();
+        }        
+    }, [token, uid]);
+    
     return (
         <div className={styles.confirmationContainer}>
             <div className={styles.headers}>

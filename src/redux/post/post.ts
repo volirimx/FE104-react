@@ -1,6 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../store';
 import type { Post } from  '../../api/posts/types';
+import axios from "axios";
 
 export type PostGrade = 'liked'| 'disliked';
 type RatePostPayload = {
@@ -49,6 +50,10 @@ const initialState: Post[] = [{
     'onRateClick': () => {}
     }   
 ];
+export const fetchPosts = createAsyncThunk("post/fetchPosts", async () => {
+    const response = await axios.get("https://studapi.teachmeskills.by/blog/posts/?lesson_num=2023&limit=20");
+    return response.data.results;
+  });
 
 export const postSlice = createSlice({
     name: 'post',
@@ -65,8 +70,7 @@ export const postSlice = createSlice({
               if (searchedPostIndex === -1) return state;
         
               const payload = action.payload;
-              const searchedPost = state[searchedPostIndex];
-              
+              const searchedPost = state[searchedPostIndex];              
         
               if (payload.grade === 'liked') {
                 searchedPost.likes += 1;
@@ -74,8 +78,12 @@ export const postSlice = createSlice({
                 searchedPost.dislikes += 1;
               }
         }
-
     },
+    extraReducers: (builder) => {
+        builder.addCase(fetchPosts.fulfilled, (state, action) => {
+          return action.payload;
+        });
+      },
 })
 
 export const { setPosts, ratePost } = postSlice.actions

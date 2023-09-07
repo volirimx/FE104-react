@@ -3,11 +3,11 @@ import { useState } from 'react';
 import { Button } from '../../components/Button';
 import styles from './index.module.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { registerUser, selectUser } from "../../redux/user/user";
+import { useAppDispatch } from "../../redux/hooks";
+import { registerUser } from "../../redux/user/user";
 
 export const RegistrationPage = () => {
-    const user = useAppSelector(selectUser);
+   
     const dispatch = useAppDispatch();
 
     type InputInfo = {
@@ -62,7 +62,7 @@ export const RegistrationPage = () => {
             setPasswordConfirmInfo((oldValue) => ({ ...oldValue, isValid: true }));
         }
     }
-    const redirectToSuccessRegistration = () => {
+    const redirectToConfirmation = () => {
         navigate('/confirmation');
     }
     const handleDispatchClick = () => {
@@ -82,7 +82,7 @@ export const RegistrationPage = () => {
         if (nameInfo.isValid && emailInfo.isValid && passwordInfo.isValid && passwordConfirmInfo.isValid && nameInfo.value.length > 0) {
             // localStorage.setItem("CurrentUser", JSON.stringify({ name: nameInfo.value, email: emailInfo.value, password: passwordInfo.value }));
             handleDispatchClick();
-            redirectToSuccessRegistration();
+            redirectToConfirmation();
         }
     }
 
