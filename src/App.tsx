@@ -25,7 +25,7 @@ function App() {
   useEffect(() => {
     setInterval(async () => {
       dispatch(thunkSwitchAccessToken(refreshToken));
-    }, 10000);
+    }, 270000);
   });
   return (
     <>

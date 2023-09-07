@@ -42,8 +42,6 @@ export const thunkSwitchAccessToken = createAsyncThunk(
       }
     );
     localStorage.setItem("accessToken", response.data.access);
-
-    console.log(localStorage.getItem("accessToken"));
   }
 );
 
