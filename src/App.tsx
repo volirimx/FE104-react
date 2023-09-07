@@ -13,8 +13,14 @@ import { RequireAuth } from "./hoc/RequireAuth";
 import { AuthProvider } from "./hoc/AuthProvider";
 import { FavoritesPage } from "./pages/favotitespage";
 import { EmailActivation } from "./pages/EmailActivation";
+import { useUpdateTokens } from './hooks/useUpdToken';
+
 
 function App() {
+  useUpdateTokens();
+  console.log('token is updated');
+  
+
   return (
     <AuthProvider>
       <Routes>

@@ -12,7 +12,7 @@ export const Successpage = () => {
   const goPosts = () => navigate("/posts");
 
   // const user = useSelector(selectUser);
-  const accessToken = useSelector((state: RootState) => state.postSlice.accessToken);
+  const accessToken = useSelector((state: RootState) => state.user.access);
   console.log("access:" + accessToken);
   
   

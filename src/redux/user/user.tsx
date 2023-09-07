@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
-import { User, UserRequest } from "../../models";
+import { User, UserLogin, UserRequest } from "../../models";
 import axios from "axios";
 
 export const postUser = createAsyncThunk(
@@ -25,9 +25,42 @@ export const postUser = createAsyncThunk(
 
 //http://studapi.teachmeskills.by//activate/NzAzMA/bu4feb-8bf41fa4efada31e581d68083a92937c
 // Define the initial state using that type
+export const signIn = createAsyncThunk("user/signIn", async (formData: UserLogin) => {
+  try {
+    const response = await axios.post(
+      "https://studapi.teachmeskills.by/auth/jwt/create/",
+      formData
+    );
+    localStorage.setItem('refreshToken', `${response.data.refresh}`);
+    return response.data.access;
+  } catch (error) {
+      console.error("Ошибка при выполнении Axios-запроса:", error);
+      throw error;
+  }    
+});
+
+export const updateToken = createAsyncThunk(
+  "user/updateToken",
+  async (refreshTokenFromLS: string) => {
+    try {
+      const response = await axios.post(
+        "https://studapi.teachmeskills.by/auth/jwt/refresh/",
+        {
+          refresh: `${refreshTokenFromLS}`,
+        }
+      );
+      return response.data.access;
+    } catch (error) {
+      console.error("Ошибка при выполнении Axios-запроса:", error);
+      throw error;
+    }
+  }
+);
+
 const initialState: User = {
   name: "",
   email: "",
+  access: ''
 };
 
 export const userSlice = createSlice({
@@ -51,6 +84,14 @@ export const userSlice = createSlice({
       // state.confirmPassword = '';
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(signIn.fulfilled, (state, action) => {
+      state.access = action.payload
+    })
+    builder.addCase(updateToken.fulfilled, (state, action) => {
+      state.access = action.payload
+    }) 
+  }
 });
 
 export const { setUser, clearUser } = userSlice.actions;

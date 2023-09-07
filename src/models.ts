@@ -6,6 +6,7 @@ export interface CardDataResult {
 export interface User {
   name: "";
   email: "";
+  access: ""
 }
 
 export interface PostState {

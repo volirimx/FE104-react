@@ -1,4 +1,3 @@
-import postSlice from "../components/FormForLogin/formForLogin";
 import { configureStore } from '@reduxjs/toolkit'
 import post from "./counter/posts";
 import user from "../redux/user/user";
@@ -7,7 +6,7 @@ import counter from "../redux/counter/count";
 
 
 export const store = configureStore({
-  reducer: { post, user, them, counter, postSlice },
+  reducer: { post, user, them, counter },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
