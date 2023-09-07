@@ -4,9 +4,9 @@ import ContextSearchInput from "../../ContextSearchInput";
 import { useNavigate } from "react-router-dom";
 import Save from "../../components/Svg/Save";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
-import { fetchPosts } from "../../api/getPosts";
+
 import Like from "../../components/Svg/Like";
-import { ratePost, savePost } from "../../redux/posts";
+import { thunkGetPosts, ratePost, savePost } from "../../redux/posts";
 import Dislike from "../../components/Svg/Dislike";
 
 import PopUp from "../../components/PopUp/PopUp";
@@ -17,12 +17,10 @@ const Posts = () => {
   const { searchInput } = useContext(ContextSearchInput);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { posts, isLoading, error } = useAppSelector((state) => state);
+  const posts = useAppSelector((state) => state.posts.posts);
 
   useEffect(() => {
-    if (posts.length === 0) {
-      dispatch(fetchPosts(searchInput));
-    }
+    dispatch(thunkGetPosts(searchInput));
   }, [searchInput, dispatch, posts.length]);
 
   const redirect = (id: number) => {
@@ -79,8 +77,6 @@ const Posts = () => {
 
   return (
     <>
-      <div>{isLoading && <h1> Загрузка постов...</h1>}</div>
-      <div>{error && <h1> Ошибочка!!!</h1>}</div>
       <div className={styles.posts}>{mappedPosts}</div>
       <PopUp
         setActive={setActive}

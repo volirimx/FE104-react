@@ -13,7 +13,7 @@ const PopUp = ({
   id: number | null;
   setId: () => number;
 }) => {
-  const posts = useAppSelector((state) => state.posts);
+  const posts = useAppSelector((state) => state.posts.posts);
   const postIndex = posts.findIndex((post) => post.id === id);
   if (!postIndex && postIndex !== 0) {
     return;

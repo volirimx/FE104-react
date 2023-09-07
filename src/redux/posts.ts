@@ -1,6 +1,11 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {
+  createAsyncThunk,
+  createSlice,
+  isRejectedWithValue,
+  PayloadAction,
+} from "@reduxjs/toolkit";
 import { RootState } from "./store";
-import { fetchPosts } from "../api/getPosts";
+import axios from "axios";
 
 export type Rate = undefined | 1 | 2;
 
@@ -30,15 +35,48 @@ export interface ForPost {
 
 interface PostsState {
   posts: ForPost[];
-  isLoading: boolean;
-  error: string;
+  likedPosts: ForPost[];
+  savedPosts: ForPost[];
+  post: ForPost | undefined;
 }
 
 const initialState: PostsState = {
   posts: [],
-  isLoading: false,
-  error: "",
+  likedPosts: [],
+  savedPosts: [],
+  post: undefined,
 };
+
+export const thunkGetPosts = createAsyncThunk(
+  "posts/getPosts",
+  async (searchInput: string) => {
+    try {
+      const response = await axios.get<ForPost[]>(
+        `https://studapi.teachmeskills.by/blog/posts/?search=${searchInput}&limit=100&offset=0`
+      );
+
+      return response.data.results;
+    } catch (error) {
+      return isRejectedWithValue("и БАц!");
+    }
+  }
+);
+
+export const thunkSelectPost = createAsyncThunk(
+  "posts/selectPost",
+  async (id: string | undefined) => {
+    if (id === undefined) return;
+    try {
+      const response = await axios.get<ForPost>(
+        `https://studapi.teachmeskills.by/blog/posts/${id}`
+      );
+
+      return response.data;
+    } catch (error) {
+      return isRejectedWithValue("и БАц!");
+    }
+  }
+);
 
 export const postsSlice = createSlice({
   name: "posts",
@@ -48,7 +86,6 @@ export const postsSlice = createSlice({
       const postIndex = state.posts.findIndex(
         (post) => post.id === action.payload.id
       );
-
       if (postIndex === -1) return state;
       const neededPost = state.posts[postIndex];
 
@@ -72,32 +109,40 @@ export const postsSlice = createSlice({
         neededPost.saved = action.payload.saved;
       }
     },
+    setLikedPosts(state, action: PayloadAction<ForPost[]>) {
+      state.likedPosts = action.payload;
+    },
+    setSavedPosts(state, action: PayloadAction<ForPost[]>) {
+      state.savedPosts = action.payload;
+    },
   },
-  extraReducers: {
-    [fetchPosts.fulfilled.type]: (state, action: PayloadAction<ForPost[]>) => {
-      state.isLoading = false;
-      state.error = "";
-      state.posts = action.payload;
-    },
-    [fetchPosts.rejected.type]: (state, action: PayloadAction<string>) => {
-      state.isLoading = false;
-      state.error = action.payload;
-    },
-    [fetchPosts.pending.type]: (state) => {
-      state.isLoading = true;
-    },
+  extraReducers: (builder) => {
+    builder.addCase(
+      thunkGetPosts.fulfilled,
+      (state, action: PayloadAction<ForPost[]>) => {
+        state.posts = action.payload;
+      }
+    );
+    builder.addCase(thunkSelectPost.fulfilled, (state, action) => {
+      state.post = action.payload;
+    });
   },
 });
-export const { ratePost, savePost } = postsSlice.actions;
+export const { ratePost, savePost, setLikedPosts, setSavedPosts } =
+  postsSlice.actions;
 export const selectRate = (id: number) => (store: RootState) => {
-  const searchedPost = store.posts.find((post) => post.id === id);
+  const searchedPost = store.posts.posts.find(
+    (post: ForPost) => post.id === id
+  );
   if (searchedPost) {
     return searchedPost.rate;
   }
   return undefined;
 };
 export const selectSave = (id: number) => (store: RootState) => {
-  const searchedPost = store.posts.find((post) => post.id === id);
+  const searchedPost = store.posts.posts.find(
+    (post: ForPost) => post.id === id
+  );
   if (searchedPost) {
     return searchedPost.saved;
   }

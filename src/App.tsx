@@ -14,6 +14,7 @@ import { Post } from "./pages/Post/Post";
 import ContextTheme from "./ContextTheme";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import Activation from "./pages/Activation/Activation";
 
 function App() {
   const [searchInput, setSearchInput] = useState("");
@@ -57,6 +58,7 @@ function App() {
                       }
                     />
                     <Route path="/confirm" element={<Confirm />} />
+                    <Route path="/activation" element={<Activation />} />
                   </Routes>
                 </Wrapper>
               </BrowserRouter>
