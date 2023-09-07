@@ -13,9 +13,7 @@ export const User = ({ userName, isMenuOpened }: UserProps) => {
       </div>{' '}
       {userName}
     </div>
-  ) : (
-    <></>
-  );
+  ) : null;
 };
 
 //функция првых 2-х букв
