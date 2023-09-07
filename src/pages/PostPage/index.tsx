@@ -6,16 +6,17 @@ import { useState, useEffect } from 'react';
 
 export const PostPage = () => {
     const params = useParams();
-    const postId = params.postId;
     const [post, setPost] = useState<Post>();
+    const postId = params.postId; 
+    const callbackSetPost = (post: Post|null) => {
+        if (!post) return;
+        setPost(post);
+    }
     useEffect(() => {
         if (!postId) return;
-        getPostById(parseInt(postId), (post) => {
-            if (!post) return;
-            setPost(post);
-        });
+        getPostById({id: parseInt(postId), callback: callbackSetPost });
     }, [postId]);
-
+    
     return (
         <div className={styles.container}>
             <p>{post?.date}</p>

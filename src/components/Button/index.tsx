@@ -1,7 +1,7 @@
 import styles from "./index.module.css";
 
 type ButtonMode = 'primary' | 'secondary' | 'tertiary';
-interface Button {
+type Button = {
     mode: ButtonMode;
     disabled?: boolean;
     content: string;

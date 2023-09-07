@@ -1,16 +1,21 @@
 import styles from './index.module.css';
 
-export interface Tab {
+export type Tab = {
     id: number;
     name: string;
     disabled?: boolean;
 }
-export const Tabs = (props: { tabs: Tab[], selectedId: number, onTabClick: (id: number) => void }) => {
+export type Tabs = {
+    tabs: Tab[];
+    selectedId: number;
+    onTabClick: (id: number) => void;
+}
+export const Tabs = ({ tabs, selectedId, onTabClick }: Tabs) => {
     return (
         <div className={styles.tabsWrapper}>
-            {props.tabs.map((tab) => (
-                <div key={tab.id} className={`${styles.tabWrapper} ${tab.id === props.selectedId ? styles.tabActive : styles.tabInactive}`}>
-                    <button className={styles.button} disabled={tab.disabled} onClick={() => props.onTabClick(tab.id)}>
+            {tabs.map((tab) => (
+                <div key={tab.id} className={`${styles.tabWrapper} ${tab.id === selectedId ? styles.tabActive : styles.tabInactive}`}>
+                    <button className={styles.button} disabled={tab.disabled} onClick={() => onTabClick(tab.id)}>
                         {tab.name}
                     </button>
                 </div>

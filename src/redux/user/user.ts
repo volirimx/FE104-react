@@ -43,6 +43,11 @@ export const userSlice = createSlice({
             state.email = action.payload.email;
             state.username = action.payload.username;
         })
+        builder.addCase(registerUser.rejected, (state, action) => {
+            console.log(state);
+            console.log(action);
+
+        })
     }
 })
 
@@ -50,5 +55,6 @@ export const { setUser } = userSlice.actions
 
 export const selectUser = (store: RootState) => store.user;
 export const selectUserEmail = (store: RootState) => store.user.email;
+export const selectUsername = (store: RootState) => store.user.username;
 
 export default userSlice.reducer

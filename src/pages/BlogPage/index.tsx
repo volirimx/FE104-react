@@ -2,10 +2,11 @@ import { Post } from '../../api/posts/types.ts';
 import styles from './index.module.css';
 import { useNavigate } from 'react-router-dom';
 import { CardPostMiddle } from '../../components/CardPostMiddle/index.tsx';
-import { Tabs, Tab } from '../../components/Tabs/index.tsx';
+import { Tabs } from '../../components/Tabs/index.tsx';
 import { useState, useEffect } from 'react';
 import { CardPostSmall } from '../../components/CardPostSmall/index.tsx';
 import { useAppDispatch } from './../../redux/hooks.ts';
+import { tabItems } from './../../utils/constants.ts'
 import {
     PostGrade,
     fetchPosts,
@@ -13,29 +14,24 @@ import {
   } from "./../../redux/post/post.ts";
 
 export const BlogPage = () => {
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
+    const [posts, setPosts] = useState<Post[]>([]);
+
     const redirectToPost = (id: number) => {
         navigate(`${id}`);
-    }  
-    const dispatch = useAppDispatch();
+    }    
     const handleRateClick = (id: number, grade: PostGrade) => {
         dispatch(ratePost({id, grade}))
-    }
-    const [posts, setPosts] = useState<Post[]>([]);
+    }    
     useEffect(() => {
          dispatch(fetchPosts());//как установить посты??? 45 домашка
     }, []);
-
-    const tabItems: Tab[] = [
-        { name: 'All', id: 1 },
-        { name: 'My favorites', id: 2 },
-        { name: 'Popular', id: 3 }
-    ]
+       
     const [selectedTab, setSelectedTab] = useState(tabItems[0].id);
     const handleTabClick = (selectedId: number) => {
         setSelectedTab(selectedId);
     }
-
     return (
         <div className={styles.container} key={'blogPage'}>
             <h2>Blog</h2>

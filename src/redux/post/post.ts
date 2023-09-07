@@ -65,13 +65,10 @@ export const postSlice = createSlice({
         ratePost: (state, action:PayloadAction<RatePostPayload>)=>{
             const searchedPostIndex = state.findIndex(
                 (post) => post.id === action.payload.id
-              );
-        
-              if (searchedPostIndex === -1) return state;
-        
+              );        
+              if (searchedPostIndex === -1) return state;        
               const payload = action.payload;
-              const searchedPost = state[searchedPostIndex];              
-        
+              const searchedPost = state[searchedPostIndex]; 
               if (payload.grade === 'liked') {
                 searchedPost.likes += 1;
               } else {

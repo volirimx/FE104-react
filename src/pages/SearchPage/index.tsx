@@ -7,11 +7,12 @@ import { CardPostMiddle } from '../../components/CardPostMiddle/index.tsx';
 
 export const SearchPage = () => {
     const [posts, setPosts] = useState<Post[]>([]);
-    useEffect(() => {
-        getPosts(10,15, (posts: Post[] | null) => {
+    const callbackSetPosts = (posts: Post[] | null) =>{
         if (posts)
             setPosts(posts);
-        });
+    }
+    useEffect(() => {
+        getPosts({limit: 10, offset: 15, callback: callbackSetPosts});
     }, []);
     const navigate = useNavigate();
     const redirectToPost = (id: number) => {
@@ -31,10 +32,12 @@ export const SearchPage = () => {
                             title={post.title}
                             text={post.text}
                             image={post.image}
+                            likes={post.likes}
+                            dislikes={post.dislikes}
+                            onRateClick={()=>{}}
                             onClick={redirectToPost} />
                     ))}
                 </div>
         </div>
     )
-
 } 

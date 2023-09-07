@@ -6,16 +6,18 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from "../../redux/hooks";
 import { registerUser } from "../../redux/user/user";
 
-export const RegistrationPage = () => {
-   
+type InputInfo = {
+    value: string;
+    isValid: boolean;
+} 
+export const RegistrationPage = () => {   
     const dispatch = useAppDispatch();
-
-    type InputInfo = {
-        value: string;
-        isValid: boolean;
-    }
     const navigate = useNavigate();
     const [nameInfo, setNameInfo] = useState<InputInfo>({ value: '', isValid: true });
+    const [emailInfo, setEmailInfo] = useState<InputInfo>({ value: '', isValid: true });
+    const [passwordInfo, setPasswordInfo] = useState<InputInfo>({ value: '', isValid: true });
+    const [passwordConfirmInfo, setPasswordConfirmInfo] = useState<InputInfo>({ value: '', isValid: true });
+    
     const handleInputNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNameInfo((oldValue) => ({ ...oldValue, value: e.target.value, isValid: true }));
     }
@@ -25,9 +27,7 @@ export const RegistrationPage = () => {
         } else {
             setNameInfo((oldValue) => ({ ...oldValue, isValid: true }));
         }
-    }
-
-    const [emailInfo, setEmailInfo] = useState<InputInfo>({ value: '', isValid: true });
+    }   
     const handleInputEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmailInfo((oldValue) => ({ ...oldValue, value: e.target.value, isValid: true }));
     }
@@ -37,9 +37,7 @@ export const RegistrationPage = () => {
         } else {
             setEmailInfo((oldValue) => ({ ...oldValue, isValid: true }));
         }
-    }
-
-    const [passwordInfo, setPasswordInfo] = useState<InputInfo>({ value: '', isValid: true });
+    }   
     const handleInputPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPasswordInfo((oldValue) => ({ ...oldValue, value: e.target.value, isValid: true }));
     }
@@ -50,8 +48,6 @@ export const RegistrationPage = () => {
             setPasswordInfo((oldValue) => ({ ...oldValue, isValid: true }));
         }
     }
-
-    const [passwordConfirmInfo, setPasswordConfirmInfo] = useState<InputInfo>({ value: '', isValid: true });
     const handleInputConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPasswordConfirmInfo((oldValue) => ({ ...oldValue, value: e.target.value, isValid: true }));
     }
@@ -80,8 +76,7 @@ export const RegistrationPage = () => {
         passwordInputValidator();
         passwordConfirmInputValidator();
         if (nameInfo.isValid && emailInfo.isValid && passwordInfo.isValid && passwordConfirmInfo.isValid && nameInfo.value.length > 0) {
-            // localStorage.setItem("CurrentUser", JSON.stringify({ name: nameInfo.value, email: emailInfo.value, password: passwordInfo.value }));
-            handleDispatchClick();
+           handleDispatchClick();
             redirectToConfirmation();
         }
     }

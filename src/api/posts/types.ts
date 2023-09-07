@@ -14,3 +14,14 @@ export type Post = {
     onClick: (id: number) => void;
     onRateClick: (id: number, grade: PostGrade) => void
 }
+
+export type PostRequestType = {
+    limit: number;
+    offset: number;
+    callback: (posts: Post[] | null) => void;
+}
+
+export type PostByIdRequestType = {
+    id: number;
+    callback: (post: Post | null) => void;
+}

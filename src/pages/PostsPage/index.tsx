@@ -1,11 +1,8 @@
 import { Post } from '../../api/posts/types.ts';
-
 import {  useNavigate } from 'react-router-dom';
-
 import { useAppDispatch, useAppSelector } from './../../redux/hooks.ts';
 import {
   PostGrade,
-//   fetchPosts,
   ratePost,
   selectPosts,
 } from "./../../redux/post/post.ts";
@@ -13,11 +10,12 @@ import { CardPostMiddle } from '../../components/CardPostMiddle/index.tsx';
 
 export const PostsPage = () => {
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+    const posts: Post[] = useAppSelector(selectPosts);
+    
     const redirectToPost = (id: number) => {
         navigate(`${id}`);
-    }
-    const posts: Post[] = useAppSelector(selectPosts);
-    const dispatch = useAppDispatch();
+    }  
     const handleRateClick = (id: number, grade: PostGrade) => {
         dispatch(ratePost({id, grade}))
     }
@@ -38,8 +36,6 @@ export const PostsPage = () => {
                 likes={post.likes}
                 dislikes={post.dislikes}/>
         ))}
-        </div>
-       
+        </div>       
     )
-
 }

@@ -1,6 +1,6 @@
 import styles from "./index.module.css";
 
-interface User {
+type User = {
     name: string
 }
 export const User = ({ name }: User) => {

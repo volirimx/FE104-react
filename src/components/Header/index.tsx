@@ -7,27 +7,25 @@ import styles from './index.module.css';
 import { useNavigate } from 'react-router-dom';
 import { NavigatePanel } from '../NavigatePanel';
 import { useThemeContext } from '../../context/ThemeContext/index.tsx';
+import { useAppSelector } from '../../redux/hooks.ts';
+import { selectUsername } from '../../redux/user/user.ts';
 
 
 export const Header = () => {
     const navigate = useNavigate();
     const themeContext = useThemeContext();
+    const [isOpenMenu, setIsOpenMenu] = useState(false);
+
     const redidectToRegistrationPage = () => {
         navigate('/registration');
-    }
-    const [isOpenMenu, setIsOpenMenu] = useState(false);
+    }    
     const handleMenuClick = (isOpenMenu: boolean) => {
         if (isOpenMenu)
             setIsOpenMenu(false);
         else
             setIsOpenMenu(true);
     }
-    const userInfo: string | null = localStorage.getItem('CurrentUser');
-    let name: string = '';
-    if (userInfo) {
-        const userInfoObj = JSON.parse(userInfo);
-        name = userInfoObj.name;
-    }
+   const username = useAppSelector(selectUsername);
     const handleLightClick = () => {
         if (themeContext.theme !== 'light') 
             themeContext.changeTheme('light')
@@ -41,12 +39,12 @@ export const Header = () => {
             <div className={styles.headerWrapper}>
                 <Menu isOpen={isOpenMenu} onMenuClick={handleMenuClick} />
                 <Search />
-                <div className={name.length > 0 ? styles.user : ''}>
-                    {!(name.length > 0) ? <UserProfile onClick={redidectToRegistrationPage} /> : <User name={name} />}
+                <div className={username.length > 0 ? styles.user : ''}>
+                    {!(username.length > 0) ? <UserProfile onClick={redidectToRegistrationPage} /> : <User name={username} />}
                 </div>
             </div>
             <div>
-                {isOpenMenu ? <NavigatePanel name={name} onLightClick={handleLightClick} onDarkClick={handleDarkClick}/> : null}
+                {isOpenMenu ? <NavigatePanel name={username} onLightClick={handleLightClick} onDarkClick={handleDarkClick}/> : null}
             </div>
         </>
     )

@@ -17,15 +17,14 @@ export const CardFooter = ({id, onRateClick, likes, dislikes}: CardFooterType ) 
         <div className={styles.wrapper}>
             <div className={styles.imgWrapper}>
                 <img src={likeIcon} onClick={() => onRateClick(id, 'liked')}></img>
-                <p>{likes}</p>
+                {likes && likes > 0 ? <p>{likes}</p> : ''}
                 <img src={dislikeIcon} onClick={() => onRateClick(id, 'disliked')}></img>
-                <p>{dislikes}</p>
+                {dislikes && dislikes > 0 ? <p>{dislikes}</p> : ''}
             </div>
             <div className={styles.imgWrapper}>
                 <img src={threePointIcon}></img>
                 <img src={savedIcon}></img>
             </div>
-
         </div>
     )
 }

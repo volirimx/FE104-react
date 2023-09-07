@@ -1,7 +1,7 @@
 import styles from './index.module.css';
 
 type InputType = 'text' | 'email' | 'password';
-interface Input {
+type Input = {
     id: string;
     name: string;
     value: string | number;
