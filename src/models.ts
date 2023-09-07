@@ -41,6 +41,6 @@ export interface UserLogin {
 export interface UserAfterLogin {  
   email: string;
   loginUser: string | null;
-  acessToken: string;
+  accessToken: string;
   // Добавьте другие поля, если необходимо
 }

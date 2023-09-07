@@ -136,7 +136,7 @@ export const postToTokens = createAsyncThunk("post/postToTokens", async (formDat
 const initialState: UserAfterLogin = {
   email: "",
   loginUser: null,
-  acessToken: '',
+  accessToken: '',
 };
 
 export const postSlice = createSlice({
@@ -149,8 +149,10 @@ export const postSlice = createSlice({
     // Add reducers for additional action types here, and handle loading state as needed
     builder.addCase(postToTokens.fulfilled, (state, action) => {
       // Add user to the state array
-      state.acessToken = action.payload.data.access; 
-      state.email = action.payload.config.data.email;
+      console.log("OKKKKKKK");
+      
+      state.accessToken = action.payload.data.access; 
+      
       
       
     })
