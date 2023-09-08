@@ -4,9 +4,9 @@ export interface CardDataResult {
 
 
 export interface User {
-  name: "";
-  email: "";
-  access: ""
+  name: string;
+  email: string;
+  access: string
 }
 
 export interface PostState {

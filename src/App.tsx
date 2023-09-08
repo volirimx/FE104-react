@@ -18,9 +18,6 @@ import { useUpdateTokens } from './hooks/useUpdToken';
 
 function App() {
   useUpdateTokens();
-  console.log('token is updated');
-  
-
   return (
     <AuthProvider>
       <Routes>

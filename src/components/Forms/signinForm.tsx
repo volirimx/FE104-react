@@ -58,13 +58,9 @@ export const Form = (props: ForDataProps) => {
     }));   
 
 
-    if (user.name) {
-      if (fromPage === "/posts") {
-        signin(user, () => navigate(fromPage, { replace: true }));
-      } else {
-        signin(user, () => navigate("/success", { replace: true }));
+    if (user.email) {
+        signin(user, () => navigate("/success", { replace: true }));        
       }
-    }
     
   };
 

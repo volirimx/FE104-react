@@ -32,8 +32,9 @@ export const signIn = createAsyncThunk("user/signIn", async (formData: UserLogin
       formData
     );
     localStorage.setItem('refreshToken', `${response.data.refresh}`);
-    return response.data.access;
-  } catch (error) {
+    return {access: response.data.access,
+      email: formData.email} 
+    } catch (error) {
       console.error("Ошибка есть при выполнении Axios-запроса:", error);
       throw error;
   }    
@@ -85,8 +86,10 @@ export const userSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(signIn.fulfilled, (state, action) => {      
-      state.access = action.payload
+    builder.addCase(signIn.fulfilled, (state, action) => {  
+      state.access = action.payload.access;
+      state.email = action.payload.email
+      
     })
     builder.addCase(updateToken.fulfilled, (state, action) => {
       state.access = action.payload

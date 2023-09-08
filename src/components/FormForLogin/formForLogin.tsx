@@ -46,15 +46,10 @@ export const FormForLogin = () => {
       password: formData.password,
     };
 
-    
-    
-
     if (user.email) {
-          dispatch(signIn(formData)).then(() => {
-          navigate('/success', {replace: true})
-        });
-
-        
+      dispatch(signIn(formData)).then(() => {
+        navigate("/success", { replace: true });
+      });
     }
   };
 
