@@ -63,7 +63,6 @@ export const SignUp = () => {
     passwordValidator(); 
     confirmPasswordValidator();
   }
-
   const handleDispatchClick = () => {
     dispatch(
       registerUser({

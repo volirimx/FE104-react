@@ -36,12 +36,15 @@ const handleRateButtonClick = (id: number, grade: PostGrade) => {
 }; 
 
 useEffect(() => {
-    dispatch(fetchPosts());
-}, [dispatch]);
+    if(posts.length === 0){
+        dispatch(fetchPosts());
+    }   
+}, [dispatch, posts]);
 
 const [activeTab, setActiveTab] = useState<string>("All");
 
 const filteredPosts = posts.filter((post) => {
+    // console.log(post);
     switch(activeTab) {
         case "All":
             return true;

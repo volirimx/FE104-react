@@ -1,24 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { Post } from "../../api/posts/types"
-import { getPostById } from "../../api/posts/requests";
+import {useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./singlepost.module.css";
-
-import like from "./img/like_active.png"
-import dislike from "./img/dislike_active.png"
-import bookmarks from "./img/bookmarks_active.png"
 import like_active from "./img/like_active.png";
 import like_disabled from "./img/like_disabled.png";
 import dislike_active from "./img/dislike_active.png";
 import dislike_disabled from "./img/dislike_disabled.png";
 import bookmarks_active from "./img/bookmarks_active.png";
 import bookmarks_disabled from "./img/bookmarks_disabled.png";
-
-
 import { useAppDispatch } from "../../redux/hooks";
 import {fetchSinglePost} from "../../redux/posts/posts"
 import { useAppSelector } from "../../redux/hooks";
-import { PostState } from "../../redux/posts/posts";
 import { PostGrade } from "../../redux/posts/posts";
 import { BookmarkedGrade } from "../../redux/posts/posts";
 import { ratePost} from "../../redux/posts/posts";

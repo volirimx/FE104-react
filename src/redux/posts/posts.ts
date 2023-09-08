@@ -1,12 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../store'
 import axios from 'axios';
-
 export type PostGrade = "liked" | "disliked" | undefined;
 export type BookmarkedGrade = true | false;
 export type isFavorite = true | false;
 
-// Define a type for the slice state
 export interface PostState {
     id: number;
     title: string;
@@ -20,7 +18,6 @@ export interface PostState {
     isFavorite: BookmarkedGrade;
 }
 
-// Define the initial state using that type
 const initialState: PostState[] = [];
 
 export const fetchPosts = createAsyncThunk("post/fetchPosts", async () => {
@@ -86,8 +83,14 @@ export const postSlice = createSlice({
                 return [...action.payload];
             })
             .addCase(fetchSinglePost.fulfilled, (state, action) => {
-                const post = action.payload; // предполагая, что action.payload содержит один пост
+                //было
+                /*
+                const post = action.payload; //  action.payload содержит один пост
                 return [...state, post]; // добавить пост в массив состояния
+                */
+               //стало
+               return [...state]; 
+
             });
     },
 });

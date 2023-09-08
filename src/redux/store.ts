@@ -3,10 +3,10 @@ import counter from './counter/counter'
 import user from "./user/user";
 import post from "./posts/posts"
 import favoritePosts from './favoritePosts/favoritePosts';
-import accessToken from '../redux/accessToken/accessToken'
+import tokens from "./tokens/tokens"
 
 const store = configureStore({
-  reducer: {post, counter, user, favoritePosts, accessToken},
+  reducer: {post, counter, user, favoritePosts, tokens},
 })
 
 //дает понимание что в глобальном состоянии 

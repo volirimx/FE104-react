@@ -10,7 +10,7 @@ export const getPostById = async ({ postId, onSuccess }: { postId: number, onSuc
         if (response.status !== 200) {
             throw new Error(`Request failed with status: ${response.status}`);
         }
-
+        
         onSuccess(response.data);
     } catch (error) {
         console.error("An error occurred:", error);

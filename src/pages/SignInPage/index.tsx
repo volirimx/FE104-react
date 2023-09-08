@@ -4,9 +4,9 @@ import { useState } from "react";
 import { Button } from "../../components/Button";
 import styles from "./signin.module.css";
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { useAppDispatch } from "../../redux/hooks";
-import { saveAccessTokenToStore } from "../../redux/accessToken/accessToken";
+//import { saveAccessTokenToStore } from "../../redux/accessToken/accessToken";
+import { saveTokensToStore } from "../../redux/tokens/tokens";
 
 export const SignIn = () => {
   const navigate = useNavigate();
@@ -40,32 +40,17 @@ export const SignIn = () => {
   }
   console.log(inputPasswordValue); 
 
-  interface SignInData{
-    email: string;
-    password: string;
-  }
+  // interface SignInData{
+  //   email: string;
+  //   password: string;
+  // }
   const userData = {
     email: inputEmailValue.value,
     password: inputPasswordValue.value,
   };
 
-  const sendPostRequest = async(data: SignInData) => {
-    const response = await axios.post(
-      "https://studapi.teachmeskills.by/auth/jwt/create/", 
-      data,
-    );  
-    const tokens = response.data;  
-    saveRefreshTokenToLocalStorage(tokens.refresh);
-    handleDispatchClick(tokens.access)
-    return tokens
-  } 
-
-  const saveRefreshTokenToLocalStorage = (refreshToken: string) => {
-    localStorage.setItem('refreshToken', refreshToken);
-  }
-  
-  const handleDispatchClick = (accessToken: string) => {
-    dispatch(saveAccessTokenToStore(accessToken));
+  const handleDispatchClick = () => {
+    dispatch(saveTokensToStore(userData));
   }; 
 
     return(
@@ -80,8 +65,9 @@ export const SignIn = () => {
                       onClick={() => {  
                       emailValidator();
                       passwordValidator();
-                      sendPostRequest(userData);
-                      (inputEmailValue.isValid && inputPasswordValue.isValid) ? navigate("/successsignin") : ""}}
+                      handleDispatchClick();
+                      navigate("/successsignin")
+                    }}
                     />
                 </div>
                 <div className={styles.text}>
