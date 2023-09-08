@@ -22,17 +22,15 @@ export const Burgermenu = () => {
     
     const [state, setState] = useState(false);
     const buttonBurgerHandler = () => {
-        setState(!state);       
+        setState(() => (!state));       
 
     }
     const humbBord = state ? `${styles.border}` : '';
     const hmbClasses = [`${styles.hamburger}`, humbBord]
 
     const userName = useSelector((state: RootState) => selectUser(state).name);  
-   
-
-    const userMe = useSelector((state: RootState) => selectUser(state));  
-  
+    console.log(userName);
+    
 
     const myThem = useSelector((state: RootState) => selectUserThem(state));  
    

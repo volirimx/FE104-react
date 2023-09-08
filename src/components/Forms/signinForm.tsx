@@ -4,7 +4,7 @@ import styles from "./signin.module.css";
 import { UserTheme } from "../Theme/thems";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "..//../hooks/useAuth";
-import { postUser } from "../../redux/user/user";
+import { setUser} from "../../redux/user/user";
 import { UserRequest } from "../../models";
 
 export interface UserFormData {
@@ -50,14 +50,13 @@ export const Form = (props: ForDataProps) => {
       return;
     }
     const user = formData;
-    const userX: UserRequest = {
-      username: formData.name,
+       
+    dispatch(setUser({
+      name: formData.name,
       email: formData.email,
-      password: formData.password
-    };
-    console.log(userX);
-    
-    dispatch(postUser(userX));   
+      access: '',
+    }));   
+
 
     if (user.name) {
       if (fromPage === "/posts") {

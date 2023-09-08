@@ -5,7 +5,7 @@ import axios from "axios";
 
 export const postUser = createAsyncThunk(
   "post/postUser",
-  async (userData: UserRequest) => {
+  async (userData: UserLogin) => {
     try {
       // Отправляем данные на сервер
       const response = await axios.post(
@@ -34,7 +34,7 @@ export const signIn = createAsyncThunk("user/signIn", async (formData: UserLogin
     localStorage.setItem('refreshToken', `${response.data.refresh}`);
     return response.data.access;
   } catch (error) {
-      console.error("Ошибка при выполнении Axios-запроса:", error);
+      console.error("Ошибка есть при выполнении Axios-запроса:", error);
       throw error;
   }    
 });
@@ -85,12 +85,12 @@ export const userSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(signIn.fulfilled, (state, action) => {
+    builder.addCase(signIn.fulfilled, (state, action) => {      
       state.access = action.payload
     })
     builder.addCase(updateToken.fulfilled, (state, action) => {
       state.access = action.payload
-    }) 
+    })     
   }
 });
 
