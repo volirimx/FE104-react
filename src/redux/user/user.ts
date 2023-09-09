@@ -9,13 +9,13 @@ interface UserState {
 };
 
 interface RegisterPayload {
-  email: string;
-  password: string;
   username: string;
+  email: string;
+  password: string; 
 };
 
 const initialState: UserState = {
-  username: "",
+  username: "Ul",
   email: "",
   age: 21,
 };
@@ -25,7 +25,6 @@ export const registerUser = createAsyncThunk("user/registerUser", async (data: R
       "https://studapi.teachmeskills.by/auth/users/", 
       data,
     );
-
     // const fetchResponse = fetch("https://studapi.teachmeskills.by/auth/users/", 
     //   {
     //     method: "POST",
@@ -35,7 +34,7 @@ export const registerUser = createAsyncThunk("user/registerUser", async (data: R
     //     }
     //   }
     // );
-    return response.data
+     return response.data
   }
 );
 
@@ -66,5 +65,6 @@ export const { setUser } = userSlice.actions
 
 export const selectUser = (store: RootState) => store.user;
 export const selectUserEmail = (store: RootState) => store.user.email;
+export const selectUserName = (store: RootState) => store.user.username;
 
 export default userSlice.reducer;

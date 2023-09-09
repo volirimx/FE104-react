@@ -1,8 +1,3 @@
-/* .posts_container{
-    border: 1px solid black;  
-    width: 90vw;
-    overflow-y: hidden;  
-} */
 .post_container{
     width: 60%;
     display: flex;

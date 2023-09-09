@@ -5,8 +5,14 @@ import UserIcon from "./user.png";
 import Cross from "./cross.png";
 import { useState } from "react";
 import { AboutUser } from "../AboutUser";
+import { isAuthorized } from "../../hooks/isAuthorized";
+import { useAppSelector } from "../../redux/hooks"
+import { selectUserName } from "../../redux/user/user";
 
 export const Header = () => {
+    const userName = useAppSelector(selectUserName);
+    console.log(userName);
+
     const [value, setValue] = useState<string>("");
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
@@ -23,6 +29,8 @@ export const Header = () => {
         setIsFocused(false);
         setValue("");
     };
+
+    const authorized = isAuthorized();
     return(
         <div className={styles.header}>
             <HamburgerMenu/>
@@ -43,7 +51,7 @@ export const Header = () => {
             <div className={isUserFocused ? "" : styles.user} onClick={toggleIsUserFocused}>
                 {isUserFocused && 
                 <div>
-                    <AboutUser userName="Ulik Sinya"/>
+                    {authorized ? <AboutUser userName={userName}/> : <AboutUser userName="User"/>}
                 </div>}
                 {!isUserFocused &&
                 <img src={UserIcon} id={styles.user_icon} />}                

@@ -32,6 +32,19 @@ export const fetchSinglePost = createAsyncThunk("post/fetchSinglePost", async ({
     return response.data.results;
 });
 
+export const sendMyPost = createAsyncThunk('mypost/sendMyPost', async (data: PostState) => {
+    const response = await axios.post(
+      "https://studapi.teachmeskills.by/blog/posts/",
+      data,
+      {
+        headers: {
+            Authorization: "",
+        },
+      }
+    );
+    return response.data.results;
+  });
+
 interface RatePostPayload{
     id: number;
     grade: PostGrade; 

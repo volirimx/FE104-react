@@ -19,7 +19,11 @@
     height: 80vh;
     background-color: white;
 }
-li{
+.list{
+    display: flex;
+    flex-direction: column;
+}
+.list_item{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,9 +31,8 @@ li{
     height: 60px;
     border-bottom: 2px solid rgba(210, 210, 212, 1);
     cursor: pointer;
-
 }
-li:hover{
+h2:hover{
     color: #3F5576;
 }
 .menu_button{
@@ -46,6 +49,7 @@ li:hover{
 
 h2{
     font-size: 15px;
+    color: black;
 }
 .cross_icon{
     width: 20px;

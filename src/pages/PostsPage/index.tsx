@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { Post } from "../../api/posts/types";
 import { useState, useEffect} from "react";
-import axios from 'axios';
 import { useParams } from "react-router-dom";
 import { BigPostCard } from "../../components/Posts/BigPostCard";
 import styles from "./postspage.module.css";
@@ -9,14 +7,12 @@ import {MiddlePostCard } from "../../components/Posts/MiddlePostCard";
 import { LittlePostCard } from "../../components/Posts/LittlePostCard";
 import { Tabs } from "../../components/Tabs";
 import { BookmarkedGrade, PostState, fetchPosts } from "../../redux/posts/posts";
-import { useDispatch, useSelector } from "react-redux";
-import type { RootState } from '../../redux/store'
+import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../redux/hooks";
 import { selectAllPosts } from "../../redux/posts/posts";
 import { PostGrade } from "../../redux/posts/posts";
 import { ratePost } from "../../redux/posts/posts";
 import { handleBookmark } from "../../redux/posts/posts"
-
 
 export const PostsPage = () => {
 const navigate = useNavigate();
@@ -24,7 +20,6 @@ const dispatch = useAppDispatch();
 const posts = useSelector(selectAllPosts);
 
 console.log("posts:", posts);
-
 
 const params = useParams();
 
