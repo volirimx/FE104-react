@@ -1,0 +1,18 @@
+.content{
+    display: flex;
+}
+.content>div{
+    padding: 5px; 
+}
+.date, .description {
+    color: rgb(170, 168, 168);
+    font-size: 12px;
+}
+.title{
+    font-size: 12px;
+}
+.imgContainer img{
+    display: block;
+    width: 300px;
+    height: 300px;
+}

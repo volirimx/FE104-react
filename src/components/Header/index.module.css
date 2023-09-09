@@ -1,0 +1,8 @@
+.headerWrapper{
+    display: flex;
+    min-height: 40px;
+}
+.user{
+    height: 40px;
+    width: 180px;
+}

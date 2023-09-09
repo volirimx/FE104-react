@@ -1,0 +1,19 @@
+.content{
+    display: flex;  
+    justify-content: space-between;  
+}
+.date{
+    color: rgb(170, 168, 168);
+    font-size: 12px;
+}
+.title{
+    font-size: 12px;
+}
+.imgContainer img{
+    display: block;
+    width: 50px;
+    height: 50px;
+}
+.smallContainer {
+    width: 200px
+}

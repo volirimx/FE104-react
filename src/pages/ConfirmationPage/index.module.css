@@ -1,0 +1,23 @@
+.confirmationContainer{
+    width: 50%;
+}
+.container {
+    border: 2px solid rgb(170 168 168 / 24%);
+    margin: 0 auto;
+    width: 60%;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.headers {
+    padding: 3%;
+}
+.headers h2{
+    padding-top: 1%;
+    font-size: 25px;
+    font-weight: 700;
+}
+.headers h5 {
+    cursor: pointer;
+}

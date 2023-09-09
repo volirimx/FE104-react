@@ -1,0 +1,57 @@
+.container{
+    display: flex;    
+    flex-direction: column;
+    width: 180px;
+    background-color: white;
+    position:absolute;
+    height: calc(100% - 40px);
+}
+.content{
+    flex: 1 0 auto;
+}
+.content>div{
+    height: 40px;
+    color: #666666;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    cursor:pointer;
+    border-bottom: 2px solid rgb(170 168 168 / 40%);
+} 
+.content>div:hover{
+    color:rgb(93, 93, 199);
+} 
+.footer{
+    flex: 0 0 auto;    
+}
+.images{
+    display: flex;
+}
+.logInfo{
+    background-color: rgb(170 168 168 / 40%);
+    color: black;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.imgContainer{
+    color: #666666;
+    font-weight: 600;
+    cursor: pointer;
+    border: 2px solid rgb(170 168 168 / 40%);
+    flex-grow: 1;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imgContainer img {
+    width: 50%;
+    height: 50%;
+}
+.imgContainer:hover {
+    color: rgb(93, 93, 199);
+}

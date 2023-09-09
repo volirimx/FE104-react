@@ -1,0 +1,53 @@
+.buttonWrapper{
+    background-color:rgb(93, 93, 199);
+    height: 40px;
+    border-radius: 2px;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    width: 100%;
+    margin: 10px 0px ;
+}
+.button {
+    background-color:rgb(93, 93, 199);
+    color: rgb(255, 255, 255);
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+    cursor: pointer;
+    font-weight: bold;    
+}
+.primary {
+    background-color:rgb(93, 93, 199);
+    color: white;
+}
+.primary:active {
+    background-color:rgb(105, 105, 229);
+}
+.primary:disabled {
+    background-color:rgb(232, 232, 234);
+    color: rgb(187, 185, 185);
+}
+.secondary {   
+    background-color: rgb(245, 240 ,240);
+    color: black;   
+}
+.secondary:active{
+    background-color: rgb(218, 214, 214);
+}
+.secondary:disabled{
+    background-color: rgb(234, 231, 231);
+    color: rgb(163, 156, 156);
+}
+.tertiary {
+    background-color:rgb(251, 251, 251);
+    color: rgb(235, 10, 10);
+}
+.tertiary:active {
+    background-color:rgb(251, 251, 251);
+    color: rgb(235, 10, 10);
+    border: 1px solid #f0f0f0;
+}
+.tertiary:disabled {
+    background-color: rgb(251, 251, 251);
+    color: rgb(163, 156, 156);
+}

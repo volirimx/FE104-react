@@ -1,0 +1,17 @@
+.wrapper{
+    display: flex;
+    justify-content: center;
+    flex: 0 0 auto;
+    height: 40px;
+}
+.footerWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    border-top: 2px solid rgb(170 168 168 / 24%)
+}
+.footerWrapper p {
+    color:rgb(170, 168, 168);
+    font-size: 12px;
+}

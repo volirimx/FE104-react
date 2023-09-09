@@ -1,0 +1,29 @@
+.searchWrapper{
+    flex: 1 1 auto;
+    background-color:rgb(93, 93, 199);
+    height: 40px;
+}
+.searchInput{
+    background-color:rgb(93, 93, 199);
+    height: 100%;
+    width: 100%;
+    border: 1px solid rgb(170, 168, 168);
+    outline: none;
+}
+.searchInput:focus {
+    background-color:rgb(112, 112, 239);
+    
+}
+.searchImgWrapper {
+    background-color:rgb(93, 93, 199);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    border: 1px solid #ffffff54;
+}
+.searchImgWrapper img {
+    width: 70%;
+    height: 70%;
+}
