@@ -4,7 +4,7 @@ import image from "..//../assets/pngwing.com.png";
 import x_image from "../../assets/x.png";
 import { UserButton } from "../Users/userbutton";
 import { useSelector } from "react-redux";
-import { selectUser } from "..//../redux/user/user";
+import { selectUser, addMyPost} from "..//../redux/user/user";
 import { RootState } from "../../redux/store";
 import { BsFillSunFill } from "react-icons/Bs";
 import { BsFillMoonFill } from "react-icons/Bs";
@@ -16,6 +16,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { selectUserThem } from "..//../redux/thems/thems";
 
+
 export const Burgermenu = () => {
   const [state, setState] = useState(false);
   const buttonBurgerHandler = () => {
@@ -26,7 +27,10 @@ export const Burgermenu = () => {
 
   const userEmail = useSelector((state: RootState) => selectUser(state).email);
   console.log(userEmail);
-
+  const accessToken = useSelector((state: RootState) => selectUser(state).access);
+  console.log(`Получаю токен из стора` + accessToken);
+  
+  
   const myThem = useSelector((state: RootState) => selectUserThem(state));
 
   const navigate = useNavigate();
@@ -41,6 +45,10 @@ export const Burgermenu = () => {
   const doHome = () => {
     navigate("mylogin");
   };
+
+  const addPost = () => {
+    dispatch(addMyPost({accessToken, id: 244}))
+  }
 
   const changeToDark = () => {
     dispatch(changeThemToDark());
@@ -64,7 +72,7 @@ export const Burgermenu = () => {
                 <Button content="Home" mode="secondary2" onClick={doHome} />
               </div>
               <div className={`${styles.str2} ${styles[myThem]}`}>
-                <Button content="Add post" mode="secondary2" onClick={doHome} />
+                <Button content="Add post" mode="secondary2" onClick={addPost} />
               </div>
 
               <div className={`${styles.empty} ${styles[myThem]}`}></div>

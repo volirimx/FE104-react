@@ -45,3 +45,10 @@ export interface UserAfterLogin {
   accessToken: string;
   // Добавьте другие поля, если необходимо
 }
+
+
+export interface ObjectForAddPost {  
+  accessToken: string;
+  id: number
+  // Добавьте другие поля, если необходимо
+}

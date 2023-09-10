@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
-import { User, UserLogin, UserRequest } from "../../models";
+import { User, UserLogin, UserRequest, ObjectForAddPost } from "../../models";
 import axios from "axios";
+import { log } from "console";
 
 export const postUser = createAsyncThunk(
   "post/postUser",
@@ -57,6 +58,37 @@ export const updateToken = createAsyncThunk(
     }
   }
 );
+
+
+export const addMyPost = createAsyncThunk(
+  'user/addMyPost',
+  async ({ accessToken, id} : ObjectForAddPost) => {
+    try {
+      const response = await axios.put(
+        `https://studapi.teachmeskills.by//blog/posts/${id}/`,
+        {
+          image: 'https://catherineasquithgallery.com/uploads/posts/2021-02/1612870133_34-p-kartinka-zvezdi-na-krasnom-fone-41.png',
+          text: 'Red star',
+          date: '22-12-2023',
+          lesson_num: 144,
+          title: 'This my post',
+          description: 'lorem n bkbkbkbk',
+          author: 45
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`
+          }          
+        }
+      )
+      console.log(`Вывожу ответ на размещение поста` + response);  
+      return response;    
+    } catch (error) {
+      console.error("Ошибка. Пост не размещен", error);
+      throw error;
+    }
+  }
+)
 
 const initialState: User = {
   name: "",
