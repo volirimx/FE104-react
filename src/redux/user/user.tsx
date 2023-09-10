@@ -64,8 +64,10 @@ export const addMyPost = createAsyncThunk(
   'user/addMyPost',
   async ({ accessToken, id} : ObjectForAddPost) => {
     try {
+      console.log(accessToken, id);
+      
       const response = await axios.put(
-        `https://studapi.teachmeskills.by//blog/posts/${id}/`,
+        `https://studapi.teachmeskills.by/blog/posts/${id}/`,
         {
           image: 'https://catherineasquithgallery.com/uploads/posts/2021-02/1612870133_34-p-kartinka-zvezdi-na-krasnom-fone-41.png',
           text: 'Red star',

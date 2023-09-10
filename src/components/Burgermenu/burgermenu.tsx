@@ -1,20 +1,18 @@
-import { useState, ChangeEvent, useEffect } from "react";
+import { useState } from "react";
 import styles from "./burgermenu.module.css";
 import image from "..//../assets/pngwing.com.png";
 import x_image from "../../assets/x.png";
 import { UserButton } from "../Users/userbutton";
-import { useSelector } from "react-redux";
-import { selectUser, addMyPost} from "..//../redux/user/user";
+import { useSelector, useDispatch } from "react-redux";
+import { selectUser, addMyPost, clearUser} from "..//../redux/user/user";
 import { RootState } from "../../redux/store";
-import { BsFillSunFill } from "react-icons/Bs";
-import { BsFillMoonFill } from "react-icons/Bs";
+import { BsFillSunFill, BsFillMoonFill } from "react-icons/Bs";
 import { Button } from "..//Button_primary/button";
-import { useDispatch } from "react-redux";
-import { clearUser } from "../../redux/user/user";
 import { changeThemToDark, changeThemToLight } from "../../redux/thems/thems";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { selectUserThem } from "..//../redux/thems/thems";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 
 
 export const Burgermenu = () => {
@@ -25,18 +23,18 @@ export const Burgermenu = () => {
   const humbBord = state ? `${styles.border}` : "";
   const hmbClasses = [`${styles.hamburger}`, humbBord];
 
-  const userEmail = useSelector((state: RootState) => selectUser(state).email);
+  const userEmail = useAppSelector((state: RootState) => selectUser(state).email);
   console.log(userEmail);
-  const accessToken = useSelector((state: RootState) => selectUser(state).access);
+  const accessToken = useAppSelector((state: RootState) => selectUser(state).access);
   console.log(`Получаю токен из стора` + accessToken);
   
   
-  const myThem = useSelector((state: RootState) => selectUserThem(state));
+  const myThem = useAppSelector((state: RootState) => selectUserThem(state));
 
   const navigate = useNavigate();
   const { user, signout } = useAuth();
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const eraseUser = () => {
     signout(() => navigate("/", { replace: true }));
@@ -46,8 +44,13 @@ export const Burgermenu = () => {
     navigate("mylogin");
   };
 
+  const objectForThunk = {
+    accessToken,
+    id: 155
+  }
+
   const addPost = () => {
-    dispatch(addMyPost({accessToken, id: 244}))
+    dispatch(addMyPost(objectForThunk))
   }
 
   const changeToDark = () => {
