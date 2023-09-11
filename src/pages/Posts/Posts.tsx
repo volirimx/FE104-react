@@ -4,30 +4,29 @@ import ContextSearchInput from "../../ContextSearchInput";
 import { useNavigate } from "react-router-dom";
 import Save from "../../components/Svg/Save";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
-import { fetchPosts } from "../../api/getPosts";
+
 import Like from "../../components/Svg/Like";
-import { ratePost } from "../../redux/posts";
+import { thunkGetPosts, ratePost, savePost } from "../../redux/posts";
 import Dislike from "../../components/Svg/Dislike";
 
 import PopUp from "../../components/PopUp/PopUp";
 
 const Posts = () => {
+  const [active, setActive] = useState<boolean>(false);
+  const [postId, setPostId] = useState<number>(0);
   const { searchInput } = useContext(ContextSearchInput);
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(fetchPosts(searchInput));
-  }, [searchInput, dispatch]);
-
-  const { posts, isLoading, error } = useAppSelector((state) => state);
-
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const posts = useAppSelector((state) => state.posts.posts);
+
+  useEffect(() => {
+    dispatch(thunkGetPosts(searchInput));
+  }, [searchInput, dispatch, posts.length]);
 
   const redirect = (id: number) => {
     navigate(`${id}`);
   };
 
-  const [active, setActive] = useState<boolean>(false);
-  const [postId, setPostId] = useState<number | null>(null);
   const mappedPosts = posts.map((post) => {
     return (
       <div className={styles.post} key={post.id}>
@@ -64,7 +63,12 @@ const Posts = () => {
             />
           </div>
           <div className={styles.save}>
-            <Save />
+            <Save
+              id={post.id}
+              onClick={() => {
+                dispatch(savePost({ saved: true, id: post.id }));
+              }}
+            />
           </div>
         </div>
       </div>
@@ -73,10 +77,13 @@ const Posts = () => {
 
   return (
     <>
-      <div>{isLoading && <h1> Загрузка постов...</h1>}</div>
-      <div>{error && <h1> Ошибочка!!!</h1>}</div>
-      <div className={styles.posts}>{mappedPosts}</div>;
-      <PopUp setActive={setActive} active={active} id={postId} />
+      <div className={styles.posts}>{mappedPosts}</div>
+      <PopUp
+        setActive={setActive}
+        active={active}
+        id={postId}
+        setId={setPostId}
+      />
     </>
   );
 };

@@ -12,14 +12,15 @@ import { FormControlLabel, Switch } from "@mui/material";
 const Header = () => {
   const { setSearchInput } = useContext(ContextSearchInput);
   const { darkMode, setDarkMode } = useContext(ContextTheme);
-
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
+
   const redirect = () => {
     navigate("/posts");
-    searchInputRef.current.value = "";
+    if (searchInputRef.current) {
+      searchInputRef.current.value = "";
+    }
   };
-
-  const searchInputRef = useRef();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);

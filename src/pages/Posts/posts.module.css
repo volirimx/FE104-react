@@ -23,6 +23,9 @@
 
 .title {
     width: 100%;
+    height: 20px;
+    overflow:auto;
+    text-align: center;
 }
 
 .interface {

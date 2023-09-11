@@ -1,46 +1,35 @@
 import styles from "./logIn.module.css";
-import { useState, ChangeEvent, SetStateAction, useContext } from "react";
+import { useState, useContext } from "react";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
 import { Link, useNavigate } from "react-router-dom";
-import { User } from "../../components/Users/Users";
+
 import ContextTheme from "../../ContextTheme";
+import axios from "axios";
+import { generateInputChangeHandler } from "../../utils/utils";
 
 const LogIn = () => {
   const [show, setShowPassword] = useState<boolean>(false);
+  const [inputValueEmail, setInputValueEmail] = useState("");
+  const [inputValuePassword, setInputValuePassword] = useState("");
+  const navigate = useNavigate();
   const toogleShowPassword = () => {
     setShowPassword(!show);
   };
 
-  const [inputValueEmail, setInputValueEmail] = useState("");
-  const [inputValuePassword, setInputValuePassword] = useState("");
+  const { darkMode } = useContext(ContextTheme);
 
-  const navigate = useNavigate();
-
-  const generateInputChangeHandler =
-    (stateSetter: React.Dispatch<SetStateAction<string>>) =>
-    (e: ChangeEvent<HTMLInputElement>) => {
-      const target = e.target;
-      stateSetter(target.value);
-    };
-
-  const validation = () => {
-    const usersFromLocalStorage = localStorage.getItem("Users");
-    const users: User[] = usersFromLocalStorage
-      ? JSON.parse(usersFromLocalStorage)
-      : [];
-    if (
-      users.find((user) => {
-        return (
-          user.email == inputValueEmail && user.password == inputValuePassword
-        );
-      })
-    ) {
-      navigate("/sucess");
-      console.log(users);
+  const login = async () => {
+    const response = await axios.post(
+      "https://studapi.teachmeskills.by/auth/jwt/create/",
+      { email: inputValueEmail, password: inputValuePassword }
+    );
+    if (response.status === 200) {
+      navigate("/confirm");
+      localStorage.setItem("refreshToken", response.data.refresh);
+      localStorage.setItem("accessToken", response.data.access);
     }
   };
-  const { darkMode } = useContext(ContextTheme);
   return (
     <div className={styles.wrapper}>
       <div className={styles.back}>
@@ -68,6 +57,7 @@ const LogIn = () => {
             id="pass"
             height="30px"
             placeholder="Password"
+            border={darkMode ? "1px solid white" : "1px solid darkred"}
             handleChange={generateInputChangeHandler(setInputValuePassword)}
           />
           <input
@@ -77,7 +67,7 @@ const LogIn = () => {
           />
           <label htmlFor="showPassword">Показать пароль</label>
           <Button
-            handleClick={validation}
+            handleClick={login}
             title="Log In"
             mode="primary"
             disabled={false}
