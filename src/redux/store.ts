@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import post from "./posts/posts";
 import user from "./user/user";
+import character from "./character/character";
 
 export const store = configureStore({
-  reducer: { post, user },
+  reducer: { post, user, character },
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

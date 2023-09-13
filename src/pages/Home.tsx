@@ -10,9 +10,9 @@ export const Home = () => {
   const handleDispatchClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     dispatch(
       registerUser({
-        email: "asdfgjgnsdjnggbos@gmail.com",
-        password: "gmskerkwmagke",
-        username: "nwvjweaiiwmam",
+        email: "hifalan301@pbridal.com",
+        password: "abobka123",
+        username: "vollyAbobka",
       })
     );
   };

@@ -28,6 +28,8 @@ type RegisterPayload = {
 //   username: string;
 // };
 
+//http://localhost:5137/activate/Njk4MA/btt4k4-2b87797f066a750e44f7e72899dce20d
+
 export const registerUser = createAsyncThunk(
   "user/registerUser",
   async (data: RegisterPayload) => {
