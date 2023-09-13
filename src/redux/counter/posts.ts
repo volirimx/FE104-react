@@ -3,37 +3,47 @@ import type { RootState } from "../store";
 import axios from "axios";
 import { PostState, CardDataResult, Post } from "../../models";
 
-// Define a type for the slice state
-
 export const fetchPosts = createAsyncThunk("post/fetchPosts", async () => {
   const response = await axios.get(
-    "https://studapi.teachmeskills.by/blog/posts/?limit=8&offset=6"
+    "https://studapi.teachmeskills.by/blog/posts/?limit=6"
   );
-  const posts = response.data.results;
-
+  const postsObj = response.data;
   // Добавляем свойство favorites: false к каждому элементу массива
-  const postsWithFavorites = posts.map((post: Post) => ({
+  const postsWithFavorites = postsObj.results.map((post: Post) => ({
     ...post,
     favorites: false,
   }));
-
-  return postsWithFavorites;
+  postsObj.results = postsWithFavorites;
+  return postsObj;
 });
 
+interface PostsObj {
+  count: number | null,
+  next: string,
+  previous: string,
+  results: Post[]
+}
+
 // Define the initial state using that type
-const initialState: Post[] = [];
+const initialState: PostsObj = {
+  count: null,
+  next: '',
+  previous: '',
+  results: []
+};
+
 export const postSlice = createSlice({
   name: "post",
   initialState,
   reducers: {
     setPosts: (state, action: PayloadAction<PostState[]>) => {
-      state = action.payload;
+      state.results = action.payload;
     },
     updatePost: (state, action: PayloadAction<Post>) => {
       const { id, favorites } = action.payload;
     
       // Используем immer для создания нового состояния с обновленным свойством favorites
-      return state.map((post) => {
+      return state.results.map((post) => {
         if (post.id === id) {
           return {
             ...post,

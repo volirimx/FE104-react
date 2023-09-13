@@ -7,11 +7,18 @@ import { selectAllPosts } from "../redux/counter/posts";
 import { useEffect } from "react";
 import { fetchPosts } from "../redux/counter/posts";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { PaginationComponent } from "../components/PaginationComponent/paginationComponent";
 
 export const Postspage = () => {
   // const { cards } = useCardData();
   const dispatch = useAppDispatch();
-  const cards = useAppSelector((state: RootState) => selectAllPosts(state));
+  const cardsObj = useAppSelector((state: RootState) => selectAllPosts(state));
+  const cards = useAppSelector((state: RootState) => selectAllPosts(state).results);
+  
+  console.log(cardsObj);
+  
+  console.log(cards);
+  
 
   useEffect(() => {
     if (cards.length === 0) {
@@ -35,6 +42,14 @@ export const Postspage = () => {
             <Card2 card={card} key={card.id} />
           ))}
         </div>
+      </div>
+
+      <div>
+        {/* <PaginationComponent
+        handlePageClick={}
+        allPagesCount={}
+        currentPageNumber={}
+        /> */}
       </div>
     </>
   );
