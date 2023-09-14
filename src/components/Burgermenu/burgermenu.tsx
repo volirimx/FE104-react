@@ -44,13 +44,13 @@ export const Burgermenu = () => {
     navigate("mylogin");
   };
 
-  const objectForThunk = {
-    accessToken,
-    id: 155
-  }
+  // const objectForThunk = {
+  //   accessToken,
+  //   id: 155
+  // }
 
   const addPost = () => {
-    dispatch(addMyPost(objectForThunk))
+    dispatch(addMyPost(accessToken))
   }
 
   const changeToDark = () => {

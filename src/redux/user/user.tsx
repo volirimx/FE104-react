@@ -62,20 +62,20 @@ export const updateToken = createAsyncThunk(
 
 export const addMyPost = createAsyncThunk(
   'user/addMyPost',
-  async ({ accessToken, id} : ObjectForAddPost) => {
+  async (accessToken : string) => {
     try {
-      console.log(accessToken, id);
+      console.log(accessToken);
       
-      const response = await axios.put(
-        `https://studapi.teachmeskills.by/blog/posts/${id}/`,
+      const response = await axios.post(
+        `https://studapi.teachmeskills.by/blog/posts/`,
         {
           image: 'https://catherineasquithgallery.com/uploads/posts/2021-02/1612870133_34-p-kartinka-zvezdi-na-krasnom-fone-41.png',
           text: 'Red star',
-          date: '22-12-2023',
+          // date: '22-12-2023',
           lesson_num: 144,
           title: 'This my post',
           description: 'lorem n bkbkbkbk',
-          author: 45
+          // author: 45
         },
         {
           headers: {

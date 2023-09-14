@@ -10,7 +10,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { PaginationComponent } from "../components/PaginationComponent/paginationComponent";
 
 export const Postspage = () => {
-  // const { cards } = useCardData();
+  
   const dispatch = useAppDispatch();
   const cardsObj = useAppSelector((state: RootState) => selectAllPosts(state));
   const cards = useAppSelector((state: RootState) => selectAllPosts(state).results);

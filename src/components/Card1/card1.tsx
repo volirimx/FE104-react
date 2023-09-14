@@ -15,9 +15,6 @@ import image_dots from "..//..//assets/dots_three_icon.png";
 import { Post } from "../../models";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import favorites, { addToFavorites } from "..//..//redux/favorites/favorites";
-import { useCardData } from "..//..//hooks/cards";
-import { PostState } from "../../models";
 import { updatePost } from "../../redux/counter/posts";
 
 interface CardProps {
@@ -25,33 +22,11 @@ interface CardProps {
 }
 
 export const Card1 = ({ card }: CardProps) => {
-  // const [fav, setFav] = useState(card.favorites);
-
-  //   const cards = useCardData();
   const dispatch = useDispatch();
 
   const btnAddToFavorites = () => {
-    // setFav((prev) => !prev);
-    // card.favorites = !card.favorites;
-    // const myid = e.target.id;
-    // console.log(myid);
-
-    // const arrOFCards = cards.cards;
-    // const elem = arrOFCards.find(({ id }) => id == myid);
-    // console.log(elem);
-
     dispatch(updatePost(card));
   };
-
-  //   const btnAddCount = (e: MouseEvent<HTMLDivElement, MouseEvent>) => {
-  //     const myid = e.target.id;
-  //     const arrOFCards = cards.cards;
-
-  //     const elem = arrOFCards.find(({ id }) => id == myid);
-  //     console.log(elem);
-
-  //     dispatch(addToFavorites(elem));
-  //   };
 
   return (
     <div className={styles.column}>

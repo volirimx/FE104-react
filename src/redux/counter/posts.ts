@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 import axios from "axios";
-import { PostState, CardDataResult, Post } from "../../models";
+import { Post } from "../../models";
 
 export const fetchPosts = createAsyncThunk("post/fetchPosts", async () => {
   const response = await axios.get(
@@ -18,42 +18,31 @@ export const fetchPosts = createAsyncThunk("post/fetchPosts", async () => {
 });
 
 interface PostsObj {
-  count: number | null,
-  next: string,
-  previous: string,
-  results: Post[]
+  count: number | null;
+  next: string;
+  previous: string;
+  results: Post[];
 }
 
 // Define the initial state using that type
 const initialState: PostsObj = {
   count: null,
-  next: '',
-  previous: '',
-  results: []
+  next: "",
+  previous: "",
+  results: [],
 };
 
 export const postSlice = createSlice({
   name: "post",
   initialState,
   reducers: {
-    setPosts: (state, action: PayloadAction<PostState[]>) => {
-      state.results = action.payload;
-    },
     updatePost: (state, action: PayloadAction<Post>) => {
       const { id, favorites } = action.payload;
-    
-      // Используем immer для создания нового состояния с обновленным свойством favorites
-      return state.results.map((post) => {
-        if (post.id === id) {
-          return {
-            ...post,
-            favorites: !favorites,
-          };
-        }
-        return post;
-      });
+      const postToUpdate = state.results.find((post) => post.id === id);
+      if (postToUpdate) {
+        postToUpdate.favorites = !favorites;
+      }
     },
-    
   },
 
   extraReducers: (builder) => {
@@ -63,7 +52,7 @@ export const postSlice = createSlice({
   },
 });
 
-export const { setPosts, updatePost } = postSlice.actions;
+export const { updatePost } = postSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectAllPosts = (store: RootState) => store.post;
