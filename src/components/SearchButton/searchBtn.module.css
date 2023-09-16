@@ -1,0 +1,21 @@
+.search {
+  height: 50px;
+  width: 55px;
+  background-color: #2436a7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+}
+
+.border {
+  border: 1px inset white;
+}
+
+.img {
+  display: block;
+  min-width: 10px;
+  min-height: 10px;
+  max-width: 20px;
+  max-height: 20px;
+}

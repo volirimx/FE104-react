@@ -1,0 +1,35 @@
+.column {
+  width: 40%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.title {
+  color: black;
+  font-size: medium;
+  font-weight: bold;
+}
+
+.text {
+  font-size: small;
+  color: black;
+}
+
+.image {
+  width: 55%;
+}
+
+.block_icon {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.icon {
+  width: 15px;
+  height: auto;
+  margin-left: 5px;
+}

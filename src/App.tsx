@@ -1,25 +1,46 @@
+import React, { useState } from "react";
 import "./App.css";
-import { Button } from "./components/Button_primary/button";
-import { UserButton } from "./components/Users/userbutton";
+import { Route, Routes } from "react-router-dom";
+import { Homepage } from "./pages/Homepage";
+import { Successpage } from "./pages/Successpage";
+import { NotFoundPage } from "./pages/Notfoundpage";
+import { Layout } from "./components/Template/template";
+import { Postspage } from "./pages/postspage";
+import { Singlepage } from "./pages/Siglepage";
+import { MyLoginPage } from "./pages/MyLoginPage";
+import { LoginPage } from "./pages/Loginpage";
+import { RequireAuth } from "./hoc/RequireAuth";
+import { AuthProvider } from "./hoc/AuthProvider";
+import { FavoritesPage } from "./pages/favotitespage";
+import { EmailActivation } from "./pages/EmailActivation";
+import { useUpdateTokens } from "./hooks/useUpdToken";
 
 function App() {
-  
-
-  return (    
-      <div>
-        <div>
-    <Button content={'Primary'} mode={'primary'}/> 
-    <Button content={'Secondary'} mode={'secondary'}/> 
-    <Button content={'Secondary2'} mode={'secondary2'}/>     
-      </div>
-    <div>
-       <UserButton firstName="Artem" lastName="Malkin"/>  
-    </div>
-      </div>
-      
-  
- 
-  )
+  useUpdateTokens();
+  return (
+    <AuthProvider>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Homepage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="mylogin" element={<MyLoginPage />} />
+          <Route path="success" element={<Successpage />} />
+          <Route path="favorites" element={<FavoritesPage />} />
+          <Route
+            path="posts"
+            element={
+              <RequireAuth>
+                <Postspage />
+              </RequireAuth>
+            }
+          />
+          <Route path="posts/:id" element={<Singlepage />} />
+          <Route path="activation/:uid/:token" element={<EmailActivation />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </AuthProvider>
+  );
 }
 
 export default App;

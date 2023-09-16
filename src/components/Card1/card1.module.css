@@ -1,0 +1,51 @@
+.column {
+  width: 200px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.title {
+  color: black;
+  font-size: medium;
+  font-weight: bold;
+}
+
+.text {
+  font-size: small;
+  color: black;
+}
+
+.image {
+  width: 80%;
+}
+
+.block_icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.icon {
+  width: 15px;
+  height: auto;
+  margin-left: 15px;
+}
+
+.elements {
+  padding-left: 50%;
+}
+
+.block::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 37%;
+  height: 1px;
+  background-color: gray;
+  opacity: 0.5;
+}
