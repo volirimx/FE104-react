@@ -2,13 +2,14 @@ import React, { useMemo } from "react";
 
 type PaginationComponentProps = {
   allPagesCount: number;
-  currentPageNumber: number;
-  handlePageClick: (pageNumber: number) => void;
+  currentPageNumber?: number;
+  handlePageClick?: (pageNumber: number) => void;
 };
 
 const generateNumbersArrayByLimits = (limit: number) => {
   const numberArray: number[] = [];
-  for (let i = 1; i <= limit; i++) {
+  const numberPagesForPagination = Math.ceil(limit / 6);
+  for (let i = 1; i <= numberPagesForPagination; i++) {
     numberArray.push(i);
   }
   return numberArray;

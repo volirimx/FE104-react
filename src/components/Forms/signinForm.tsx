@@ -4,7 +4,7 @@ import styles from "./signin.module.css";
 import { UserTheme } from "../Theme/thems";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "..//../hooks/useAuth";
-import { setUser} from "../../redux/user/user";
+import { setUser } from "../../redux/user/user";
 import { UserRequest } from "../../models";
 
 export interface UserFormData {
@@ -26,7 +26,6 @@ export const Form = (props: ForDataProps) => {
     confirmPassword: "",
   });
 
-  
   const addUserToStore = (e: FormEvent) => {
     e.preventDefault();
 
@@ -50,18 +49,18 @@ export const Form = (props: ForDataProps) => {
       return;
     }
     const user = formData;
-       
-    dispatch(setUser({
-      name: formData.name,
-      email: formData.email,
-      access: '',
-    }));   
 
+    dispatch(
+      setUser({
+        name: formData.name,
+        email: formData.email,
+        access: "",
+      })
+    );
 
     if (user.email) {
-        signin(user, () => navigate("/success", { replace: true }));        
-      }
-    
+      signin(user, () => navigate("/success", { replace: true }));
+    }
   };
 
   const myThem = useContext(UserTheme);

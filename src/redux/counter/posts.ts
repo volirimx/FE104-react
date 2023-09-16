@@ -3,32 +3,39 @@ import type { RootState } from "../store";
 import axios from "axios";
 import { Post } from "../../models";
 
-export const fetchPosts = createAsyncThunk("post/fetchPosts", async () => {
-  const response = await axios.get(
-    "https://studapi.teachmeskills.by/blog/posts/?limit=6"
-  );
-  const postsObj = response.data;
-  // Добавляем свойство favorites: false к каждому элементу массива
-  const postsWithFavorites = postsObj.results.map((post: Post) => ({
-    ...post,
-    favorites: false,
-  }));
-  postsObj.results = postsWithFavorites;
-  return postsObj;
-});
+
+export const fetchPosts = createAsyncThunk(
+  "post/fetchPosts",
+  async (searchParams: string) => {
+    const response = await axios.get(
+      `https://studapi.teachmeskills.by/blog/posts/?limit=6&offset=${
+        (parseInt(searchParams.slice(5)) - 1) * 6
+      }&${searchParams || ""}`
+    );
+
+    const postsObj = response.data;
+    // Добавляем свойство favorites: false к каждому элементу массива
+    const postsWithFavorites = postsObj.results.map((post: Post) => ({
+      ...post,
+      favorites: false,
+    }));
+    postsObj.results = postsWithFavorites;
+    return postsObj;
+  }
+);
 
 interface PostsObj {
   count: number | null;
-  next: string;
-  previous: string;
+  next: string | null;
+  previous: string | null;
   results: Post[];
 }
 
 // Define the initial state using that type
 const initialState: PostsObj = {
-  count: null,
-  next: "",
-  previous: "",
+  count: 0,
+  next: null,
+  previous: null,
   results: [],
 };
 
