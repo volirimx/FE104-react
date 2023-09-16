@@ -26,20 +26,22 @@ export const postUser = createAsyncThunk(
 
 //http://studapi.teachmeskills.by//activate/NzAzMA/bu4feb-8bf41fa4efada31e581d68083a92937c
 // Define the initial state using that type
-export const signIn = createAsyncThunk("user/signIn", async (formData: UserLogin) => {
-  try {
-    const response = await axios.post(
-      "https://studapi.teachmeskills.by/auth/jwt/create/",
-      formData
-    );
-    localStorage.setItem('refreshToken', `${response.data.refresh}`);
-    return {access: response.data.access,
-      email: formData.email} 
+export const signIn = createAsyncThunk(
+  "user/signIn",
+  async (formData: UserLogin) => {
+    try {
+      const response = await axios.post(
+        "https://studapi.teachmeskills.by/auth/jwt/create/",
+        formData
+      );
+      localStorage.setItem("refreshToken", `${response.data.refresh}`);
+      return { access: response.data.access, email: formData.email };
     } catch (error) {
       console.error("Ошибка есть при выполнении Axios-запроса:", error);
       throw error;
-  }    
-});
+    }
+  }
+);
 
 export const updateToken = createAsyncThunk(
   "user/updateToken",
@@ -59,43 +61,43 @@ export const updateToken = createAsyncThunk(
   }
 );
 
-
 export const addMyPost = createAsyncThunk(
-  'user/addMyPost',
-  async (accessToken : string) => {
+  "user/addMyPost",
+  async (accessToken: string) => {
     try {
       console.log(accessToken);
-      
+
       const response = await axios.post(
         `https://studapi.teachmeskills.by/blog/posts/`,
         {
-          image: 'https://catherineasquithgallery.com/uploads/posts/2021-02/1612870133_34-p-kartinka-zvezdi-na-krasnom-fone-41.png',
-          text: 'Red star',
+          image:
+            "https://catherineasquithgallery.com/uploads/posts/2021-02/1612870133_34-p-kartinka-zvezdi-na-krasnom-fone-41.png",
+          text: "Red star",
           // date: '22-12-2023',
           lesson_num: 144,
-          title: 'This my post',
-          description: 'lorem n bkbkbkbk',
+          title: "This my post",
+          description: "lorem n bkbkbkbk",
           // author: 45
         },
         {
           headers: {
-            Authorization: `Bearer ${accessToken}`
-          }          
+            Authorization: `Bearer ${accessToken}`,
+          },
         }
-      )
-      console.log(`Вывожу ответ на размещение поста` + response);  
-      return response;    
+      );
+      console.log(`Вывожу ответ на размещение поста` + response);
+      return response;
     } catch (error) {
       console.error("Ошибка. Пост не размещен", error);
       throw error;
     }
   }
-)
+);
 
 const initialState: User = {
   name: "",
   email: "",
-  access: ''
+  access: "",
 };
 
 export const userSlice = createSlice({
@@ -120,15 +122,14 @@ export const userSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(signIn.fulfilled, (state, action) => {  
+    builder.addCase(signIn.fulfilled, (state, action) => {
       state.access = action.payload.access;
-      state.email = action.payload.email
-      
-    })
+      state.email = action.payload.email;
+    });
     builder.addCase(updateToken.fulfilled, (state, action) => {
-      state.access = action.payload
-    })     
-  }
+      state.access = action.payload;
+    });
+  },
 });
 
 export const { setUser, clearUser } = userSlice.actions;

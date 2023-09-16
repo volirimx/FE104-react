@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { Homepage } from "./pages/homepage";
-import { Successpage } from "./pages/successpage";
-import { NotFoundPage } from "./pages/notfoundpage";
+import { Homepage } from "./pages/Homepage";
+import { Successpage } from "./pages/Successpage";
+import { NotFoundPage } from "./pages/Notfoundpage";
 import { Layout } from "./components/Template/template";
 import { Postspage } from "./pages/postspage";
-import { Singlepage } from "./pages/siglepage";
+import { Singlepage } from "./pages/Siglepage";
 import { MyLoginPage } from "./pages/MyLoginPage";
-import { LoginPage } from "./pages/loginpage";
+import { LoginPage } from "./pages/Loginpage";
 import { RequireAuth } from "./hoc/RequireAuth";
 import { AuthProvider } from "./hoc/AuthProvider";
 import { FavoritesPage } from "./pages/favotitespage";
 import { EmailActivation } from "./pages/EmailActivation";
-import { useUpdateTokens } from './hooks/useUpdToken';
-
+import { useUpdateTokens } from "./hooks/useUpdToken";
 
 function App() {
   useUpdateTokens();
@@ -36,7 +35,7 @@ function App() {
             }
           />
           <Route path="posts/:id" element={<Singlepage />} />
-          <Route path="activation/:uid/:token" element={< EmailActivation/>}/>
+          <Route path="activation/:uid/:token" element={<EmailActivation />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

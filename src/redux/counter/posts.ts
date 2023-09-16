@@ -3,7 +3,6 @@ import type { RootState } from "../store";
 import axios from "axios";
 import { Post } from "../../models";
 
-
 export const fetchPosts = createAsyncThunk(
   "post/fetchPosts",
   async (searchParams: string) => {

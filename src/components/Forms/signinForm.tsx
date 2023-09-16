@@ -25,6 +25,10 @@ export const Form = (props: ForDataProps) => {
     password: "",
     confirmPassword: "",
   });
+  const myThem = useContext(UserTheme);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { signin } = useAuth() ?? {};
 
   const addUserToStore = (e: FormEvent) => {
     e.preventDefault();
@@ -63,11 +67,7 @@ export const Form = (props: ForDataProps) => {
     }
   };
 
-  const myThem = useContext(UserTheme);
-  const navigate = useNavigate();
-  const location = useLocation();
   const fromPage = location.state?.from?.pathname || "/";
-  const { signin } = useAuth() ?? {};
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;

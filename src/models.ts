@@ -2,11 +2,10 @@ export interface CardDataResult {
   results: Post[];
 }
 
-
 export interface User {
   name: string;
   email: string;
-  access: string
+  access: string;
 }
 
 export interface PostState {
@@ -31,24 +30,21 @@ export interface UserRequest {
   // Добавьте другие поля, если необходимо
 }
 
-
-export interface UserLogin {  
+export interface UserLogin {
   email: string;
   password: string;
   // Добавьте другие поля, если необходимо
 }
 
-
-export interface UserAfterLogin {  
+export interface UserAfterLogin {
   email: string;
   loginUser: string | null;
   accessToken: string;
   // Добавьте другие поля, если необходимо
 }
 
-
-export interface ObjectForAddPost {  
+export interface ObjectForAddPost {
   accessToken: string;
-  id: number
+  id: number;
   // Добавьте другие поля, если необходимо
 }

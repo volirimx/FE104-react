@@ -1,29 +1,26 @@
 .container {
-    width: 30%;
-    height: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 16px;
-    padding: 1%;
-    border: 1px solid #d5d1d1;
-    display: flex; /* Use flexbox to center the text */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    flex-direction: column;
-    white-space: pre-wrap;
-    
+  width: 30%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  padding: 1%;
+  border: 1px solid #d5d1d1;
+  display: flex; /* Use flexbox to center the text */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  flex-direction: column;
+  white-space: pre-wrap;
 }
 
-
 .light {
-    background-color: #F3F3F3;
-    color: black;
+  background-color: #f3f3f3;
+  color: black;
 }
 
 .dark {
-    background-color: #313037;
-    color: #68676D;
+  background-color: #313037;
+  color: #68676d;
 }
-

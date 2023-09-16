@@ -1,5 +1,3 @@
-import React, { useContext} from 'react'
+import React, { useContext } from "react";
 
-export const UserTheme = React.createContext('');  
-
-
+export const UserTheme = React.createContext("");

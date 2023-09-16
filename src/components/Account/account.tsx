@@ -11,18 +11,17 @@ import { clearUser } from "../../redux/user/user";
 
 export const Account = () => {
   const [state, setState] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user, signout } = useAuth();
 
   const buttonClickHandler = () => {
-   setState(() => !state);
+    setState(() => !state);
   };
 
   const humbBord = state ? `${styles.border}` : "";
   const hmbClasses = [`${styles.hamburger}`, humbBord];
 
-  const navigate = useNavigate();
-  const { user, signout } = useAuth();
-
-  const dispatch = useDispatch();
   const eraseUser = () => {
     signout(() => navigate("/", { replace: true }));
     dispatch(clearUser());

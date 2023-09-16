@@ -24,6 +24,11 @@ export const FormForLogin = () => {
     password: "",
   });
 
+  const myThem = useContext(UserTheme);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { signin } = useAuth() ?? {};
+
   const addUserToStore = async (e: FormEvent) => {
     e.preventDefault();
 
@@ -53,11 +58,7 @@ export const FormForLogin = () => {
     }
   };
 
-  const myThem = useContext(UserTheme);
-  const navigate = useNavigate();
-  const location = useLocation();
   const fromPage = location.state?.from?.pathname || "/";
-  const { signin } = useAuth() ?? {};
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;

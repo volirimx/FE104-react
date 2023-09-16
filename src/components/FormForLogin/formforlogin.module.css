@@ -1,29 +1,24 @@
 /* signin.module.css */
 
 .form {
- 
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #d5d1d1;
   border-radius: 5px;
-  background-color: #F3F3F3; /* Изменяем цвет формы на серый (#ccc) */
-    
+  background-color: #f3f3f3; /* Изменяем цвет формы на серый (#ccc) */
 }
 
-
 .light {
-
   flex: 1 0 auto;
-	background-color: #F3F3F3;
+  background-color: #f3f3f3;
   color: black;
 }
 
 .dark {
   background-color: #313037;
-  color: #68676D;
+  color: #68676d;
 }
-
 
 label {
   display: block;
