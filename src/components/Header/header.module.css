@@ -1,0 +1,60 @@
+.header{
+    width: 100%;
+    height: 60px;
+    background-color:#3F5576;
+    display: flex;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+}
+.input_container{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    background-color:#3F5576;
+    align-items: center;
+}
+
+.input_container:focus {
+    background-color:red;
+}
+input{
+    width: 100%;
+    height: 60px;
+    padding-left: 30px;
+    background-color: transparent;
+}
+.active_input{
+    background-color: #52627a;
+}
+.cross_button{
+   
+    padding-right: 18px;
+    
+}
+.search, .user{
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.search{
+    border-left: 1px solid #a0b2ce;
+    border-right: 1px solid #a0b2ce;
+}
+
+#search_icon{
+    width: 24px;
+    height: auto;
+}
+#user_icon{
+    width: 24px;
+    height: auto;
+}
+#cross{
+    width: 24px;
+    height: auto;
+    cursor: pointer;
+}

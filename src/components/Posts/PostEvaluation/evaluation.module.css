@@ -1,0 +1,29 @@
+.post_buttons{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.like_dislike{
+    display: flex;
+    flex-direction: row;
+}
+.post_buttons img{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;    
+}
+.bookmarks_menu{
+    display: flex;
+    flex-direction: row;
+}
+#dislike{
+    margin-left: 15px;
+}
+#menu{
+    margin-left: 15px;
+}
+#bookmarks{
+    width: 35px;
+    height: 25px;
+}

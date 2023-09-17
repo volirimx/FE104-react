@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat";
+}
+@font-face {
+    font-family: "Montserrat";
+    src: url("./Montserrat-Regular.ttf");
+}
+.layout{  
+    background-color:  rgba(210, 210, 212);
+    width: 100vw;
+    height: 100vh;
+}
+.layout_dark{
+    background-color: #494d4e;
+    width: 100vw;
+    height: 100vh;
+}
+.header {
+    width: 100%;    
+}
+.content {   
+   background-color: rgba(210, 210, 212);
+   margin-top: 5%;   
+}
+.content_dark{
+    background-color: #494d4e;
+    margin-top: 5%;  
+}
+.footer {
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color:  rgba(210, 210, 212);
+}
