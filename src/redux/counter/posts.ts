@@ -6,6 +6,11 @@ import { Post } from "../../models";
 export const fetchPosts = createAsyncThunk(
   "post/fetchPosts",
   async (searchParams: string) => {
+    console.log(searchParams);
+    console.log(searchParams.slice(5));
+    console.log(parseInt(searchParams.slice(5)));
+    
+    
     const response = await axios.get(
       `https://studapi.teachmeskills.by/blog/posts/?limit=6&offset=${
         (parseInt(searchParams.slice(5)) - 1) * 6

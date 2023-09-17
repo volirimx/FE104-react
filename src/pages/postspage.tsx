@@ -12,7 +12,7 @@ import { useSearchParams } from "react-router-dom";
 
 export const Postspage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchValue = searchParams.get("name");
+  // const searchValue = searchParams.get("name");
   const dispatch = useAppDispatch();
   const cardsObj = useAppSelector((state: RootState) => selectAllPosts(state));
   const cards = useAppSelector(
@@ -60,23 +60,19 @@ export const Postspage = () => {
 
       <div className={styles.bigBlock}>
         <div className={styles.containerStyle}>
-          {searchValue
-            ? cards
-                .filter((card) => card.title.includes(searchValue))
-                .map((filteredCard) => (
-                  <Card1 card={filteredCard} key={filteredCard.id} />
-                ))
-            : cards.map((card) => <Card1 card={card} key={card.id} />)}
+          {cards.map((card) => <Card1 card={card} key={card.id} />)}
+         
         </div>
 
         <div className={styles.containerStyle2}>
-          {searchValue
+        {cards.map((card) => <Card2 card={card} key={card.id} />)}
+          {/* {searchValue
             ? cards
                 .filter((card) => card.title.includes(searchValue))
                 .map((filteredCard) => (
                   <Card2 card={filteredCard} key={filteredCard.id} />
                 ))
-            : cards.map((card) => <Card2 card={card} key={card.id} />)}
+            : cards.map((card) => <Card2 card={card} key={card.id} />)} */}
         </div>
       </div>
 

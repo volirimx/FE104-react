@@ -6,12 +6,13 @@ import { useSearchParams } from "react-router-dom";
 
 export const Header = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchParams((prevParams) => {
       if (!e.target.value.length) {
-        prevParams.delete("name");
+        prevParams.delete("search");
       } else {
-        prevParams.set("name", e.target.value);
+        prevParams.set("search", e.target.value);
         prevParams.set("page", "1");
       }
       return prevParams;
