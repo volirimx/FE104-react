@@ -5,8 +5,19 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { Posts } from "./pages/Posts";
 import { EmailActivation } from "./pages/EmailActivation";
+import { useEffect } from "react";
+import axios from "axios";
 
 function App() {
+  useEffect(() => {
+    (async () => {
+      const response = await axios.get(
+        "http://www.omdbapi.com/?&apikey=73f13b04&s=movie&page=1"
+      );
+      console.log(response.data);
+    })();
+  }, []);
+
   return (
     <Provider store={store}>
       <BrowserRouter>
